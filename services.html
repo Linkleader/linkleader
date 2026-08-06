@@ -10,7 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .intro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+  /* ---------- services split: info links, diensten rechts, full page ---------- */
+  .services-split{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 78px)}
+  .services-split__info{
+    position:sticky;top:78px;height:calc(100vh - 78px);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:48px 5vw;border-right:1px solid var(--rule);
+    overflow-y:auto;
+  }
+  .services-split__info h1{margin:22px 0 28px}
+  .services-split__info p{color:var(--t-70);line-height:1.7;margin:0 0 20px;max-width:520px}
+  .services-split__info .outcome{margin-top:12px}
+  .services-split__list{padding:100px 5vw;display:flex;flex-direction:column;justify-content:center}
+
   .outcome{border:1px solid var(--rule);border-radius:var(--r-lg);padding:36px 32px;background:var(--navy-deep)}
   .outcome h3{font-size:16px;letter-spacing:.28px;text-transform:uppercase;font-weight:500;color:var(--pink);margin:0 0 22px}
   .sector-band{
@@ -18,8 +30,12 @@
     background:linear-gradient(135deg,rgba(193,0,124,.10),rgba(10,24,55,0) 55%),var(--navy-deep);
     padding:56px 52px;display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;
   }
+  @media (max-width:1100px){
+    .services-split{grid-template-columns:1fr;min-height:0}
+    .services-split__info{position:static;height:auto;border-right:none;border-bottom:1px solid var(--rule);padding:64px 24px 48px;overflow-y:visible}
+    .services-split__list{padding:56px 24px}
+  }
   @media (max-width:1024px){
-    .intro-grid{grid-template-columns:1fr;gap:40px}
     .sector-band{grid-template-columns:1fr;padding:40px 30px;gap:32px}
   }
 </style>
@@ -47,21 +63,13 @@
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="phero">
-  <div class="shell">
+<!-- ================= SERVICES SPLIT: INFO LINKS, SERVICES RECHTS ================= -->
+<section class="services-split">
+  <div class="services-split__info">
     <p class="eyebrow">Onze services</p>
     <h1 class="h-product">Sharp minds.<br>Brilliant builds.</h1>
-  </div>
-</section>
-
-<!-- ================= INTRO ================= -->
-<section class="band band--tight" style="padding-top:0">
-  <div class="shell intro-grid reveal">
-    <div class="prose">
-      <p>LinkLeader bouwt technologie voor bedrijven die vooruit willen bewegen. Voor organisaties die begrijpen dat software, automatisering en AI niet langer ondersteuning zijn, maar het fundament van het bedrijf.</p>
-      <p>Snelheid zonder strategie creëert chaos. Strategie zonder uitvoering verandert niets. Daarom combineren wij bedrijfsinzicht met snelle technische uitvoering — geen eindeloze consultancytrajecten of losse agency-oplossingen, maar technologie die direct impact maakt op operatie, sales en groei.</p>
-    </div>
+    <p>LinkLeader bouwt technologie voor bedrijven die vooruit willen bewegen. Voor organisaties die begrijpen dat software, automatisering en AI niet langer ondersteuning zijn, maar het fundament van het bedrijf.</p>
+    <p>Snelheid zonder strategie creëert chaos. Strategie zonder uitvoering verandert niets. Daarom combineren wij bedrijfsinzicht met snelle technische uitvoering — geen eindeloze consultancytrajecten of losse agency-oplossingen, maar technologie die direct impact maakt op operatie, sales en groei.</p>
     <div class="outcome">
       <h3>Wat het je oplevert</h3>
       <ul class="arrow-list">
@@ -72,16 +80,7 @@
       </ul>
     </div>
   </div>
-</section>
-
-<!-- ================= DIENSTEN ================= -->
-<section class="band band--tight" style="padding-top:0">
-  <div class="shell">
-    <div class="band__head reveal">
-      <h2 class="h-section">Wat wij bouwen</h2>
-      <p class="lead">Van automatisering tot maatwerk software en AI-agents: systemen die blijven doorwerken terwijl jouw bedrijf groeit. Geen experimenten met innovatie, maar technologie die vandaag al resultaat levert.</p>
-    </div>
-
+  <div class="services-split__list">
     <div class="service-grid reveal">
       <div class="service-item">
         <span class="service-item__num">01</span>

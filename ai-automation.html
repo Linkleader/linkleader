@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Automation — LinkLeader</title>
+<meta name="description" content="Wij bouwen de automatiseringslaag die handmatig werk overbodig maakt: van gratis scan tot volledige implementatie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .crumb{font-size:14px;color:var(--muted);margin:0 0 26px}
+  .crumb a{color:var(--muted);text-decoration:none}
+  .crumb a:hover{color:#fff}
+
+  /* ---------- typografie & positionering, geïnspireerd op wearebrain.com/services ---------- */
+  .h-section{font-size:clamp(34px,5vw,56px);line-height:1.15;text-align:left}
+  .problem-section__inner h2{margin:0 0 30px}
+  .compare-col h3{font-size:clamp(22px,2.6vw,30px)}
+  .build-section__heading{font-size:clamp(34px,5vw,56px);text-align:left;margin-left:0;margin-right:0}
+  .process-section .band__head{text-align:left;margin-left:0;margin-right:0}
+  .scan-panel{text-align:left}
+  .scan-panel p{margin-left:0;margin-right:0}
+
+  /* ---------- hero: compact, alleen deze sectie heeft het raster ---------- */
+  .hero-grid--compact{min-height:0}
+  .hero-grid--compact .hero-grid__content{padding:100px 24px;text-align:left;align-items:flex-start;max-width:820px}
+  .hero-grid--compact .h-product{font-size:clamp(44px,7vw,72px)}
+  .hero-grid--compact .phero__sub{text-align:left}
+  .hero-grid__canvas{z-index:-2}
+  .hero-grid__fade{
+    position:absolute;left:0;right:0;bottom:0;height:140px;z-index:0;
+    background:linear-gradient(to bottom, transparent, var(--navy));
+    pointer-events:none;
+  }
+
+  /* ---------- raster-animatie in elke blauwe kaart ---------- */
+  .card-grid__canvas{position:absolute;inset:0;z-index:-1;pointer-events:none}
+
+  /* ---------- techy blauwe outline panels: zelfde blauw als de pagina-achtergrond ---------- */
+  .tech-panel{
+    position:relative;overflow:hidden;
+    border:1px solid rgba(10,60,140,.8);border-radius:var(--r-lg);
+    background:var(--navy);padding:56px 60px;
+    max-width:var(--shell);margin:0 auto;
+    transition:border-color .2s ease;
+  }
+  .tech-panel:hover,.tech-panel:active{border-color:rgba(20,90,200,.95)}
+
+  /* ---------- probleem ---------- */
+  .problem-section{padding:var(--band) 0}
+  .problem-section__inner h2{margin:0 0 24px}
+  .problem-section__inner p{margin:0 0 20px;color:#fff;line-height:1.65;max-width:760px}
+  .problem-section__inner p:last-of-type{margin-bottom:36px}
+  .green-check-list{list-style:none;margin:0 0 40px;padding:0}
+  .green-check-list li{
+    display:flex;align-items:flex-start;gap:14px;
+    margin-bottom:18px;font-size:18px;font-weight:600;color:#fff;
+  }
+  .green-check-list li:last-child{margin-bottom:0}
+  .green-check-list svg{flex:none;margin-top:2px;width:26px;height:26px}
+
+  /* ---------- bottleneck-vergelijking ---------- */
+  .compare-section{padding:var(--band) 0;padding-top:0}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .compare-col h3{margin:0 0 28px;font-size:24px;color:#fff}
+  .compare-col ul{list-style:none;margin:0;padding:0}
+  .compare-col li{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px;font-size:17px;line-height:1.55;color:#fff}
+  .compare-col li:last-child{margin-bottom:0}
+  .compare-col svg{flex:none;margin-top:2px;width:22px;height:22px}
+  .compare-col--good li{font-weight:600}
+
+  /* ---------- automation animation ---------- */
+  .automation-animation-section{padding:0 0 var(--band)}
+  .automation-animation-img{
+    width:100%;max-width:var(--shell);display:block;margin:0 auto;
+    border:1px solid rgba(10,60,140,.8);border-radius:var(--r-lg);
+    transition:border-color .2s ease;
+  }
+  .automation-animation-img:hover,.automation-animation-img:active{border-color:rgba(20,90,200,.95)}
+
+  /* ---------- wat we voor je bouwen ---------- */
+  .build-section{padding:var(--band) 0;padding-top:0}
+  .build-section__heading{color:var(--pink);text-align:left;margin:0 0 48px;max-width:var(--shell)}
+  .build-grid{display:flex;flex-direction:column;gap:24px;max-width:var(--shell);margin:0 auto}
+  .build-card{
+    position:relative;overflow:hidden;
+    border:1px solid rgba(10,60,140,.8);border-radius:var(--r-lg);
+    background:var(--navy);padding:34px 38px;transition:border-color .2s ease;
+  }
+  .build-card:hover,.build-card:active{border-color:rgba(20,90,200,.95)}
+  .build-card h3{margin:0 0 12px;color:#fff;font-size:21px}
+  .build-card p{margin:0;color:#fff;line-height:1.65;font-size:17px}
+
+  /* ---------- hoe wij werken (verticale tijdlijn) ---------- */
+  .process-section{padding:var(--band) 0;padding-top:0}
+  .process-timeline{position:relative;max-width:760px;padding-left:36px}
+  .process-timeline::before{
+    content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;
+    background:linear-gradient(to bottom, rgba(193,0,124,.55), rgba(0,115,255,.12));
+  }
+  .process-step{position:relative;padding-bottom:52px}
+  .process-step:last-child{padding-bottom:0}
+  .process-step__dot{
+    position:absolute;left:-36px;top:7px;width:11px;height:11px;border-radius:9999px;
+    background:var(--pink);box-shadow:0 0 0 4px rgba(193,0,124,.18);
+  }
+  .process-step h3{margin:0 0 12px;font-size:24px;font-weight:700;color:#fff}
+  .process-step h3 .lead-letter{color:var(--pink)}
+  .process-step p{margin:0;color:var(--t-70);line-height:1.65;font-size:16px}
+
+  /* ---------- faq: accordion met blauwe outline + plus/min ---------- */
+  .qa{display:flex;flex-direction:column;gap:16px;max-width:var(--shell);margin:0 auto}
+  .qa__item{
+    position:relative;overflow:hidden;
+    border:1px solid rgba(10,60,140,.8);border-radius:var(--r-md);
+    background:var(--navy);transition:border-color .2s ease;
+  }
+  .qa__item:hover,.qa__item:active,.qa__item.is-open{border-color:rgba(20,90,200,.95)}
+  .qa__toggle{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;
+    background:none;border:none;cursor:pointer;padding:26px 28px;text-align:left;
+    font:inherit;color:inherit;
+  }
+  .qa__q{font-size:19px;font-weight:600;line-height:1.4;color:#fff;margin:0}
+  .qa__icon{position:relative;flex:none;width:28px;height:28px}
+  .qa__icon::before,.qa__icon::after{
+    content:"";position:absolute;top:50%;left:50%;background:var(--blue);
+    transition:transform .25s ease;border-radius:2px;
+  }
+  .qa__icon::before{width:18px;height:2px;transform:translate(-50%,-50%)}
+  .qa__icon::after{width:2px;height:18px;transform:translate(-50%,-50%)}
+  .qa__item.is-open .qa__icon::after{transform:translate(-50%,-50%) scaleY(0)}
+  .qa__panel{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .qa__a{margin:0;padding:0 28px 26px;color:#fff;line-height:1.6;font-size:17px}
+
+  /* ---------- gratis scan ---------- */
+  .scan-section{padding:var(--band) 0;padding-top:0}
+  .scan-panel{text-align:left}
+  .scan-panel h2{margin:0 0 20px}
+  .scan-panel p{margin:0 0 32px;color:#fff;line-height:1.65;font-size:18px;max-width:640px}
+
+  @media (max-width:720px){
+    .tech-panel{padding:36px 24px}
+    .compare-grid{grid-template-columns:1fr;gap:36px}
+    .qa__toggle{padding:20px 22px}
+    .qa__a{padding:0 22px 20px}
+    .build-card{padding:26px 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="shell nav__inner">
+    <a href="index.html" class="brand-link" aria-label="LinkLeader home">
+      <img class="brand-link__logo" src="data:image/png;base64,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" alt="">
+    </a>
+    <nav class="nav__links">
+      <a href="over-ons.html">Over ons</a>
+      <a href="services.html" aria-current="page">Onze services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="nav__cta" href="contact.html"><span>Samenwerken</span></a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="nav__panel shell" id="mnav">
+    <a href="over-ons.html">Over ons</a>
+    <a href="services.html">Onze services</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn btn--primary btn--full" href="contact.html">Samenwerken</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero-grid hero-grid--compact" id="aiHero">
+  <canvas class="hero-grid__canvas" id="aiHeroGrid" aria-hidden="true"></canvas>
+  <div class="hero-grid__fade" aria-hidden="true"></div>
+  <div class="hero-grid__content">
+    <h1 class="h-product">Jouw Link tot</h1>
+    <p class="phero__sub">Smart Automation</p>
+    <p class="lead hero-grid__lead">Wij bouwen schaalbare automatiseringssystemen die handmatig werk elimineren, tools verbinden en workflows slimmer maken. Zo kunnen teams zich richten op werk dat écht waarde toevoegt.</p>
+    <a class="btn btn--primary" href="contact.html">Start vandaag met Automatiseren</a>
+  </div>
+</section>
+
+<!-- ================= HET PROBLEEM ================= -->
+<section class="problem-section">
+  <div class="shell">
+  <div class="tech-panel problem-section__inner reveal">
+    <h2 class="h-section">Het probleem dat wij oplossen</h2>
+    <p>Bedrijven die handmatig werk blijven doen, verliezen niet alleen tijd. Ze verliezen capaciteit, focus en concurrentievoordeel. Terwijl concurrenten dezelfde uren inzetten op strategie en groei, besteedt jouw team ze aan kopiëren, plakken en rapportages opmaken.</p>
+    <p>LinkLeader bouwt de automatiseringslaag die dat stopt. Geen duct-tape oplossingen, geen halfslachtige koppelingen. Schaalbare workflows die direct in je operatie draaien.</p>
+
+    <ul class="green-check-list">
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#22c55e" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Wij scannen kosteloos je bedrijfsprocessen + tech stack
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#22c55e" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Wij bouwen de automatisering volledig, van scan tot implementatie
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#22c55e" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Verdien je investering terug in maanden
+      </li>
+    </ul>
+
+    <a class="btn btn--primary" href="contact.html">Neem contact op</a>
+  </div>
+  </div>
+</section>
+
+<!-- ================= BOTTLENECKS VS IMPACT ================= -->
+<section class="compare-section">
+  <div class="shell">
+    <div class="tech-panel compare-grid reveal">
+        <div class="compare-col compare-col--bad">
+          <h3>Huidige bottlenecks</h3>
+          <ul>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Te veel tijd gaat op aan steeds dezelfde handmatige taken
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Processen kosten te veel tijd en dus te veel geld
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Handmatig werk zorgt regelmatig voor fouten en miscommunicatie
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Bij groei moet je bijna automatisch extra mensen aannemen
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Je team is te veel bezig met uitvoerend werk in plaats van groei
+            </li>
+          </ul>
+        </div>
+        <div class="compare-col compare-col--good">
+          <h3 style="color:#fff">Impact na implementatie</h3>
+          <ul>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Herhaalwerk wordt automatisch uitgevoerd
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Operationele kosten dalen structureel
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Nul menselijke fouten in geautomatiseerde flows
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Processen schalen zonder extra FTE
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Je beste mensen werken aan je grootste kansen
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO =================
+         Video/embed volgt nog van de klant — hier invoegen zodra beschikbaar.
+    ======================================== -->
+  </div>
+</section>
+
+<!-- ================= AUTOMATION ANIMATION ================= -->
+<section class="automation-animation-section">
+  <div class="shell">
+    <img class="automation-animation-img reveal" src="automation%20animation.gif" alt="Automation animation">
+  </div>
+</section>
+
+<!-- ================= WAT WE VOOR JE BOUWEN ================= -->
+<section class="build-section">
+  <div class="shell">
+    <h2 class="build-section__heading h-section reveal">Wat we voor je bouwen met LinkLeader</h2>
+    <div class="build-grid">
+      <div class="build-card reveal">
+        <h3>Workflow automatisering met N8N of Power Automate</h3>
+        <p>n8n of Power Automate. Flexibel, vendor-onafhankelijk, live in dagen. Data stroomt automatisch tussen systemen — zonder dat iemand er een vinger aan hoeft te raken.</p>
+      </div>
+      <div class="build-card reveal">
+        <h3>AI-Powered automatisering</h3>
+        <p>Waar standaard regels tekortschieten, voegen wij AI toe. Workflows die context begrijpen, beslissingen nemen en zich aanpassen aan complexe scenario's.</p>
+      </div>
+      <div class="build-card reveal">
+        <h3>Systeemintegraties &amp; API's</h3>
+        <p>CRM, ERP, marketingtools, databases — alles verbonden. Eén bron van waarheid. Geen handmatige overdrachten, geen fouten.</p>
+      </div>
+      <div class="build-card reveal">
+        <h3>Procesmapping &amp; strategie</h3>
+        <p>Voor we één regel bouwen, analyseren we. We brengen bottlenecks in kaart en starten met de automatisering die het snelst rendeert.</p>
+      </div>
+      <div class="build-card reveal">
+        <h3>Onderhoud &amp; optimalisatie</h3>
+        <p>Automatisering die stil valt, is geen automatisering. Wij monitoren continu, lossen issues op voordat jij ze merkt en breiden uit als je bedrijf groeit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOE WIJ WERKEN ================= -->
+<section class="process-section">
+  <div class="shell">
+    <div class="band__head reveal">
+      <p class="eyebrow eyebrow--blue">Ons proces</p>
+      <h2 class="h-section">Hoe Wij Werken</h2>
+    </div>
+    <div class="process-timeline reveal">
+      <div class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <h3 data-title="Workflow analyse"><span class="lead-letter">W</span>orkflow analyse</h3>
+        <p>We bekijken hoe je huidige processen werken, identificeren inefficiënties en repetitief handmatig werk, en leggen vast waar automatisering de grootste en snelste verbeteringen kan opleveren.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <h3 data-title="Automatingsstrategie en planning"><span class="lead-letter">A</span>utomatingsstrategie en planning</h3>
+        <p>Vervolgens ontwerpen we het automatiseringsframework. We kiezen de juiste platforms (zoals n8n, Microsoft Power Automate of een maatwerkoplossing), definiëren de workflowlogica en plannen hoe alle systemen met elkaar integreren voordat de ontwikkeling start.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <h3 data-title="Development en integratie"><span class="lead-letter">D</span>evelopment en integratie</h3>
+        <p>Wij developen de automatiseringsworkflows en integreren deze met je bestaande tools en systemen, zodat alles naadloos werkt binnen je technologieomgeving.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <h3 data-title="Validatie en livegang"><span class="lead-letter">V</span>alidatie en livegang</h3>
+        <p>Voordat iets live gaat, testen we de automatiseringen grondig, inclusief edge cases en mogelijke faalpunten, om stabiliteit en betrouwbaarheid te garanderen. Waar nodig voeren we daarnaast kleine pilots uit om te verifiëren dat alles in de praktijk optimaal werkt.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <h3 data-title="Doorlopend onderhoud en continue optimalisatie van de automatiseringen"><span class="lead-letter">D</span>oorlopend onderhoud en continue optimalisatie van de automatiseringen</h3>
+        <p>Na de implementatie blijven we de automatiseringen monitoren, pakken we eventuele problemen snel aan en blijven we ze verbeteren of uitbreiden zodra er nieuwe automatiseringskansen ontstaan. We denken continu mee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band band--tight faq-section">
+  <div class="shell">
+    <div class="band__head reveal">
+      <p class="eyebrow">Wat we vaak horen</p>
+      <h2 class="h-section">Veelgestelde vragen</h2>
+    </div>
+    <div class="qa reveal">
+      <div class="qa__item">
+        <button class="qa__toggle" aria-expanded="false">
+          <span class="qa__q">Heb ik technische kennis nodig om met jullie samen te werken?</span>
+          <span class="qa__icon" aria-hidden="true"></span>
+        </button>
+        <div class="qa__panel">
+          <p class="qa__a">Er is geen technische achtergrond nodig. Je legt gewoon het proces uit dat je wilt verbeteren en de resultaten die je wilt bereiken. Wij verzorgen het ontwerp, de ontwikkeling en de implementatie van de automatisering voor je.</p>
+        </div>
+      </div>
+      <div class="qa__item">
+        <button class="qa__toggle" aria-expanded="false">
+          <span class="qa__q">Hoe lang duurt het meestal om een automatisering te bouwen?</span>
+          <span class="qa__icon" aria-hidden="true"></span>
+        </button>
+        <div class="qa__panel">
+          <p class="qa__a">De tijdlijn hangt af van hoe complex de workflow is. Kleinere automatiseringen kunnen vaak binnen een paar dagen worden afgerond. Grotere oplossingen die meerdere systemen koppelen en testen vereisen, kunnen een paar weken in beslag nemen.</p>
+        </div>
+      </div>
+      <div class="qa__item">
+        <button class="qa__toggle" aria-expanded="false">
+          <span class="qa__q">Kunnen jullie workflows koppelen en automatiseren over meerdere tools/systemen heen?</span>
+          <span class="qa__icon" aria-hidden="true"></span>
+        </button>
+        <div class="qa__panel">
+          <p class="qa__a">Absoluut, hier creëren wij vaak de meeste waarde. Veel bedrijven gebruiken meerdere platforms tegelijk, zoals CRM-systemen, databases, messagingtools en andere software. Wij bouwen integraties waarmee deze systemen met elkaar communiceren, zodat informatie automatisch tussen hen wordt uitgewisseld.</p>
+        </div>
+      </div>
+      <div class="qa__item">
+        <button class="qa__toggle" aria-expanded="false">
+          <span class="qa__q">Welke automatiseringstechnologieën gebruiken jullie doorgaans?</span>
+          <span class="qa__icon" aria-hidden="true"></span>
+        </button>
+        <div class="qa__panel">
+          <p class="qa__a">We bouwen vaak oplossingen met platforms zoals n8n en Microsoft Power Automate. Als een project iets anders vereist, kunnen we ook maatwerkintegraties ontwikkelen. De keuze van de technologie hangt af van wat het beste past bij je bestaande systemen.</p>
+        </div>
+      </div>
+      <div class="qa__item">
+        <button class="qa__toggle" aria-expanded="false">
+          <span class="qa__q">Wat is AI-gestuurde automatisering?</span>
+          <span class="qa__icon" aria-hidden="true"></span>
+        </button>
+        <div class="qa__panel">
+          <p class="qa__a">Standaard automatisering werkt met vooraf gedefinieerde regels — bijvoorbeeld: "als X gebeurt, voer dan Y uit." AI-gestuurde automatisering gaat hier verder op in door workflows in staat te stellen informatie te analyseren, context te begrijpen en slimmere beslissingen te nemen in plaats van alleen vaste instructies te volgen.</p>
+        </div>
+      </div>
+      <div class="qa__item">
+        <button class="qa__toggle" aria-expanded="false">
+          <span class="qa__q">Kunnen jullie bestaande automatiseringen verbeteren of beheren?</span>
+          <span class="qa__icon" aria-hidden="true"></span>
+        </button>
+        <div class="qa__panel">
+          <p class="qa__a">Ja. Als je al workflows hebt ingericht, kunnen we deze beoordelen, inefficiënties identificeren en verbeteringen doorvoeren. Dit geldt voor systemen die intern zijn opgezet of door een andere leverancier zijn gemaakt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GRATIS SCAN ================= -->
+<section class="scan-section">
+  <div class="shell">
+    <div class="tech-panel scan-panel reveal">
+      <h2 class="h-section">Wij scannen gratis je processen en tech stack</h2>
+      <p>Geen verplichtingen. Wel een concreet overzicht van waar je tijd en geld verliest — en wat dat oplevert als je het aanpakt.</p>
+      <a class="btn btn--primary" href="contact.html">Plan een gratis processcan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <div class="footer-brand">
+          <img id="footerLogo" alt="LinkLeader logo">
+          <span>LINKLEADER</span>
+        </div>
+        <p>Wij maken processen slim en software doeltreffend. Met automatisering, de juiste software en AI wordt wat vandaag tijd kost, morgen moeiteloos.</p>
+        <a class="link-under" href="mailto:info@linkleader.nl">info@linkleader.nl</a>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="over-ons.html">Over ons</a></li>
+          <li><a href="services.html">Onze services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="ai-automation.html">AI Automation</a></li>
+          <li><a href="services.html">Software development</a></li>
+          <li><a href="services.html">AI &amp; Agents</a></li>
+          <li><a href="services.html">API Integraties</a></li>
+          <li><a href="uitzendbureaus.html">Uitzend &amp; staffing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="micro">© 2026 LinkLeader</span>
+      <span class="micro">Powered by LinkLeader.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script src="kinetic-grid.js"></script>
+<script src="card-grid.js?v=2"></script>
+<script>
+(function(){
+  'use strict';
+  window.initKineticGrid(document.getElementById('aiHeroGrid'), document.getElementById('aiHero'), '#0a1837');
+
+  var cards = document.querySelectorAll('.tech-panel, .build-card, .qa__item');
+  cards.forEach(function(card){ window.initCardGrid(card); });
+
+  var navCta = document.querySelector('.nav__cta');
+  if(navCta) window.initCardGrid(navCta);
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var toggles = document.querySelectorAll('.qa__toggle');
+  toggles.forEach(function(btn){
+    var item = btn.closest('.qa__item');
+    var panel = item.querySelector('.qa__panel');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      panel.style.maxHeight = isOpen ? (panel.scrollHeight + 'px') : null;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced || !('IntersectionObserver' in window)) return;
+
+  var headings = Array.prototype.slice.call(document.querySelectorAll(
+    '.hero-grid__content h1, .problem-section__inner h2, .compare-col h3, .build-section__heading, .process-section h2, .faq-section h2, .scan-panel h2'
+  ));
+  var leadHeadings = Array.prototype.slice.call(document.querySelectorAll('.process-step h3'));
+  if(!headings.length && !leadHeadings.length) return;
+
+  var TYPE_MS = 32;
+
+  headings.forEach(function(h){
+    h.setAttribute('data-full-text', h.textContent);
+    h.textContent = '';
+  });
+  leadHeadings.forEach(function(h){
+    h.setAttribute('data-full-text', h.getAttribute('data-title') || h.textContent);
+    h.textContent = '';
+  });
+
+  function typeHeading(el){
+    var text = el.getAttribute('data-full-text') || '';
+    var i = 0;
+    var timer = setInterval(function(){
+      el.textContent += text.charAt(i);
+      i++;
+      if(i >= text.length) clearInterval(timer);
+    }, TYPE_MS);
+  }
+
+  function typeLeadHeading(el){
+    var text = el.getAttribute('data-full-text') || '';
+    var i = 0;
+    var timer = setInterval(function(){
+      var span = document.createElement('span');
+      span.textContent = text.charAt(i);
+      if(i === 0) span.className = 'lead-letter';
+      el.appendChild(span);
+      i++;
+      if(i >= text.length) clearInterval(timer);
+    }, TYPE_MS);
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        if(entry.target.classList.contains('process-step__title-marker')){
+          typeLeadHeading(entry.target);
+        } else {
+          typeHeading(entry.target);
+        }
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  headings.forEach(function(h){ io.observe(h); });
+  leadHeadings.forEach(function(h){ h.classList.add('process-step__title-marker'); io.observe(h); });
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  // iOS Safari only triggers :active on elements with a touch listener bound.
+  var tappable = document.querySelectorAll('.tech-panel, .build-card, .automation-animation-img');
+  tappable.forEach(function(el){ el.addEventListener('touchstart', function(){}, { passive: true }); });
+})();
+</script>
+</body>
+</html>

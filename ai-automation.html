@@ -10,6 +10,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
+  @font-face{
+    font-family:'Univia Pro Ultra';
+    src:url('fonts/UniviaPro-Ultra.woff2') format('woff2'),
+        url('fonts/UniviaPro-Ultra.otf') format('opentype');
+    font-weight:900;font-style:normal;font-display:swap;
+  }
+
+  /* ---------- intro splash: full page raster + typewriter regel ---------- */
+  body.intro-splash-active{overflow:hidden}
+  .intro-splash{
+    position:fixed;inset:0;z-index:9999;background:#0a1837;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    cursor:pointer;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .intro-splash.is-hidden{opacity:0;transform:translateY(-48px);pointer-events:none}
+  .intro-splash__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+  .intro-splash__content{position:relative;z-index:1;text-align:center;padding:24px}
+  .intro-splash__line{
+    font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;
+    font-weight:900;color:#fff;
+    font-size:clamp(30px,6vw,76px);letter-spacing:-1.5px;line-height:1.15;
+    margin:0;
+  }
+  .intro-splash__cursor{
+    display:inline-block;width:4px;height:.85em;background:var(--pink);
+    margin-left:6px;vertical-align:middle;animation:intro-blink 1s step-end infinite;
+  }
+  @keyframes intro-blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){
+    .intro-splash{display:none}
+  }
+
   .crumb{font-size:14px;color:var(--muted);margin:0 0 26px}
   .crumb a{color:var(--muted);text-decoration:none}
   .crumb a:hover{color:#fff}
@@ -151,6 +184,14 @@
 </style>
 </head>
 <body>
+
+<!-- ================= INTRO SPLASH ================= -->
+<div class="intro-splash" id="introSplash" aria-hidden="true">
+  <canvas class="intro-splash__canvas" id="introSplashGrid"></canvas>
+  <div class="intro-splash__content">
+    <h2 class="intro-splash__line"><span id="introSplashText"></span><span class="intro-splash__cursor"></span></h2>
+  </div>
+</div>
 
 <!-- ================= NAV ================= -->
 <header class="nav">
@@ -468,9 +509,11 @@
 <script src="site.js"></script>
 <script src="kinetic-grid.js"></script>
 <script src="card-grid.js?v=2"></script>
+<script src="intro-splash.js"></script>
 <script>
 (function(){
   'use strict';
+  window.initIntroSplash('We automate the unthinkable');
   window.initKineticGrid(document.getElementById('aiHeroGrid'), document.getElementById('aiHero'), '#0a1837');
 
   var cards = document.querySelectorAll('.tech-panel, .build-card, .qa__item');

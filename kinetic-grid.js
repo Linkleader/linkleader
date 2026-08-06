@@ -194,6 +194,7 @@ window.initKineticGrid = function(canvas, region, bgColor){
   }
 
   function animate(now){
+    if(!canvas.isConnected) return;
     mouse.x = lerpN(mouse.x, targetMouse.x, LERP_SPEED);
     mouse.y = lerpN(mouse.y, targetMouse.y, LERP_SPEED);
     draw(now);

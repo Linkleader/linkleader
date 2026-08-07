@@ -108,8 +108,10 @@ window.initKineticGrid = function(canvas, region, bgColor){
     if(!W || !H) return;
 
     ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = THEME.bg;
-    ctx.fillRect(0, 0, W, H);
+    if(THEME.bg !== 'transparent'){
+      ctx.fillStyle = THEME.bg;
+      ctx.fillRect(0, 0, W, H);
+    }
 
     ctx.fillStyle = 'rgba(255,255,255,0.05)';
     for(var x = DOT_SPACING / 2; x < W; x += DOT_SPACING){

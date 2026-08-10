@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Automation — LinkLeader</title>
+<title>FlowLink — LinkLeader</title>
 <meta name="description" content="Wij bouwen de automatiseringslaag die handmatig werk overbodig maakt: van gratis scan tot volledige implementatie.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,34 @@
     src:url('fonts/UniviaPro-Ultra.woff2') format('woff2'),
         url('fonts/UniviaPro-Ultra.otf') format('opentype');
     font-weight:900;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:'Univia Pro Black';
+    src:url('fonts/UniviaPro-Black.woff2') format('woff2'),
+        url('fonts/UniviaPro-Black.otf') format('opentype');
+    font-weight:800;font-style:normal;font-display:swap;
+  }
+
+  /* ---------- FLOWLINK wordmark: groot, linksonder in de hero ---------- */
+  .hero-grid{overflow:hidden}
+  .flowlink-mark{
+    position:absolute;left:0;bottom:0;z-index:1;
+    display:block;pointer-events:none;
+    font-size:clamp(64px,14vw,220px);
+    line-height:1;letter-spacing:-3px;
+    margin:0;padding:0 0 0 5vw;
+    white-space:nowrap;
+  }
+  .flowlink-mark .fl-flow{
+    font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;
+    font-weight:800;color:#fff;
+  }
+  .flowlink-mark .fl-link{
+    font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;
+    font-weight:900;color:var(--pink);
+  }
+  @media (max-width:720px){
+    .flowlink-mark{font-size:clamp(48px,18vw,110px);padding-left:24px}
   }
 
   /* ---------- intro splash: full page raster + typewriter regel ---------- */
@@ -215,6 +243,7 @@
       <a class="btn btn--primary" href="contact.html">Start vandaag met Automatiseren</a>
     </div>
   </div>
+  <p class="flowlink-mark"><span class="fl-flow">FLOW</span><span class="fl-link">LINK</span></p>
 </section>
 
 <!-- ================= HET PROBLEEM ================= -->
@@ -481,7 +510,7 @@
       <div>
         <h4>Services</h4>
         <ul>
-          <li><a href="ai-automation.html">AI Automation</a></li>
+          <li><a href="ai-automation.html">FlowLink</a></li>
           <li><a href="services.html">Software development</a></li>
           <li><a href="services.html">AI &amp; Agents</a></li>
           <li><a href="services.html">API Integraties</a></li>

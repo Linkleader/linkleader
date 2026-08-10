@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
+  body{background:var(--navy-deep)}
+
   @font-face{
     font-family:'Univia Pro Ultra';
     src:url('fonts/UniviaPro-Ultra.woff2') format('woff2'),
@@ -25,13 +27,15 @@
 
   /* ---------- FLOWLINK wordmark: groot, linksonder in de hero ---------- */
   .hero-grid{overflow:hidden}
+  .hero-grid--mark-only{height:calc(100svh - 79px);min-height:0}
   .flowlink-mark{
-    position:absolute;left:0;bottom:0;z-index:1;
+    position:absolute;left:0;bottom:48px;z-index:1;
     display:block;pointer-events:none;
-    font-size:clamp(64px,14vw,220px);
+    font-size:clamp(64px,10vw,220px);
     line-height:1;letter-spacing:-3px;
     margin:0;padding:0 0 0 5vw;
     white-space:nowrap;
+    max-width:68vw;overflow:hidden;
   }
   .flowlink-mark .fl-flow{
     font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;
@@ -41,8 +45,15 @@
     font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;
     font-weight:900;color:var(--pink);
   }
+  .hero-grid__corner-cta{
+    position:absolute;right:5vw;bottom:48px;z-index:1;
+  }
+  @media (max-width:1000px){
+    .hero-grid__corner-cta{bottom:auto;top:36px;right:5vw}
+  }
   @media (max-width:720px){
-    .flowlink-mark{font-size:clamp(48px,18vw,110px);padding-left:24px}
+    .flowlink-mark{font-size:clamp(48px,18vw,110px);padding-left:24px;bottom:40px}
+    .hero-grid__corner-cta{top:24px;right:24px}
   }
 
   /* ---------- intro splash: full page raster + typewriter regel ---------- */
@@ -92,7 +103,7 @@
   .tech-panel{
     position:relative;overflow:hidden;
     border:1px solid rgba(10,60,140,.8);border-radius:var(--r-lg);
-    background:var(--navy);padding:56px 60px;
+    background:var(--navy-deep);padding:56px 60px;
     max-width:var(--shell);margin:0 auto;
     transition:border-color .2s ease;
   }
@@ -112,14 +123,22 @@
   .green-check-list svg{flex:none;margin-top:2px;width:26px;height:26px}
 
   /* ---------- bottleneck-vergelijking ---------- */
-  .compare-section{padding:var(--band) 0;padding-top:0}
-  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
-  .compare-col h3{margin:0 0 28px;font-size:24px;color:#fff}
+  .compare-section{padding:var(--band) 0;padding-top:0;transition:background-color .6s ease}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;transition:background-color .6s ease,border-color .6s ease}
+  .compare-col h3{margin:0 0 28px;font-size:24px;color:#fff;transition:color .6s ease}
   .compare-col ul{list-style:none;margin:0;padding:0}
-  .compare-col li{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px;font-size:17px;line-height:1.55;color:#fff}
+  .compare-col li{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px;font-size:17px;line-height:1.55;color:#fff;transition:color .6s ease}
   .compare-col li:last-child{margin-bottom:0}
   .compare-col svg{flex:none;margin-top:2px;width:22px;height:22px}
+  .compare-col svg path{transition:stroke .6s ease}
   .compare-col--good li{font-weight:600}
+
+  /* ---------- roze flash bij "huidige bottlenecks" ---------- */
+  .compare-section.is-pink-active{background-color:var(--pink)}
+  .compare-section.is-pink-active .compare-grid{background-color:var(--pink);border-color:rgba(10,10,20,.35)}
+  .compare-section.is-pink-active .compare-col h3,
+  .compare-section.is-pink-active .compare-col li{color:#1a0512}
+  .compare-section.is-pink-active .compare-col svg path{stroke:#1a0512}
 
   /* ---------- automation animation ---------- */
   .automation-animation-section{padding:0 0 var(--band)}
@@ -137,7 +156,7 @@
   .build-card{
     position:relative;overflow:hidden;
     border:1px solid rgba(10,60,140,.8);border-radius:var(--r-lg);
-    background:var(--navy);padding:34px 38px;transition:border-color .2s ease;
+    background:var(--navy-deep);padding:34px 38px;transition:border-color .2s ease;
   }
   .build-card:hover,.build-card:active{border-color:rgba(20,90,200,.95)}
   .build-card h3{margin:0 0 12px;color:#fff;font-size:21px}
@@ -165,7 +184,7 @@
   .qa__item{
     position:relative;overflow:hidden;
     border:1px solid rgba(10,60,140,.8);border-radius:var(--r-md);
-    background:var(--navy);transition:border-color .2s ease;
+    background:var(--navy-deep);transition:border-color .2s ease;
   }
   .qa__item:hover,.qa__item:active,.qa__item.is-open{border-color:rgba(20,90,200,.95)}
   .qa__toggle{
@@ -233,17 +252,20 @@
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero-grid" id="aiHero">
+<section class="hero-grid hero-grid--mark-only" id="aiHero">
   <canvas class="hero-grid__canvas" id="aiHeroGrid" aria-hidden="true"></canvas>
+  <p class="flowlink-mark"><span class="fl-flow">FLOW</span><span class="fl-link">LINK</span></p>
+  <a class="btn btn--primary hero-grid__corner-cta" href="contact.html">Start vandaag met Automatiseren</a>
+</section>
+
+<!-- ================= INTRO TEKST ================= -->
+<section class="hero-grid" id="aiIntro">
+  <canvas class="hero-grid__canvas" id="aiIntroGrid" aria-hidden="true"></canvas>
   <div class="hero-grid__content">
     <h1 class="h-product">Jouw Link tot</h1>
     <p class="phero__sub">Smart Automation</p>
     <p class="lead hero-grid__lead">Wij bouwen schaalbare automatiseringssystemen die handmatig werk elimineren, tools verbinden en workflows slimmer maken. Zo kunnen teams zich richten op werk dat écht waarde toevoegt.</p>
-    <div class="hero-grid__actions">
-      <a class="btn btn--primary" href="contact.html">Start vandaag met Automatiseren</a>
-    </div>
   </div>
-  <p class="flowlink-mark"><span class="fl-flow">FLOW</span><span class="fl-link">LINK</span></p>
 </section>
 
 <!-- ================= HET PROBLEEM ================= -->
@@ -275,7 +297,7 @@
 </section>
 
 <!-- ================= BOTTLENECKS VS IMPACT ================= -->
-<section class="compare-section">
+<section class="compare-section" id="pinkSection">
   <div class="shell">
     <div class="tech-panel compare-grid reveal">
         <div class="compare-col compare-col--bad">
@@ -304,7 +326,7 @@
           </ul>
         </div>
         <div class="compare-col compare-col--good">
-          <h3 style="color:#fff">Impact na implementatie</h3>
+          <h3>Impact na implementatie</h3>
           <ul>
             <li>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -534,12 +556,23 @@
   'use strict';
   window.initIntroSplash('We automate the unthinkable');
   window.initKineticGrid(document.getElementById('aiHeroGrid'), document.getElementById('aiHero'));
+  window.initKineticGrid(document.getElementById('aiIntroGrid'), document.getElementById('aiIntro'));
 
   var cards = document.querySelectorAll('.tech-panel, .build-card, .qa__item');
   cards.forEach(function(card){ window.initCardGrid(card); });
 
   var navCta = document.querySelector('.nav__cta');
   if(navCta) window.initCardGrid(navCta);
+
+  var pinkSection = document.getElementById('pinkSection');
+  if(pinkSection && 'IntersectionObserver' in window){
+    var pinkIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        pinkSection.classList.toggle('is-pink-active', entry.isIntersecting);
+      });
+    }, { threshold: 0.5 });
+    pinkIO.observe(pinkSection);
+  }
 })();
 </script>
 <script>

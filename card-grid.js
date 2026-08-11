@@ -17,6 +17,8 @@ window.initCardGrid = function(card){
   var mouse = { x: -9999, y: -9999 };
   var hovering = false;
   var driftOffset = Math.random() * 6000;
+  var visible = true;
+  var running = false;
 
   function setSize(){
     var rect = card.getBoundingClientRect();
@@ -92,6 +94,13 @@ window.initCardGrid = function(card){
 
   window.addEventListener('resize', setSize);
 
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      visible = entries[0].isIntersecting;
+      if(visible) start();
+    }, { rootMargin:'140px' }).observe(card);
+  }
+
   card.addEventListener('mousemove', function(e){
     var rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
@@ -104,8 +113,14 @@ window.initCardGrid = function(card){
   });
 
   function loop(now){
+    if(!card.isConnected || !visible){ running = false; return; }
     draw(now);
     window.requestAnimationFrame(loop);
   }
-  window.requestAnimationFrame(loop);
+  function start(){
+    if(running) return;
+    running = true;
+    window.requestAnimationFrame(loop);
+  }
+  start();
 };

@@ -28,6 +28,8 @@ window.initKineticGrid = function(canvas, region, bgColor){
   var targetMouse = { x:-9999, y:-9999 };
   var ripples = [];
   var W = 0, H = 0;
+  var visible = true;
+  var running = false;
 
   function lerpN(a, b, t){ return a + (b - a) * t; }
 
@@ -196,10 +198,18 @@ window.initKineticGrid = function(canvas, region, bgColor){
   }
 
   function animate(now){
-    if(!canvas.isConnected) return;
+    // Stop the loop when the canvas is detached or scrolled out of view, so
+    // several instances on one page don't all render forever.
+    if(!canvas.isConnected || !visible){ running = false; return; }
     mouse.x = lerpN(mouse.x, targetMouse.x, LERP_SPEED);
     mouse.y = lerpN(mouse.y, targetMouse.y, LERP_SPEED);
     draw(now);
+    window.requestAnimationFrame(animate);
+  }
+
+  function start(){
+    if(running) return;
+    running = true;
     window.requestAnimationFrame(animate);
   }
 
@@ -210,7 +220,15 @@ window.initKineticGrid = function(canvas, region, bgColor){
   } else {
     window.addEventListener('resize', setSize);
 
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        visible = entries[0].isIntersecting;
+        if(visible) start();
+      }, { rootMargin:'160px' }).observe(region);
+    }
+
     window.addEventListener('mousemove', function(e){
+      if(!visible) return;
       var rect = canvas.getBoundingClientRect();
       targetMouse.x = e.clientX - rect.left;
       targetMouse.y = e.clientY - rect.top;
@@ -225,8 +243,9 @@ window.initKineticGrid = function(canvas, region, bgColor){
         opacity: 1,
         born: performance.now()
       });
+      start();
     });
 
-    window.requestAnimationFrame(animate);
+    start();
   }
 };

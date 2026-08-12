@@ -1,57 +1,27 @@
 /* =========================================================
-   FlowLink — page motion system
-   Masked type reveals, scroll-linked state, spotlight grids.
-   Everything degrades to a static page under reduced motion.
+   FlowLink page — the parts that only exist on this page:
+   hero wordmark, hero parallax, process timeline, the pink
+   compare band and the FAQ accordion.
+   Shared motion lives in fl-motion.js and must load first.
    ========================================================= */
 (function(){
   'use strict';
 
   var doc = document;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var list = function(sel, root){ return Array.prototype.slice.call((root || doc).querySelectorAll(sel)); };
   var clamp01 = function(v){ return v < 0 ? 0 : v > 1 ? 1 : v; };
 
   /* ---------------------------------------------------------
-     1. Type splitting — words rise out of a mask, one by one.
-     The visible text is rebuilt from spans, so the original
-     string is preserved on the element as an aria-label.
+     1. Hero wordmark — letters drop in once the intro hands over.
+     Each letter carries its own mask so the reveal never depends
+     on the wordmark's own overflow box, which has to stay open
+     for the scroll parallax.
      --------------------------------------------------------- */
-  function splitWords(el){
-    var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
-    if(!text) return;
-
-    el.setAttribute('aria-label', text);
-    el.textContent = '';
-
-    var words = text.split(' ');
-    var frag = doc.createDocumentFragment();
-
-    words.forEach(function(word, i){
-      var mask = doc.createElement('span');
-      mask.className = 'w';
-      mask.setAttribute('aria-hidden', 'true');
-
-      var inner = doc.createElement('span');
-      inner.className = 'wi';
-      inner.textContent = word;
-      inner.style.setProperty('--i', i);
-
-      mask.appendChild(inner);
-      frag.appendChild(mask);
-      if(i < words.length - 1) frag.appendChild(doc.createTextNode(' '));
-    });
-
-    el.appendChild(frag);
-    el.classList.add('is-split');
-  }
-
   function splitChars(el, start){
     var text = el.textContent || '';
     el.textContent = '';
     for(var i = 0; i < text.length; i++){
-      // Each letter carries its own mask so the reveal never depends on the
-      // wordmark's own overflow box, which has to stay open for the scroll parallax.
       var mask = doc.createElement('span');
       mask.className = 'ch';
 
@@ -66,34 +36,6 @@
     return start + text.length;
   }
 
-  if(!reduced && 'IntersectionObserver' in window){
-    var splitTargets = list('[data-split]');
-    splitTargets.forEach(splitWords);
-
-    var splitIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(!entry.isIntersecting) return;
-        entry.target.classList.add('is-split-in');
-        splitIO.unobserve(entry.target);
-      });
-    }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
-
-    splitTargets.forEach(function(el){ splitIO.observe(el); });
-  }
-
-  /* ---------------------------------------------------------
-     2. Stagger — index every child of a [data-stagger] group so
-     CSS can offset its transition-delay.
-     --------------------------------------------------------- */
-  list('[data-stagger]').forEach(function(group){
-    Array.prototype.slice.call(group.children).forEach(function(child, i){
-      child.style.setProperty('--i', i);
-    });
-  });
-
-  /* ---------------------------------------------------------
-     3. Hero wordmark — letters drop in once the intro hands over.
-     --------------------------------------------------------- */
   var mark = doc.querySelector('.flowlink-mark');
   if(mark && !reduced){
     var charIndex = 0;
@@ -119,11 +61,9 @@
   }
 
   /* ---------------------------------------------------------
-     4. Scroll driver — one rAF-throttled pass sets every
+     2. Scroll driver — one rAF-throttled pass sets every
      scroll-derived value on the page.
      --------------------------------------------------------- */
-  var progressBar = doc.querySelector('.scroll-progress__bar');
-  var nav = doc.querySelector('.nav');
   var hero = doc.getElementById('aiHero');
   var timeline = doc.querySelector('.process-timeline');
   var steps = list('.process-step');
@@ -135,15 +75,6 @@
     ticking = false;
 
     var vh = window.innerHeight || 1;
-    var scrolled = window.pageYOffset || doc.documentElement.scrollTop || 0;
-
-    if(progressBar){
-      var scrollable = doc.documentElement.scrollHeight - vh;
-      var p = scrollable > 0 ? clamp01(scrolled / scrollable) : 0;
-      progressBar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-    }
-
-    if(nav) nav.classList.toggle('is-scrolled', scrolled > 24);
 
     if(hero){
       var hr = hero.getBoundingClientRect();
@@ -152,10 +83,13 @@
 
     if(timeline){
       var tr = timeline.getBoundingClientRect();
-      var fill = clamp01((vh * 0.68 - tr.top) / Math.max(1, tr.height));
+      // The line is drawn to wherever the activation band currently sits, so
+      // the fill and the dots light up at exactly the same moment.
+      var lineY = vh * 0.68;
+      var fill = clamp01((lineY - tr.top) / Math.max(1, tr.height));
       timeline.style.setProperty('--tp', fill.toFixed(4));
       steps.forEach(function(step){
-        step.classList.toggle('is-active', step.getBoundingClientRect().top < vh * 0.68);
+        step.classList.toggle('is-active', step.getBoundingClientRect().top < lineY);
       });
     }
 
@@ -181,37 +115,7 @@
   requestFrame();
 
   /* ---------------------------------------------------------
-     5. Spotlight grid — a CSS-masked blueprint pattern that
-     follows the cursor. Replaces the per-card canvases.
-     --------------------------------------------------------- */
-  if(!reduced && canHover){
-    var spotEl = null, spotX = 0, spotY = 0, spotQueued = false;
-
-    doc.addEventListener('pointermove', function(e){
-      var target = e.target;
-      if(!target || typeof target.closest !== 'function') return;
-      var el = target.closest('.grid-spot');
-      if(!el) return;
-
-      spotEl = el;
-      spotX = e.clientX;
-      spotY = e.clientY;
-
-      if(spotQueued) return;
-      spotQueued = true;
-      window.requestAnimationFrame(function(){
-        spotQueued = false;
-        if(!spotEl) return;
-        var r = spotEl.getBoundingClientRect();
-        if(!r.width || !r.height) return;
-        spotEl.style.setProperty('--mx', ((spotX - r.left) / r.width * 100).toFixed(2) + '%');
-        spotEl.style.setProperty('--my', ((spotY - r.top) / r.height * 100).toFixed(2) + '%');
-      });
-    }, { passive:true });
-  }
-
-  /* ---------------------------------------------------------
-     6. FAQ accordion — one panel open at a time, height animated
+     3. FAQ accordion — one panel open at a time, height animated
      with grid-template-rows so it survives resizes and reflow.
      --------------------------------------------------------- */
   var qaItems = list('.qa__item');
@@ -228,30 +132,5 @@
         if(otherBtn) otherBtn.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
       });
     });
-  });
-
-  /* ---------------------------------------------------------
-     7. Magnetic buttons.
-     --------------------------------------------------------- */
-  if(!reduced && canHover){
-    list('[data-magnetic]').forEach(function(el){
-      el.addEventListener('pointermove', function(e){
-        var r = el.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
-        var y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
-        el.style.transform = 'translate(' + (x * 6).toFixed(2) + 'px,' + (y * 4).toFixed(2) + 'px)';
-      });
-      el.addEventListener('pointerleave', function(){
-        el.style.transform = '';
-      });
-    });
-  }
-
-  /* ---------------------------------------------------------
-     8. iOS Safari only fires :active on elements with a bound
-     touch listener.
-     --------------------------------------------------------- */
-  list('.tech-panel, .build-row, .qa__item, .sysview').forEach(function(el){
-    el.addEventListener('touchstart', function(){}, { passive:true });
   });
 })();

@@ -4,11 +4,14 @@ window.initKineticGrid = function(canvas, region, bgColor){
 
   var ctx = canvas.getContext('2d');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Touch devices never fire mousemove, so without an ambient driver the grid
+  // renders a completely static lattice — indistinguishable from "no animation".
+  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
 
-  var CELL_SIZE = 55;
-  var INFLUENCE_RADIUS = 260;
+  var CELL_SIZE = fine ? 55 : 62;
+  var INFLUENCE_RADIUS = fine ? 260 : 200;
   var MAX_WARP = 24;
-  var DOT_SPACING = 28;
+  var DOT_SPACING = fine ? 28 : 36;
   var LERP_SPEED = 0.08;
 
   var LINE_BASE = { r:255, g:255, b:255, a:.06 };
@@ -31,6 +34,13 @@ window.initKineticGrid = function(canvas, region, bgColor){
   var visible = true;
   var running = false;
 
+  // Ambient drive: a slow figure-eight focal point that keeps the grid alive
+  // when nothing is pointing at it. A real pointer always takes priority.
+  var ambient = true;
+  var ambientPhase = Math.random() * 1000;
+  var releaseTimer = 0;
+  var nextAutoRipple = 0;
+
   function lerpN(a, b, t){ return a + (b - a) * t; }
 
   function lerpColor(base, active, t){
@@ -45,7 +55,7 @@ window.initKineticGrid = function(canvas, region, bgColor){
     var rect = region.getBoundingClientRect();
     W = Math.round(rect.width);
     H = Math.round(rect.height);
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var dpr = Math.min(window.devicePixelRatio || 1, fine ? 2 : 1.75);
     canvas.width = W * dpr;
     canvas.height = H * dpr;
     canvas.style.width = W + 'px';
@@ -197,14 +207,51 @@ window.initKineticGrid = function(canvas, region, bgColor){
     }
   }
 
+  function driveAmbient(now){
+    var t = now / 1000 + ambientPhase;
+    targetMouse.x = W * (0.5 + 0.36 * Math.cos(t * 0.29));
+    targetMouse.y = H * (0.5 + 0.32 * Math.sin(t * 0.21));
+
+    // A ripple every few seconds so the motion reads as deliberate, not drift.
+    if(now > nextAutoRipple){
+      if(nextAutoRipple) addRipple(targetMouse.x, targetMouse.y, now);
+      nextAutoRipple = now + 5200;
+    }
+  }
+
   function animate(now){
     // Stop the loop when the canvas is detached or scrolled out of view, so
     // several instances on one page don't all render forever.
     if(!canvas.isConnected || !visible){ running = false; return; }
+    if(ambient) driveAmbient(now);
     mouse.x = lerpN(mouse.x, targetMouse.x, LERP_SPEED);
     mouse.y = lerpN(mouse.y, targetMouse.y, LERP_SPEED);
     draw(now);
     window.requestAnimationFrame(animate);
+  }
+
+  function addRipple(x, y, now){
+    ripples.push({ x:x, y:y, radius:0, opacity:1, born: now || performance.now() });
+  }
+
+  function takeOver(clientX, clientY){
+    var rect = canvas.getBoundingClientRect();
+    ambient = false;
+    window.clearTimeout(releaseTimer);
+    targetMouse.x = clientX - rect.left;
+    targetMouse.y = clientY - rect.top;
+    start();
+  }
+
+  // Hand the grid back to the ambient driver once the pointer is done, so a
+  // touch screen never freezes on the last finger position.
+  function release(delay){
+    window.clearTimeout(releaseTimer);
+    releaseTimer = window.setTimeout(function(){
+      ambient = true;
+      nextAutoRipple = 0;
+      start();
+    }, delay);
   }
 
   function start(){
@@ -227,22 +274,33 @@ window.initKineticGrid = function(canvas, region, bgColor){
       }, { rootMargin:'160px' }).observe(region);
     }
 
-    window.addEventListener('mousemove', function(e){
-      if(!visible) return;
-      var rect = canvas.getBoundingClientRect();
-      targetMouse.x = e.clientX - rect.left;
-      targetMouse.y = e.clientY - rect.top;
+    if(fine){
+      window.addEventListener('mousemove', function(e){
+        if(!visible) return;
+        takeOver(e.clientX, e.clientY);
+      }, { passive:true });
+
+      // Cursor left the window entirely — resume the ambient drift.
+      document.addEventListener('mouseleave', function(){ release(400); });
+    }
+
+    // Touch drag steers the grid directly; lifting hands it back after a beat.
+    region.addEventListener('touchstart', function(e){
+      if(!e.touches.length) return;
+      takeOver(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive:true });
+
+    region.addEventListener('touchmove', function(e){
+      if(!e.touches.length) return;
+      takeOver(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive:true });
+
+    region.addEventListener('touchend', function(){ release(1400); }, { passive:true });
+    region.addEventListener('touchcancel', function(){ release(1400); }, { passive:true });
 
     region.addEventListener('click', function(e){
       var rect = canvas.getBoundingClientRect();
-      ripples.push({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        radius: 0,
-        opacity: 1,
-        born: performance.now()
-      });
+      addRipple(e.clientX - rect.left, e.clientY - rect.top);
       start();
     });
 

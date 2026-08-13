@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=5">
-<link rel="stylesheet" href="fl-kit.css?v=6">
+<link rel="stylesheet" href="fl-kit.css?v=8">
 <style>
   .quote{
     border-left:2px solid var(--pink);padding:6px 0 6px 28px;margin:0 0 48px;
@@ -20,25 +20,25 @@
 
   /* ---------- team: portret-cards, full width ---------- */
   .team-section{overflow:hidden}
-  .team.pcards{width:100%;padding:0 5vw}
-  @media (max-width:900px){ .team.pcards{padding:0 24px} }
+  .team.pcards{width:100%;padding:0 var(--bleed-gut)}
+  
 
   /* ---------- wat ons onderscheidt: full-width met hover per regel ---------- */
   .diff-section{overflow:hidden}
   .diff-rows{width:100%;border-top:1px solid var(--rule)}
   .diff-row{
     display:grid;grid-template-columns:56px 260px 1fr;gap:32px;align-items:start;
-    padding:38px 5vw;border-bottom:1px solid var(--rule);
+    padding:38px var(--bleed-gut);border-bottom:1px solid var(--rule);
     transition:background-color .2s ease,padding-left .2s ease;
   }
-  .diff-row:hover{background-color:rgba(0,115,255,.06);padding-left:calc(5vw + 12px)}
+  .diff-row:hover{background-color:rgba(0,115,255,.06);padding-left:calc(var(--bleed-gut) + 12px)}
   .diff-row:hover .row__num{color:var(--blue)}
   .diff-row h3{letter-spacing:-.2px;margin:0}
   .diff-row p{margin:0;color:var(--t-62)}
 
   @media (max-width:1024px){
-    .diff-row{grid-template-columns:44px 1fr;gap:20px;padding:32px 24px}
-    .diff-row:hover{padding-left:36px}
+    .diff-row{grid-template-columns:44px 1fr;gap:20px;padding:32px var(--bleed-gut)}
+    .diff-row:hover{padding-left:calc(var(--bleed-gut) + 10px)}
     .diff-row p{grid-column:2}
   }
 
@@ -64,7 +64,7 @@
 </div>
 
 <header class="nav">
-  <div class="shell nav__inner">
+  <div class="wide nav__inner">
     <a href="index.html" class="brand-link" aria-label="LinkLeader home">
       <img class="brand-link__logo" src="logo.png?v=1" alt="">
     </a>
@@ -76,7 +76,7 @@
     <a class="nav__cta" href="contact.html"><span>Samenwerken</span></a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><span></span></button>
   </div>
-  <div class="nav__panel shell" id="mnav">
+  <div class="nav__panel wide" id="mnav">
     <a href="over-ons.html">Over ons</a>
     <a href="services.html">Onze services</a>
     <a href="contact.html">Contact</a>
@@ -86,7 +86,7 @@
 
 <!-- ================= HERO ================= -->
 <section class="phero">
-  <div class="shell">
+  <div class="wide">
     <p class="eyebrow">Over ons</p>
     <h1 class="h-product">Link today.<br>Lead tomorrow.</h1>
   </div>
@@ -94,7 +94,7 @@
 
 <!-- ================= VERHAAL ================= -->
 <section class="band band--tight" style="padding-top:0">
-  <div class="shell about-grid reveal">
+  <div class="wide about-grid reveal">
     <div>
       <p class="quote">Wij maken processen slim en software doeltreffend. Met automatisering, de juiste software en AI wordt wat vandaag tijd kost, morgen moeiteloos.</p>
       <a class="btn btn--primary" href="contact.html">Kennismaken</a>
@@ -110,7 +110,7 @@
 
 <!-- ================= TEAM ================= -->
 <section class="band band--tight team-section">
-  <div class="shell">
+  <div class="wide">
     <div class="band__head reveal">
       <p class="eyebrow eyebrow--blue">Ons team</p>
       <h2 class="h-section">The people behind impact</h2>
@@ -160,7 +160,7 @@
 
 <!-- ================= WAT ONS ONDERSCHEIDT ================= -->
 <section class="band band--tight diff-section">
-  <div class="shell">
+  <div class="wide">
     <div class="band__head reveal">
       <p class="eyebrow">Wat ons onderscheidt</p>
       <h2 class="h-section">Tech savvy, AI-driven building</h2>
@@ -198,21 +198,19 @@
         <a class="link-under" href="mailto:info@linkleader.nl">info@linkleader.nl</a>
       </div>
     </div>
-    <article class="pcard">
-      <div class="pcard__media">
-        <img src="LL%20RIDWANE.png" alt="Ridwane Ait El Haj" loading="lazy" decoding="async">
-      </div>
-      <div class="pcard__body">
+    <figure class="linkup__person">
+      <img src="LL%20RIDWANE.png" alt="Ridwane Ait El Haj" loading="lazy" decoding="async">
+      <figcaption>
         <span class="linkup__tag">Je gesprekspartner</span>
-        <h3 class="pcard__name">Ridwane Ait El Haj</h3>
-        <p class="pcard__role">Founder &amp; Strateeg &middot; LinkLeader</p>
-      </div>
-    </article>
+        <span class="linkup__name">Ridwane Ait El Haj</span>
+        <span class="linkup__role">Founder &amp; Strateeg &middot; LinkLeader</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="shell">
+  <div class="wide">
     <div class="footer__grid">
       <div>
         <div class="footer-brand">

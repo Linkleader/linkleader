@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=5">
-<link rel="stylesheet" href="fl-kit.css?v=6">
+<link rel="stylesheet" href="fl-kit.css?v=8">
 <style>
 
 @font-face{
@@ -375,7 +375,16 @@ body.intro-complete .typewriter-scroll{
     linear-gradient(90deg,rgba(6,15,38,.96) 0%,rgba(6,15,38,.8) 40%,rgba(6,15,38,.3) 75%,rgba(6,15,38,.05) 100%),
     linear-gradient(180deg,rgba(6,15,38,.15) 0%,rgba(6,15,38,.55) 100%);
 }
-.photo-hero__content{position:relative;z-index:1;max-width:640px;padding:140px 0 100px}
+/* Anchored to the page gutter like every other section — .shell's max-width
+   plus auto margins used to centre this block, so it started ~430px in while
+   everything above and below it started at the gutter. The reading measure
+   moves onto the children instead. */
+.photo-hero__content{
+  position:relative;z-index:1;
+  max-width:none;margin:0;
+  padding:140px var(--bleed-gut) 100px;
+}
+.photo-hero__content > *{max-width:640px}
 .photo-hero__scroll{
   position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:1;
   color:rgba(255,255,255,.55);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
@@ -386,7 +395,7 @@ body.intro-complete .typewriter-scroll{
     background:
       linear-gradient(180deg,rgba(6,15,38,.25) 0%,rgba(6,15,38,.65) 55%,rgba(6,15,38,.97) 100%);
   }
-  .photo-hero__content{max-width:100%;padding:120px 0 90px}
+  .photo-hero__content{padding:120px var(--bleed-gut) 90px}
 }
 
 /* ===== SERVICES ===== */
@@ -443,6 +452,10 @@ body.intro-complete .typewriter-scroll{
   display:flex;flex-direction:column;gap:10px;
   transition:background-color .4s ease;
 }
+/* Outer cells pick up the page gutter so the strip lines up with the rows
+   above it; the inner ones stay tight. Must come after the shorthand. */
+.sigstrip__cell:first-child{padding-left:var(--bleed-gut)}
+.sigstrip__cell:last-child{padding-right:var(--bleed-gut)}
 .sigstrip__cell + .sigstrip__cell{border-left:1px solid var(--fl-line)}
 .sigstrip__cell:hover{background:rgba(0,115,255,.05)}
 .sigstrip__val{
@@ -462,6 +475,8 @@ body.intro-complete .typewriter-scroll{
 }
 @media(max-width:640px){
   .sigstrip{grid-template-columns:1fr}
+  /* Stacked, so every cell spans the page and takes the page gutter. */
+  .sigstrip__cell{padding-left:var(--bleed-gut);padding-right:var(--bleed-gut)}
   .sigstrip__cell + .sigstrip__cell{border-left:0;border-top:1px solid var(--fl-line)}
   .proof__rows .build-row{grid-template-columns:1fr;gap:10px}
   .proof__rows .build-row p:not(.build-row__num){grid-column:1}
@@ -772,7 +787,7 @@ body.intro-complete .typewriter-scroll{
 <body>
 
 <header class="nav">
-  <div class="shell nav__inner">
+  <div class="wide nav__inner">
     <a href="index.html" class="brand-link" aria-label="LinkLeader home">
       <img class="brand-link__logo" src="logo.png?v=1" alt="">
     </a>
@@ -784,7 +799,7 @@ body.intro-complete .typewriter-scroll{
     <a class="nav__cta" href="contact.html"><span>Samenwerken</span></a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><span></span></button>
   </div>
-  <div class="nav__panel shell" id="mnav">
+  <div class="nav__panel wide" id="mnav">
     <a href="over-ons.html">Over ons</a>
     <a href="services.html">Onze services</a>
     <a href="contact.html">Contact</a>
@@ -831,7 +846,7 @@ body.intro-complete .typewriter-scroll{
     <img src="logo.png?v=1" alt="">
   </div>
   <div class="scroll-statement__sticky">
-    <div class="shell scroll-statement__inner">
+    <div class="wide scroll-statement__inner">
       <p class="scroll-statement__text" aria-label="Wij bouwen slimme software en AI-automatisering die bedrijven laat voorlopen in hun markt. Wij bouwen voorbij verwachtingen. Vanuit creativiteit, met focus op impact. Live in weken.">
         <span class="scroll-char" aria-hidden="true">W</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">j</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">b</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">u</span><span class="scroll-char" aria-hidden="true">w</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">s</span><span class="scroll-char" aria-hidden="true">l</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">m</span><span class="scroll-char" aria-hidden="true">m</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">s</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">f</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">w</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">A</span><span class="scroll-char" aria-hidden="true">I</span><span class="scroll-char" aria-hidden="true">-</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">u</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">m</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">s</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-char" aria-hidden="true">g</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">d</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">b</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">d</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">j</span><span class="scroll-char" aria-hidden="true">v</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">l</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">v</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">l</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">p</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">h</span><span class="scroll-char" aria-hidden="true">u</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">m</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">k</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">.</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">W</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">j</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">b</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">u</span><span class="scroll-char" aria-hidden="true">w</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">v</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">b</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">j</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">v</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">w</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">c</span><span class="scroll-char" aria-hidden="true">h</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-char" aria-hidden="true">g</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-char" aria-hidden="true">.</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">V</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-char" aria-hidden="true">u</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">c</span><span class="scroll-char" aria-hidden="true">r</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">v</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">,</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">m</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">f</span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">c</span><span class="scroll-char" aria-hidden="true">u</span><span class="scroll-char" aria-hidden="true">s</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">o</span><span class="scroll-char" aria-hidden="true">p</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">m</span><span class="scroll-char" aria-hidden="true">p</span><span class="scroll-char" aria-hidden="true">a</span><span class="scroll-char" aria-hidden="true">c</span><span class="scroll-char" aria-hidden="true">t</span><span class="scroll-char" aria-hidden="true">.</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">L</span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">v</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">i</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-word-space" aria-hidden="true"> </span><span class="scroll-char" aria-hidden="true">w</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">k</span><span class="scroll-char" aria-hidden="true">e</span><span class="scroll-char" aria-hidden="true">n</span><span class="scroll-char" aria-hidden="true">.</span>
       </p>
@@ -841,7 +856,7 @@ body.intro-complete .typewriter-scroll{
 
 <!-- ============================= LOGO CLOUD (infinite scroll) ============================= -->
 <section class="logo-cloud">
-  <div class="shell">
+  <div class="wide">
     <p class="logo-cloud__label">Wij werken met</p>
   </div>
   <div class="logo-cloud__viewport">
@@ -872,7 +887,7 @@ body.intro-complete .typewriter-scroll{
     <img class="photo-hero__img" src="visie-photo.jpg" alt="Developer werkt aan een LinkLeader-project">
     <div class="photo-hero__overlay"></div>
   </div>
-  <div class="shell photo-hero__content reveal">
+  <div class="photo-hero__content reveal">
     <span class="visie-tag">Hoe wij werken</span>
     <h2 class="visie2__title">Jij de visie.<br><em>Wij de tech.</em></h2>
     <p class="visie2__body">Werk samen met een team van developers en professionals met echte praktijkervaring. Wij verdiepen ons volledig in jouw organisatie, processen en doelen — en bouwen technologie die niet alleen innovatief is, maar ook echt resultaat levert.</p>
@@ -886,7 +901,7 @@ body.intro-complete .typewriter-scroll{
 
 <!-- ============================= WAT HET OPLEVERT ============================= -->
 <section class="fl-section proof">
-  <div class="shell">
+  <div class="wide">
     <div class="proof__grid">
 
       <div class="proof__intro reveal">
@@ -943,55 +958,51 @@ body.intro-complete .typewriter-scroll{
 
 <!-- ============================= SERVICES ============================= -->
 <section class="band band--tight">
-  <div class="shell">
+  <div class="wide">
     <div class="band__head reveal">
       <p class="eyebrow">Onze services</p>
       <h2 class="h-section">Van automatisering<br>tot AI-agents</h2>
       <p class="lead">Systemen die blijven doorwerken terwijl jouw bedrijf groeit. Geen experimenten — technologie die vandaag al resultaat levert.</p>
     </div>
+  </div>
 
-    <div class="service-grid reveal">
-      <div class="service-item">
-        <span class="service-item__num">01</span>
-        <h3>FlowLink</h3>
-        <p>Kopiëren tussen systemen, handmatige rapportages en terugkerende acties worden automatisch uitgevoerd. Zo benut je de tijd van je team optimaal.</p>
-        <a class="link-arrow" href="ai-automation.html">Meer info →</a>
-      </div>
-      <div class="service-item">
-        <span class="service-item__num">02</span>
-        <h3>Software development</h3>
-        <p>Geen standaardoplossingen, maar maatwerk dat je processen versnelt, fouten reduceert en je team laat werken zonder frictie.</p>
-        <a class="link-arrow" href="services.html">Meer info →</a>
-      </div>
-      <div class="service-item">
-        <span class="service-item__num">03</span>
-        <h3>AI &amp; Agents</h3>
-        <p>Digitale collega's die zelfstandig taken uitvoeren en werk overnemen van je team. Continu actief, zonder vertraging, zonder fouten.</p>
-        <a class="link-arrow" href="services.html">Meer info →</a>
-      </div>
-      <div class="service-item">
-        <span class="service-item__num">04</span>
-        <h3>API Integraties</h3>
-        <p>Schaalbare koppelingen waardoor jouw systemen naadloos met elkaar praten. Eén bron van waarheid, altijd actueel.</p>
-        <a class="link-arrow" href="services.html">Meer info →</a>
-      </div>
-      <div class="service-item service-item--feature">
-        <div class="svc-text">
-          <span class="card__tag">Sectoroplossing</span>
-          <h3 style="margin-top:10px">Uitzend &amp; staffing — van aanvraag tot plaatsing in minuten</h3>
-          <p style="margin-top:10px;max-width:640px">Een complete uitvoeringslaag voor uitzendbureaus: aanvragen automatisch gematcht, toegewezen en opgevolgd — boven op je bestaande AFAS, ATS en planning. Je systemen blijven staan.</p>
-        </div>
-        <div class="svc-cta">
-          <a class="btn btn--primary" href="uitzendbureaus.html">Bekijk de dienst</a>
-        </div>
-      </div>
-    </div>
+  <div class="build-list build-list--bleed reveal reveal--group" data-stagger>
+    <article class="build-row grid-spot">
+      <p class="build-row__num">001</p>
+      <h3>FlowLink</h3>
+      <p>Kopiëren tussen systemen, handmatige rapportages en terugkerende acties worden automatisch uitgevoerd. Zo benut je de tijd van je team optimaal.</p>
+      <a class="build-row__link" href="ai-automation.html">Meer info <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="build-row grid-spot">
+      <p class="build-row__num">002</p>
+      <h3>Software development</h3>
+      <p>Geen standaardoplossingen, maar maatwerk dat je processen versnelt, fouten reduceert en je team laat werken zonder frictie.</p>
+      <a class="build-row__link" href="services.html">Meer info <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="build-row grid-spot">
+      <p class="build-row__num">003</p>
+      <h3>AI &amp; Agents</h3>
+      <p>Digitale collega's die zelfstandig taken uitvoeren en werk overnemen van je team. Continu actief, zonder vertraging, zonder fouten.</p>
+      <a class="build-row__link" href="services.html">Meer info <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="build-row grid-spot">
+      <p class="build-row__num">004</p>
+      <h3>API Integraties</h3>
+      <p>Schaalbare koppelingen waardoor jouw systemen naadloos met elkaar praten. Eén bron van waarheid, altijd actueel.</p>
+      <a class="build-row__link" href="services.html">Meer info <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="build-row grid-spot">
+      <p class="build-row__num">005</p>
+      <h3>Uitzend &amp; staffing — van aanvraag tot plaatsing in minuten</h3>
+      <p>Een complete uitvoeringslaag voor uitzendbureaus: aanvragen automatisch gematcht, toegewezen en opgevolgd — boven op je bestaande AFAS, ATS en planning. Je systemen blijven staan.</p>
+      <a class="build-row__link" href="uitzendbureaus.html">Bekijk de sectoroplossing <span aria-hidden="true">→</span></a>
+    </article>
   </div>
 </section>
 
 <!-- ============================= PROCES ============================= -->
 <section class="band band--tight">
-  <div class="shell">
+  <div class="wide">
     <div class="proc3__head reveal">
       <p class="eyebrow eyebrow--blue">Ons proces</p>
       <h2 class="h-section">Impact in weken</h2>
@@ -1048,21 +1059,19 @@ body.intro-complete .typewriter-scroll{
         <a class="link-under" href="mailto:info@linkleader.nl">info@linkleader.nl</a>
       </div>
     </div>
-    <article class="pcard">
-      <div class="pcard__media">
-        <img src="LL%20RIDWANE.png" alt="Ridwane Ait El Haj" loading="lazy" decoding="async">
-      </div>
-      <div class="pcard__body">
+    <figure class="linkup__person">
+      <img src="LL%20RIDWANE.png" alt="Ridwane Ait El Haj" loading="lazy" decoding="async">
+      <figcaption>
         <span class="linkup__tag">Je gesprekspartner</span>
-        <h3 class="pcard__name">Ridwane Ait El Haj</h3>
-        <p class="pcard__role">Founder &amp; Strateeg &middot; LinkLeader</p>
-      </div>
-    </article>
+        <span class="linkup__name">Ridwane Ait El Haj</span>
+        <span class="linkup__role">Founder &amp; Strateeg &middot; LinkLeader</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="shell">
+  <div class="wide">
     <div class="footer__grid">
       <div>
         <div class="footer-brand">

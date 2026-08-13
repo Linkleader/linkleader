@@ -284,7 +284,6 @@
   .build-row{grid-template-columns:1fr;gap:10px;padding:26px 8px}
   .build-row p:not(.build-row__num){grid-column:1}
   .build-row__link{grid-column:1}
-  .ticks::after{inset:10px}
 }
 
 /* ---------------- reduced motion ---------------- */

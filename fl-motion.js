@@ -19,13 +19,26 @@
      string is preserved on the element as an aria-label.
      --------------------------------------------------------- */
   function splitWords(el){
-    var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
-    if(!text) return;
+    // Collect words along with whether they sat inside an <em>, so an accented
+    // heading survives the rebuild instead of being flattened to plain text.
+    var words = [];
+    (function walk(node, accented){
+      Array.prototype.forEach.call(node.childNodes, function(child){
+        if(child.nodeType === 3){
+          child.nodeValue.split(/\s+/).forEach(function(word){
+            if(word) words.push({ text: word, accented: accented });
+          });
+        } else if(child.nodeType === 1){
+          walk(child, accented || child.tagName === 'EM');
+        }
+      });
+    })(el, false);
 
-    el.setAttribute('aria-label', text);
+    if(!words.length) return;
+
+    el.setAttribute('aria-label', words.map(function(w){ return w.text; }).join(' '));
     el.textContent = '';
 
-    var words = text.split(' ');
     var frag = doc.createDocumentFragment();
 
     words.forEach(function(word, i){
@@ -33,9 +46,11 @@
       mask.className = 'w';
       mask.setAttribute('aria-hidden', 'true');
 
-      var inner = doc.createElement('span');
+      // Re-emit an <em> for accented words so the page's own `em` rules keep
+      // applying without the splitter needing to know about them.
+      var inner = doc.createElement(word.accented ? 'em' : 'span');
       inner.className = 'wi';
-      inner.textContent = word;
+      inner.textContent = word.text;
       inner.style.setProperty('--i', i);
 
       mask.appendChild(inner);

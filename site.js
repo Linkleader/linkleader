@@ -18,12 +18,6 @@
     }
   }
 
-  var navLogo = document.querySelector('.brand-link__logo');
-  var footerLogo = document.getElementById('footerLogo');
-  if(navLogo && footerLogo && navLogo.src){
-    footerLogo.src = navLogo.src;
-  }
-
   var toggle = document.querySelector('.nav__toggle');
   var panel = document.getElementById('mnav');
   if(toggle && panel){

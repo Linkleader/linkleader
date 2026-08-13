@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
-<link rel="stylesheet" href="fl-kit.css?v=4">
+<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="fl-kit.css?v=5">
 <style>
 
 @font-face{
@@ -160,6 +160,22 @@ body.intro-complete .nav{
 .typewriter-sub.visible{
   opacity:1;
   transform:translateY(0);
+}
+
+/* Two ways in, straight from the hero: browse the work, or book the intake.
+   They ride in on the same cue as the subtitle so the intro stays one beat. */
+.typewriter-actions{
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  margin-top:34px;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .7s ease .25s, transform .7s cubic-bezier(.22,1,.36,1) .25s;
+}
+.typewriter-sub.visible ~ .typewriter-actions,
+body.intro-complete .typewriter-actions{opacity:1;transform:none}
+
+@media(max-width:560px){
+  .typewriter-actions{gap:12px;margin-top:26px;width:100%}
+  .typewriter-actions .btn{flex:1 1 100%}
 }
 
 .typewriter-scroll{
@@ -405,6 +421,62 @@ body.intro-complete .typewriter-scroll{
 }
 .service-item--feature .svc-text{position:relative;z-index:1;flex:1}
 .service-item--feature .svc-cta{position:relative;z-index:1;flex-shrink:0}
+
+/* ===== WAT HET OPLEVERT ===== */
+.proof__grid{
+  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(40px,5vw,88px);align-items:start;
+}
+/* The intro stays put while the rows scroll past it, so the claim and the
+   evidence are on screen together. */
+.proof__intro{position:sticky;top:120px}
+.proof__title{
+  margin:0;font-size:clamp(30px,3.5vw,50px);line-height:1.1;letter-spacing:-.03em;
+  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff;
+}
+.proof__title em{
+  font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;
+  font-style:normal;color:var(--pink);
+}
+.proof__lead{margin:24px 0 0;max-width:42ch;color:var(--t-70);font-size:17px;line-height:1.65}
+.proof__rows{max-width:none;border-top:1px solid var(--fl-line)}
+.proof__rows .build-row{grid-template-columns:78px minmax(0,1fr);gap:6px 26px;padding:30px 6px}
+.proof__rows .build-row p:not(.build-row__num){grid-column:2}
+
+/* signature strip — the four things that stay true on every project */
+.sigstrip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin-top:clamp(56px,6vw,96px);
+  border-top:1px solid var(--fl-line);border-bottom:1px solid var(--fl-line);
+}
+.sigstrip__cell{
+  padding:34px clamp(20px,2.4vw,40px);
+  display:flex;flex-direction:column;gap:10px;
+  transition:background-color .4s ease;
+}
+.sigstrip__cell + .sigstrip__cell{border-left:1px solid var(--fl-line)}
+.sigstrip__cell:hover{background:rgba(0,115,255,.05)}
+.sigstrip__val{
+  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(24px,2.6vw,34px);line-height:1;letter-spacing:-.03em;color:#fff;
+}
+.sigstrip__val--pink{color:var(--pink)}
+.sigstrip__val--blue{color:var(--blue)}
+.sigstrip__label{font-size:14.5px;line-height:1.5;color:var(--t-62);max-width:26ch}
+
+@media(max-width:1024px){
+  .proof__grid{grid-template-columns:1fr;gap:44px}
+  .proof__intro{position:static}
+  .sigstrip{grid-template-columns:1fr 1fr}
+  .sigstrip__cell:nth-child(3){border-left:0}
+  .sigstrip__cell:nth-child(n+3){border-top:1px solid var(--fl-line)}
+}
+@media(max-width:640px){
+  .sigstrip{grid-template-columns:1fr}
+  .sigstrip__cell + .sigstrip__cell{border-left:0;border-top:1px solid var(--fl-line)}
+  .proof__rows .build-row{grid-template-columns:1fr;gap:10px}
+  .proof__rows .build-row p:not(.build-row__num){grid-column:1}
+}
 
 /* ===== PROCES (horizontale scroll-cards, overlappende stapel) ===== */
 .proc3__head{max-width:760px;margin-bottom:64px}
@@ -718,7 +790,6 @@ body.intro-complete .typewriter-scroll{
   <div class="shell nav__inner">
     <a href="index.html" class="brand-link" aria-label="LinkLeader home">
       <img class="brand-link__logo" src="logo.png?v=1" alt="">
-      <span class="brand-link__word">LINK<em>LEADER</em></span>
     </a>
     <nav class="nav__links">
       <a href="over-ons.html">Over ons</a>
@@ -755,6 +826,11 @@ body.intro-complete .typewriter-scroll{
     </div>
 
     <p class="typewriter-sub" id="intro-sub">Jouw partner in AI &amp; Software</p>
+
+    <div class="typewriter-actions">
+      <a class="btn btn--primary btn--lg" href="services.html">Bekijk onze services</a>
+      <a class="btn btn--ghost btn--lg" href="contact.html">Plan een gratis intake</a>
+    </div>
   </div>
 
   <div class="typewriter-scroll" aria-hidden="true">Scroll om verder te gaan</div>
@@ -823,49 +899,59 @@ body.intro-complete .typewriter-scroll{
   <div class="photo-hero__scroll" aria-hidden="true">Scroll verder</div>
 </section>
 
-<section class="band band--tight">
+<!-- ============================= WAT HET OPLEVERT ============================= -->
+<section class="fl-section proof">
   <div class="shell">
-    <div class="visie2__points reveal">
-      <div class="visie2__point">
-        <span class="visie2__point-icon">→</span>
-        <p>Sneller beslissingen nemen met AI-ondersteuning</p>
+    <div class="proof__grid">
+
+      <div class="proof__intro reveal">
+        <p class="sec-index"><span class="sec-index__n">01</span> Wat het oplevert</p>
+        <h2 class="proof__title" data-split>Je merkt het aan je <em>agenda</em>, niet aan een dashboard.</h2>
+        <p class="proof__lead">Automatisering is geen doel. Het doel is dat je team op vrijdagmiddag niet meer aan het overtypen is — en dat groei geen extra hoofden meer kost.</p>
       </div>
-      <div class="visie2__point">
-        <span class="visie2__point-icon">→</span>
-        <p>Minder afhankelijk zijn van handmatig werk</p>
-      </div>
-      <div class="visie2__point">
-        <span class="visie2__point-icon">→</span>
-        <p>Efficiënter schalen zonder extra mensen</p>
-      </div>
-      <div class="visie2__point">
-        <span class="visie2__point-icon">→</span>
-        <p>Klaar zijn voor een AI-gedreven toekomst</p>
+
+      <div class="build-list proof__rows reveal reveal--group" data-stagger>
+        <article class="build-row grid-spot">
+          <p class="build-row__num">001</p>
+          <h3>Beslissen op cijfers, niet op onderbuik</h3>
+          <p>Je data staat versnipperd over systemen. Wij brengen het samen, zodat je bij elke keuze ziet wat het écht kost en oplevert.</p>
+        </article>
+        <article class="build-row grid-spot">
+          <p class="build-row__num">002</p>
+          <h3>Het overtypen stopt</h3>
+          <p>Elke handeling die twee keer hetzelfde is, hoort een systeem te doen. Dat scheelt uren per week en fouten die niemand meer terugvindt.</p>
+        </article>
+        <article class="build-row grid-spot">
+          <p class="build-row__num">003</p>
+          <h3>Groeien zonder extra FTE</h3>
+          <p>Dubbel zoveel aanvragen hoeft geen dubbel zo groot team te betekenen. Je processen rekken mee in plaats van te breken.</p>
+        </article>
+        <article class="build-row grid-spot">
+          <p class="build-row__num">004</p>
+          <h3>Klaar voor wat er nog aan komt</h3>
+          <p>Je stack wordt zo gebouwd dat een nieuw model of nieuwe tool erin past — zonder dat alles opnieuw moet.</p>
+        </article>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ============================= METRICS ============================= -->
-<section class="band band--tight" style="padding-top:0">
-  <div class="shell">
-    <div class="metrics reveal">
-      <div class="metric">
-        <div class="metric__val metric__val--pink">Weken</div>
-        <div class="metric__label">Van brief tot live systeem — geen maanden-lange trajecten</div>
-      </div>
-      <div class="metric">
-        <div class="metric__val metric__val--blue">AI‑first</div>
-        <div class="metric__label">Elke oplossing gebouwd met de nieuwste AI-tools en modellen</div>
-      </div>
-      <div class="metric">
-        <div class="metric__val" style="color:#fff">Maatwerk</div>
-        <div class="metric__label">Geen standaard pakketten — technologie die past bij jouw operatie</div>
-      </div>
-      <div class="metric">
-        <div class="metric__val" style="color:rgba(255,255,255,.85)">5×L</div>
-        <div class="metric__label">Één bewezen aanpak: Learn · Lay out · Link · Launch · Leverage</div>
-      </div>
+  <!-- signature strip -->
+  <div class="sigstrip reveal">
+    <div class="sigstrip__cell">
+      <span class="sigstrip__val sigstrip__val--pink">Weken</span>
+      <span class="sigstrip__label">Van eerste gesprek tot draaiend systeem</span>
+    </div>
+    <div class="sigstrip__cell">
+      <span class="sigstrip__val sigstrip__val--blue">AI-first</span>
+      <span class="sigstrip__label">Gebouwd op de nieuwste modellen, niet erop geplakt</span>
+    </div>
+    <div class="sigstrip__cell">
+      <span class="sigstrip__val">Maatwerk</span>
+      <span class="sigstrip__label">Geen pakket waar jij omheen moet werken</span>
+    </div>
+    <div class="sigstrip__cell">
+      <span class="sigstrip__val">5&times;L</span>
+      <span class="sigstrip__label">Learn &middot; Lay out &middot; Link &middot; Launch &middot; Leverage</span>
     </div>
   </div>
 </section>
@@ -977,14 +1063,16 @@ body.intro-complete .typewriter-scroll{
         <a class="link-under" href="mailto:info@linkleader.nl">info@linkleader.nl</a>
       </div>
     </div>
-    <figure class="linkup__person">
-      <img src="LL%20RIDWANE.png" alt="Ridwane Ait El Haj" loading="lazy" decoding="async">
-      <figcaption>
+    <article class="pcard">
+      <div class="pcard__media">
+        <img src="LL%20RIDWANE.png" alt="Ridwane Ait El Haj" loading="lazy" decoding="async">
+      </div>
+      <div class="pcard__body">
         <span class="linkup__tag">Je gesprekspartner</span>
-        <span class="linkup__name">Ridwane Ait El Haj</span>
-        <span class="linkup__role">Founder &amp; Strateeg &middot; LinkLeader</span>
-      </figcaption>
-    </figure>
+        <h3 class="pcard__name">Ridwane Ait El Haj</h3>
+        <p class="pcard__role">Founder &amp; Strateeg &middot; LinkLeader</p>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -994,7 +1082,6 @@ body.intro-complete .typewriter-scroll{
       <div>
         <div class="footer-brand">
           <img src="logo.png?v=1" alt="LinkLeader logo">
-          <span>LINK<em>LEADER</em></span>
         </div>
         <p>Wij maken processen slim en software doeltreffend. Met automatisering, de juiste software en AI wordt wat vandaag tijd kost, morgen moeiteloos.</p>
         <a class="link-under" href="mailto:info@linkleader.nl">info@linkleader.nl</a>

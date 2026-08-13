@@ -155,15 +155,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .nav__cta span{position:relative;z-index:1}
 .card-grid__canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
 
-/* One brand lockup, identical in every nav and every footer: mark + wordmark. */
-.brand-link{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand-link__logo{display:block;width:42px;height:42px;object-fit:contain;flex:none}
-.brand-link__word{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;
-  font-weight:800;font-size:19px;letter-spacing:-.01em;color:#fff;line-height:1;
-  white-space:nowrap;
-}
-.brand-link__word em{font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;font-style:normal;color:var(--pink)}
+/* The mark carries the brand on its own — no wordmark in nav or footer. */
+.brand-link{display:flex;align-items:center;text-decoration:none}
+.brand-link__logo{display:block;width:46px;height:46px;object-fit:contain;flex:none}
 .nav__toggle{
   display:none;margin-left:auto;background:none;border:1px solid var(--rule-strong);
   border-radius:var(--r-sm);width:44px;height:40px;align-items:center;justify-content:center;
@@ -336,13 +330,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .footer{border-top:1px solid var(--rule);padding:72px 0 40px;margin-top:40px}
 .footer__grid{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:48px}
 .footer p{margin:0 0 18px;max-width:420px;color:var(--t-62)}
-.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-.footer-brand img{width:54px;height:54px;object-fit:contain}
-.footer-brand span{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;
-  color:#fff;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1;
-}
-.footer-brand span em{font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;font-style:normal;color:var(--pink)}
+.footer-brand{display:flex;align-items:center;margin-bottom:22px}
+.footer-brand img{width:58px;height:58px;object-fit:contain}
 .footer h4{font-size:14px;letter-spacing:.28px;text-transform:uppercase;margin:0 0 18px;color:#fff;font-weight:500}
 .footer ul{list-style:none;margin:0;padding:0}
 .footer li{margin-bottom:12px}
@@ -375,8 +364,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 @media (max-width:720px){
   :root{--band:84px;--gut:20px}
-  .brand-link__logo{width:36px;height:36px}
-  .brand-link__word{font-size:16px}
+  .brand-link__logo{width:40px;height:40px}
   .grid2,.grid3,.team{grid-template-columns:1fr}
   .rail{grid-template-columns:1fr}
   .service-item--feature{flex-direction:column;gap:20px}

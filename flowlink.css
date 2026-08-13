@@ -199,27 +199,13 @@ body.is-hero-ready .hero-lead__cta{opacity:1;transform:none}
 .compare-col--good li{font-weight:600;color:#fff}
 
 /* ---------------- system view (animation frame) ---------------- */
+/* Just a frame around the image — no fake window chrome, no status light. */
 .sysview{
   position:relative;overflow:hidden;margin:0 auto;max-width:var(--shell);
   border:1px solid var(--fl-line);border-radius:var(--r-lg);background:#040a18;
   transition:border-color .45s ease;
 }
 .sysview:hover,.sysview:active{border-color:var(--fl-line-strong)}
-.sysview__bar{
-  display:flex;align-items:center;gap:14px;padding:14px 20px;
-  border-bottom:1px solid var(--fl-line);
-  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.52);
-}
-.sysview__dots{display:flex;gap:6px}
-.sysview__dots i{display:block;width:8px;height:8px;border-radius:9999px;background:var(--fl-line-strong)}
-.sysview__dots i:first-child{background:var(--pink)}
-.sysview__live{margin-left:auto;display:flex;align-items:center;gap:8px;color:#39d98a}
-.sysview__live::before{
-  content:"";width:7px;height:7px;border-radius:9999px;background:#39d98a;
-  animation:fl-blink-soft 1.8s ease-in-out infinite;
-}
-@keyframes fl-blink-soft{0%,100%{opacity:1}50%{opacity:.25}}
 .sysview img{display:block;width:100%}
 
 /* ---------------- 04 — process timeline ---------------- */

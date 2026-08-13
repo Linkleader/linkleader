@@ -8,10 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
-<link rel="stylesheet" href="fl-kit.css?v=5">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="fl-kit.css?v=6">
 <style>
-  body{background:var(--navy-deep)}
 
   /* ---------------- hero split: verhaal links, formulier rechts ----------------
      One screen, no scrolling: the left half carries the pitch, the right half
@@ -56,7 +55,6 @@
   }
 
   /* ---------------- body split ---------------- */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:start}
   .contact-story .build-list{max-width:none}
   .contact-story .build-row{grid-template-columns:76px minmax(0,1fr);gap:6px 24px;padding:30px 4px}
   .contact-story .build-row p:not(.build-row__num){grid-column:2}
@@ -80,8 +78,9 @@
     position:relative;z-index:1;
     display:flex;flex-direction:column;justify-content:center;
     padding:52px clamp(24px,4.4vw,72px);
-    background:linear-gradient(200deg,rgba(193,0,124,.10) 0%,rgba(6,15,38,0) 42%),rgba(4,10,24,.62);
-    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    /* Lifted one surface step above the page, so the form half reads as a
+       panel you can act on rather than more background. */
+    background:linear-gradient(200deg,rgba(193,0,124,.10) 0%,rgba(11,26,61,0) 42%),var(--surface-1);
   }
   .contact-form__head{margin-bottom:26px}
   .contact-form h2{

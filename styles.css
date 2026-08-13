@@ -22,6 +22,13 @@
   --navy-deep:#060f26;
   --navy-lift:#0e1f45;
 
+  /* Surface scale. One page colour across the whole site, with anything that
+     should read as a card sitting a step above it. Cards used to be painted
+     in the page colour, which only worked while some pages were lighter. */
+  --surface-0:#060f26;  /* the page itself */
+  --surface-1:#0b1a3d;  /* cards, panels, form fields */
+  --surface-2:#12244d;  /* hover / stacked on top of a card */
+
   /* brand */
   --pink:#C1007C;
   --pink-soft:#E38CC4;
@@ -45,7 +52,11 @@
   /* layout */
   --shell:1180px;
   --gut:32px;
-  --band:144px;
+  /* One fluid vertical rhythm for the whole site. .band, .band--tight and
+     .fl-section all derive from this instead of each carrying their own
+     fixed step. */
+  --pad-section:clamp(76px,9vw,128px);
+  --band:var(--pad-section);
 }
 
 *{box-sizing:border-box}
@@ -54,7 +65,7 @@ html{scroll-behavior:smooth}
 
 body{
   margin:0;
-  background:var(--navy);
+  background:var(--surface-0);
   color:var(--white);
   font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;
   font-size:16px;
@@ -101,6 +112,17 @@ h1,h2,h3,h4{margin:0;font-weight:600}
 .btn--white{background:#fff;color:var(--navy)}
 .btn--white:hover{transform:translateY(-1px)}
 .btn--full{width:100%}
+
+/* Quiet outline pair — same weight as each other, told apart by accent only.
+   Used where two routes are equally valid and neither should shout. */
+.btn--line{
+  background:transparent;color:var(--t-80);
+  padding:10px 20px;font-size:13px;font-weight:600;letter-spacing:.04em;
+  border-color:var(--rule-strong);
+}
+.btn--line:hover{transform:none}
+.btn--line-pink:hover{border-color:var(--pink);color:#fff;background:rgba(193,0,124,.10)}
+.btn--line-blue:hover{border-color:var(--blue);color:#fff;background:rgba(0,115,255,.10)}
 .link-under{
   color:#fff;text-decoration:none;font-size:16px;
   border-bottom:1px solid var(--pink);padding-bottom:3px;
@@ -175,7 +197,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* ---------------- secties ---------------- */
 .band{padding:var(--band) 0}
-.band--tight{padding:108px 0}
+.band--tight{padding:calc(var(--pad-section) * .78) 0}
 .band--top{padding-top:96px}
 .band__head{max-width:760px;margin-bottom:84px}
 .band__head p{margin:20px 0 0}
@@ -195,7 +217,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .hero-grid{
   min-height:100svh;position:relative;
   display:flex;align-items:center;justify-content:center;
-  overflow:hidden;background:var(--navy-deep);
+  overflow:hidden;background:var(--surface-1);
 }
 .hero-grid__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
 .hero-grid__content{position:relative;z-index:1;text-align:center;max-width:760px;padding:48px 24px}
@@ -208,7 +230,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{
   border:1px solid var(--rule);border-radius:var(--r-sm);
-  padding:30px 28px 32px;background:var(--navy-deep);
+  padding:30px 28px 32px;background:var(--surface-1);
   transition:border-color .2s ease,transform .2s ease;
   display:flex;flex-direction:column;
 }
@@ -229,7 +251,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .service-item{
   position:relative;overflow:hidden;
   border:1px solid rgba(0,115,255,.35);border-radius:var(--r-md);
-  background:var(--navy-deep);padding:36px 32px;
+  background:var(--surface-1);padding:36px 32px;
   display:flex;flex-direction:column;gap:14px;
   transition:border-color .2s;cursor:default;
 }
@@ -264,7 +286,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* ---------------- team ---------------- */
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.member{border:1px solid var(--rule);border-radius:var(--r-lg);padding:32px 26px;background:var(--navy-deep)}
+.member{border:1px solid var(--rule);border-radius:var(--r-lg);padding:32px 26px;background:var(--surface-1)}
 .member__avatar{
   width:64px;height:64px;border-radius:9999px;margin-bottom:26px;
   display:flex;align-items:center;justify-content:center;
@@ -297,7 +319,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* ---------------- formulier ---------------- */
 .form-card{
   border:1px solid var(--rule);border-radius:var(--r-lg);
-  background:var(--navy-deep);padding:44px 40px;
+  background:var(--surface-1);padding:44px 40px;
 }
 .field{margin-bottom:22px}
 .field--row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -312,7 +334,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--pink);outline:none}
 .field textarea{min-height:130px;resize:vertical}
 .field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
-.field select option{background:var(--navy-deep)}
+.field select option{background:var(--surface-1)}
 
 /* ---------------- lijsten ---------------- */
 .arrow-list{list-style:none;margin:0;padding:0}
@@ -349,7 +371,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* ---------------- responsive ---------------- */
 @media (max-width:1024px){
-  :root{--band:104px;--gut:24px}
+  :root{--gut:24px}
   .phero{padding:72px 0 64px}
   .phero__grid{grid-template-columns:1fr;gap:48px}
   .grid3{grid-template-columns:1fr 1fr}
@@ -363,7 +385,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .footer__grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:720px){
-  :root{--band:84px;--gut:20px}
+  :root{--gut:20px}
   .brand-link__logo{width:40px;height:40px}
   .grid2,.grid3,.team{grid-template-columns:1fr}
   .rail{grid-template-columns:1fr}

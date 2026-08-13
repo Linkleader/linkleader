@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
-<link rel="stylesheet" href="fl-kit.css?v=5">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="fl-kit.css?v=6">
 <style>
   .quote{
     border-left:2px solid var(--pink);padding:6px 0 6px 28px;margin:0 0 48px;
@@ -50,7 +50,8 @@
   .side-grid__canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
   .side-grid__fade{
     position:absolute;left:0;top:0;bottom:0;width:80px;
-    background:linear-gradient(to right, var(--navy), transparent);
+    /* Must resolve to the page colour or the strip leaves a lighter seam. */
+    background:linear-gradient(to right, var(--surface-0), transparent);
   }
   @media (max-width:1400px){.side-grid{display:none}}
 </style>
@@ -254,7 +255,7 @@
 <script>
 (function(){
   'use strict';
-  window.initKineticGrid(document.getElementById('sideGridCanvas'), document.getElementById('sideGrid'), '#0a1837');
+  window.initKineticGrid(document.getElementById('sideGridCanvas'), document.getElementById('sideGrid'), '#060f26');
   var navCta = document.querySelector('.nav__cta');
   if(navCta) window.initCardGrid(navCta);
   window.initHeadingTypewriter('h1.h-product, h2.h-section');

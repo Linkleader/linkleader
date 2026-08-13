@@ -10,12 +10,10 @@
   --fl-pink-edge:#5e003c;
 }
 
-body{background:var(--navy-deep)}
-
 /* ---------------- intro splash ---------------- */
 body.intro-splash-active{overflow:hidden}
 .intro-splash{
-  position:fixed;inset:0;z-index:9999;background:var(--navy-deep);
+  position:fixed;inset:0;z-index:9999;background:var(--surface-0);
   display:flex;align-items:center;justify-content:center;overflow:hidden;
   cursor:pointer;clip-path:inset(0 0 0 0);
   transition:opacity .8s var(--ease-out),clip-path .9s var(--ease-out);
@@ -224,7 +222,7 @@ body.is-hero-ready .hero-lead__cta{opacity:1;transform:none}
 .process-step__dot{
   position:absolute;left:-40px;margin-left:-6px;top:9px;
   width:13px;height:13px;border-radius:9999px;
-  background:var(--navy-deep);border:1px solid var(--fl-line-strong);
+  background:var(--surface-0);border:1px solid var(--fl-line-strong);
   transition:background-color .5s ease,border-color .5s ease,box-shadow .5s ease,transform .5s var(--ease-out);
 }
 .process-step.is-active .process-step__dot{
@@ -288,7 +286,7 @@ body.is-hero-ready .hero-lead__cta{opacity:1;transform:none}
 /* ---------------- closing cta ---------------- */
 .scan-section{
   position:relative;overflow:hidden;padding:clamp(92px,11vw,152px) 0;
-  border-top:1px solid var(--fl-line);background:var(--navy-deep);
+  border-top:1px solid var(--fl-line);background:var(--surface-0);
 }
 .scan-section .hero-grid__canvas{
   -webkit-mask-image:radial-gradient(100% 130% at 50% 100%, #000 8%, transparent 72%);

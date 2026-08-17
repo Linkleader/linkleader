@@ -1,0 +1,93 @@
+/* ===========================================================
+   PER-SERVICE ACCENT
+   ===========================================================
+   Elke dienstpagina heeft een eigen nadrukkleur. Die wordt hier
+   gezet door --pink te overschrijven op <body data-service="...">,
+   waardoor alles wat in styles.css / fl-kit.css / flowlink.css al
+   var(--pink) gebruikt automatisch meekleurt: de lettermark, de
+   sectiekop, hoverstates, het geopende FAQ-item, de voor-en-na-band,
+   de knoppen en de nav-CTA.
+
+   --blue blijft op elke pagina gelijk. Die draagt de rustende
+   structuur (sectienummers, fase-labels, check-icons); alleen de
+   nadruk verschuift per dienst. Zonder dat contrast zou de pagina
+   eenkleurig worden.
+
+   FlowLink staat niet in deze lijst: dat is de huiskleur en die
+   staat al als standaard in styles.css.
+   =========================================================== */
+
+/* SoftwareLink — smaragd. Bouwen/opleveren, en ver genoeg van de
+   structurele --blue om ernaast te blijven werken. */
+body[data-service="software"]{
+  --pink:#00BE8A;
+  --pink-soft:#7FE3C6;
+  --fl-accent-mid:#3BE0AC;
+  --fl-pink-band:#00795A;
+  --fl-pink-edge:#00382A;
+  --fl-nav-band:rgba(0,45,34,.92);
+  --fl-nav-band-link:#A9F0D8;
+  --fl-nav-band-cta:#00241B;
+}
+
+/* MindLink — violet. Ligt tussen de magenta en het blauw van het
+   bestaande palet, waardoor het als familie leest. */
+body[data-service="mind"]{
+  --pink:#7B4DFF;
+  --pink-soft:#B9A2FF;
+  --fl-accent-mid:#A98BFF;
+  --fl-pink-band:#5326C9;
+  --fl-pink-edge:#26105E;
+  --fl-nav-band:rgba(30,12,74,.92);
+  --fl-nav-band-link:#D6C7FF;
+  --fl-nav-band-cta:#180A3D;
+}
+
+/* DataLink — cyaan. Koelste kleur van de reeks, licht het hardst
+   op tegen de navy grond. */
+body[data-service="data"]{
+  --pink:#22D3EE;
+  --pink-soft:#8FE9F7;
+  --fl-accent-mid:#67E4F5;
+  --fl-pink-band:#0E8FA5;
+  --fl-pink-edge:#06414D;
+  --fl-nav-band:rgba(6,50,60,.92);
+  --fl-nav-band-link:#B3F0FA;
+  --fl-nav-band-cta:#042D36;
+}
+
+/* TechLink — goud. Oordeel en kosten besparen; de enige warme,
+   waardegeladen kleur in de reeks. */
+body[data-service="tech"]{
+  --pink:#F0B429;
+  --pink-soft:#F8D77E;
+  --fl-accent-mid:#F7CD68;
+  --fl-pink-band:#A8760A;
+  --fl-pink-edge:#4D3603;
+  --fl-nav-band:rgba(56,39,4,.92);
+  --fl-nav-band-link:#FFE6A8;
+  --fl-nav-band-cta:#2B1E02;
+}
+
+/* GrowthLink — koraal. Heetste kleur, voor de enige dienst waar
+   snelheid het argument is. */
+body[data-service="growth"]{
+  --pink:#FF5C39;
+  --pink-soft:#FF9F8A;
+  --fl-accent-mid:#FF8B72;
+  --fl-pink-band:#B83217;
+  --fl-pink-edge:#571507;
+  --fl-nav-band:rgba(62,16,8,.92);
+  --fl-nav-band-link:#FFCABD;
+  --fl-nav-band-cta:#2E0C05;
+}
+
+/* Goud en cyaan zijn licht genoeg dat witte knoptekst erop
+   onleesbaar wordt. Daar zetten we de tekst terug naar de
+   donkere grond. */
+body[data-service="tech"] .btn--primary,
+body[data-service="data"] .btn--primary,
+body[data-service="tech"] .nav__cta,
+body[data-service="data"] .nav__cta{
+  color:var(--surface-0);
+}

@@ -19,11 +19,28 @@ window.initKineticGrid = function(canvas, region, bgColor){
   var NODE_BASE_RADIUS = 1.8;
   var NODE_ACTIVE_RADIUS = 3.2;
 
+  // The grid picks up whatever accent the page is set to, so a service page
+  // does not end up with a magenta lattice under a green wordmark. Falls back
+  // to the house magenta when --pink is missing or unparseable.
+  function readAccent(){
+    var raw = getComputedStyle(document.body).getPropertyValue('--pink').trim();
+    var m = /^#?([0-9a-f]{6})$/i.exec(raw);
+    if(!m) return null;
+    var n = parseInt(m[1], 16);
+    return { r:(n >> 16) & 255, g:(n >> 8) & 255, b:n & 255 };
+  }
+
+  var accent = readAccent() || { r:193, g:0, b:124 };
+  // The active line/node sit a step brighter than the flat accent, the way the
+  // original magenta (#f056b9) sat above #C1007C.
+  var lift = function(c){ return Math.round(c + (255 - c) * .30); };
+  var hi = { r:lift(accent.r), g:lift(accent.g), b:lift(accent.b) };
+
   var THEME = {
     bg: bgColor || '#060f26',
-    lineActive: { r:240, g:86, b:185, a:.9 },
-    nodeActive: { r:240, g:86, b:185, a:1 },
-    glow: '193,0,124',
+    lineActive: { r:hi.r, g:hi.g, b:hi.b, a:.9 },
+    nodeActive: { r:hi.r, g:hi.g, b:hi.b, a:1 },
+    glow: accent.r + ',' + accent.g + ',' + accent.b,
     ripple: '0,115,255'
   };
 

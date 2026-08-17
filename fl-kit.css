@@ -23,7 +23,7 @@
 }
 .scroll-progress__bar{
   display:block;height:100%;transform:scaleX(0);transform-origin:0 50%;
-  background:linear-gradient(90deg,var(--pink),#ff4fb0 45%,var(--blue));
+  background:linear-gradient(90deg,var(--pink),var(--fl-accent-mid,#ff4fb0) 45%,var(--blue));
   box-shadow:0 0 14px rgba(193,0,124,.55);will-change:transform;
 }
 
@@ -195,7 +195,7 @@
 .pcard__name{margin:0;font-size:21px;font-weight:700;line-height:1.2;color:#fff;letter-spacing:-.018em}
 .pcard__role{
   margin:7px 0 0;font-size:13px;font-weight:600;letter-spacing:.01em;
-  background:linear-gradient(90deg,var(--pink),#ff4fb0 42%,var(--blue));
+  background:linear-gradient(90deg,var(--pink),var(--fl-accent-mid,#ff4fb0) 42%,var(--blue));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .pcard__text{

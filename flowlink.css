@@ -40,11 +40,14 @@ body.intro-splash-active{overflow:hidden}
 @keyframes fl-blink-hard{0%,50%{opacity:1}51%,100%{opacity:0}}
 @keyframes fl-fade-in{from{opacity:0}to{opacity:1}}
 
-/* ---------------- nav while the pink band passes ---------------- */
-body.is-pink-nav .nav{background:rgba(66,0,42,.92);border-bottom-color:rgba(255,255,255,.24)}
+/* ---------------- nav while the accent band passes ----------------
+   The fallbacks are the FlowLink magenta. Service pages override the
+   three custom properties in service-accents.css, so the nav darkens
+   into whatever colour that page's band is. */
+body.is-pink-nav .nav{background:var(--fl-nav-band,rgba(66,0,42,.92));border-bottom-color:rgba(255,255,255,.24)}
 body.is-pink-nav .nav__links a{color:rgba(255,255,255,.88)}
-body.is-pink-nav .nav__links a[aria-current="page"]{color:#ffc9e7}
-body.is-pink-nav .nav__cta{background:#2b001c}
+body.is-pink-nav .nav__links a[aria-current="page"]{color:var(--fl-nav-band-link,#ffc9e7)}
+body.is-pink-nav .nav__cta{background:var(--fl-nav-band-cta,#2b001c)}
 
 /* ---------------- hero ---------------- */
 .hero-grid{overflow:hidden}

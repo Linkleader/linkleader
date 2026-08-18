@@ -18,11 +18,13 @@
   .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
   @media (max-width:1024px){.about-grid{grid-template-columns:1fr;gap:40px}}
 
-  /* ---------- team: portret-cards, full width, 3 per row ---------- */
+  /* ---------- team: premium bio cards, photo left / text right ----------
+     Two per row, not three: a photo-left card needs real width for the
+     photo and the text to both breathe, and at three across on this grid
+     the photo strip would get too narrow to read as a portrait. */
   .team-section{overflow:hidden}
-  .team.pcards{width:100%;padding:0 var(--bleed-gut);grid-template-columns:repeat(3,1fr)}
-  @media (max-width:900px){ .team.pcards{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:560px){ .team.pcards{grid-template-columns:1fr} }
+  .team.pcards{width:100%;padding:0 var(--bleed-gut);grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){ .team.pcards{grid-template-columns:1fr} }
 
 
   /* ---------- wat ons onderscheidt: full-width met hover per regel ---------- */
@@ -43,19 +45,6 @@
     .diff-row:hover{padding-left:calc(var(--bleed-gut) + 10px)}
     .diff-row p{grid-column:2}
   }
-
-  /* ---------- raster-strip rechts, volledige viewporthoogte ---------- */
-  .side-grid{
-    position:fixed;top:0;right:0;bottom:0;width:260px;z-index:0;
-    overflow:hidden;pointer-events:none;
-  }
-  .side-grid__canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-  .side-grid__fade{
-    position:absolute;left:0;top:0;bottom:0;width:80px;
-    /* Must resolve to the page colour or the strip leaves a lighter seam. */
-    background:linear-gradient(to right, var(--surface-0), transparent);
-  }
-  @media (max-width:1400px){.side-grid{display:none}}
 
   /* ---------- achtergrondvideo ----------
      Fixed behind the whole page, not just the hero, so it stays put while
@@ -98,11 +87,6 @@
   v.play().catch(function(){ /* autoplay blocked — overlay still reads fine on the plain background */ });
 })();
 </script>
-
-<div class="side-grid" id="sideGrid" aria-hidden="true">
-  <canvas class="side-grid__canvas" id="sideGridCanvas"></canvas>
-  <div class="side-grid__fade"></div>
-</div>
 
 <header class="nav">
   <div class="wide nav__inner">
@@ -189,11 +173,13 @@
       </div>
     </article>
     <article class="pcard">
-      <div class="pcard__media pcard__media--initials" aria-hidden="true">KJ</div>
+      <div class="pcard__media">
+        <img src="LL%20KAWTAR.png" alt="Kawtar Jihane" loading="lazy" decoding="async">
+      </div>
       <div class="pcard__body">
         <h3 class="pcard__name">Kawtar Jihane</h3>
-        <p class="pcard__role">Legal operations</p>
-        <p class="pcard__text">Verzorgt juridische ondersteuning en contractbeheer binnen de organisatie.</p>
+        <p class="pcard__role">Bedrijfsjurist</p>
+        <p class="pcard__text">Toetst contracten en aansprakelijkheid voordat er iets wordt ondertekend, zodat afspraken kloppen in plaats van achteraf discussie op te leveren.</p>
       </div>
     </article>
   </div>
@@ -296,7 +282,6 @@
 <script>
 (function(){
   'use strict';
-  window.initKineticGrid(document.getElementById('sideGridCanvas'), document.getElementById('sideGrid'), '#060f26');
   var navCta = document.querySelector('.nav__cta');
   if(navCta) window.initCardGrid(navCta);
   window.initHeadingTypewriter('h1.h-product, h2.h-section');

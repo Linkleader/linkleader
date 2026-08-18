@@ -166,13 +166,16 @@
 }
 .build-row__link:hover{color:#fff;gap:14px}
 
-/* ---------------- portrait card ----------------
-   Photo fills the top of the card and fades into the surface, so the name
-   sits on the image rather than in a separate strip below it. */
+/* ---------------- bio card — photo left, text right ----------------
+   The photo used to fill the card top with the name overlapping the
+   bottom edge; whenever a photo wasn't framed for that exact crop, the
+   overlap or the "center top" anchor cut into the face. Photo and text
+   now sit side by side with nothing drawn on top of either, so the full
+   photo is always visible regardless of how it's framed. */
 .pcards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 
 .pcard{
-  position:relative;display:flex;flex-direction:column;
+  position:relative;display:flex;align-items:stretch;min-height:236px;
   background:var(--surface-1);
   border:1px solid var(--fl-line);border-radius:var(--r-lg);
   overflow:hidden;
@@ -182,45 +185,41 @@
   border-color:var(--fl-line-strong);transform:translateY(-4px);
   box-shadow:0 40px 80px -50px rgba(0,0,0,.9);
 }
-.pcard__media{position:relative;overflow:hidden}
+.pcard__media{position:relative;flex:0 0 42%;overflow:hidden}
 .pcard__media img{
-  display:block;width:100%;height:320px;object-fit:cover;object-position:center top;
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center;
   transition:transform .7s var(--ease-out);
 }
-.pcard:hover .pcard__media img{transform:scale(1.06)}
-/* A thin seam blend, not a fade over the face: the name sits in its own
-   solid caption panel below the photo now, so this only has to smooth the
-   handoff between the two, not darken enough to read on top of a portrait. */
-.pcard__media::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:34px;pointer-events:none;
-  background:linear-gradient(to top,var(--surface-1),rgba(11,26,61,0));
-}
+.pcard:hover .pcard__media img{transform:scale(1.05)}
 .pcard__media--initials{
-  height:320px;display:flex;align-items:center;justify-content:center;
+  flex:0 0 42%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(150deg,rgba(193,0,124,.28),rgba(0,115,255,.16) 60%,var(--surface-1));
   font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
-  font-size:82px;letter-spacing:-.04em;color:rgba(255,255,255,.86);
+  font-size:52px;letter-spacing:-.04em;color:rgba(255,255,255,.86);
 }
 
-/* No negative margin: the caption sits below the photo instead of
-   overlapping it, so the fade above no longer has to double as a
-   readability layer over someone's face. */
-.pcard__body{position:relative;z-index:1;padding:20px 26px 26px}
-.pcard__name{margin:0;font-size:21px;font-weight:700;line-height:1.2;color:#fff;letter-spacing:-.018em}
+.pcard__body{
+  position:relative;z-index:1;flex:1;min-width:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:30px 32px;
+}
+.pcard__name{margin:0;font-size:20px;font-weight:700;line-height:1.2;color:#fff;letter-spacing:-.016em}
 .pcard__role{
-  margin:7px 0 0;font-size:13px;font-weight:600;letter-spacing:.01em;
+  margin:8px 0 0;font-size:13px;font-weight:600;letter-spacing:.01em;
   background:linear-gradient(90deg,var(--pink),var(--fl-accent-mid,#ff4fb0) 42%,var(--blue));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .pcard__text{
-  margin:20px 0 0;padding-top:20px;border-top:1px solid var(--fl-line);
-  font-size:15.5px;line-height:1.6;color:var(--t-70);
+  margin:16px 0 0;padding-top:16px;border-top:1px solid var(--fl-line);
+  font-size:14.5px;line-height:1.6;color:var(--t-70);
 }
 
 @media (max-width:1100px){ .pcards{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:640px){
+@media (max-width:720px){
   .pcards{grid-template-columns:1fr}
-  .pcard__media img,.pcard__media--initials{height:280px}
+  .pcard{flex-direction:column;min-height:0}
+  .pcard__media,.pcard__media--initials{flex:none;width:100%;height:240px}
+  .pcard__body{padding:24px 22px}
 }
 
 /* ---------------- link up — full-bleed closing card ---------------- */

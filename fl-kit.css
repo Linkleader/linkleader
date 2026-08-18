@@ -146,6 +146,16 @@
 }
 .build-row:hover .build-row__num{color:var(--pink)}
 .build-row h3{margin:0;font-size:clamp(19px,2.1vw,25px);line-height:1.25;letter-spacing:-.015em;color:#fff}
+
+/* Branded row heading: same two-tone wordmark as each service's own hero
+   (.fl-flow / .fl-link), just sized for a dense list instead of a hero —
+   the hero-sized version read as too playful stacked seven times in a row.
+   Colour comes from --pink, which a row shadows locally via an inline
+   style (--pink:var(--acc-mind) etc.), so it also recolours this row's
+   hover underline and number for free — no separate branding rules needed. */
+.build-row__mark{margin:0;line-height:1.2;letter-spacing:-.01em;font-size:clamp(17px,1.7vw,20px)}
+.build-row__mark .fl-flow{font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff}
+.build-row__mark .fl-link{font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;color:var(--pink)}
 .build-row p{margin:0;color:var(--t-70);font-size:16px;line-height:1.65}
 .build-row__link{
   grid-column:2 / -1;margin-top:6px;

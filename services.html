@@ -30,17 +30,12 @@
   .services-split__info p{color:var(--t-70);line-height:1.7;margin:0 0 20px;max-width:520px}
   .services-split__info .outcome{margin-top:12px}
 
-  /* The list owns the whole right half — the rows run edge to edge rather than
-     sitting as narrow cards inside a padded column. */
-  .services-split__list{display:flex;flex-direction:column;justify-content:center;padding:0}
-  .services-split__list .build-list{max-width:none;border-top:0}
-  .services-split__list .build-row{
-    grid-template-columns:88px minmax(0,1fr);
-    gap:6px 26px;padding:38px var(--bleed-gut);
-  }
-  .services-split__list .build-row p:not(.build-row__num){grid-column:2}
-  .services-split__list .build-row .build-row__link{grid-column:2}
-  .services-split__list .build-row:first-child{border-top:1px solid var(--fl-line)}
+  /* The list owns the whole right half. Cards are the .svc-card-grid--list
+     variant from fl-kit.css (mark + copy side by side); this page only adds
+     the padding around that column, edge to edge like the rest of the site. */
+  .services-split__list{padding:var(--pad-section) var(--bleed-gut)}
+  .services-split__list .svc-card-grid{gap:16px}
+  .services-split__list .svc-card{padding:26px 28px}
 
   .outcome{border:1px solid var(--fl-line);border-radius:var(--r-lg);padding:36px 32px;background:var(--fl-surface)}
   .outcome h3{font-size:16px;letter-spacing:.28px;text-transform:uppercase;font-weight:500;color:var(--pink);margin:0 0 22px}
@@ -52,15 +47,12 @@
   @media (max-width:1100px){
     .services-split{grid-template-columns:1fr;min-height:0}
     .services-split__info{position:static;height:auto;border-right:none;border-bottom:1px solid var(--fl-line);padding:64px var(--bleed-gut) 48px}
-    .services-split__list .build-row{padding:32px var(--bleed-gut)}
   }
   @media (max-width:1024px){
     .sector-band{grid-template-columns:1fr;padding:40px 30px;gap:32px}
   }
-  @media (max-width:720px){
-    .services-split__list .build-row{grid-template-columns:1fr;gap:10px;padding:28px var(--bleed-gut)}
-    .services-split__list .build-row p:not(.build-row__num),
-    .services-split__list .build-row .build-row__link{grid-column:1}
+  @media (max-width:640px){
+    .services-split__list{padding:48px var(--bleed-gut)}
   }
 </style>
 </head>
@@ -97,49 +89,77 @@
     <p>Snelheid zonder strategie creëert chaos. Strategie zonder uitvoering verandert niets. Daarom combineren wij bedrijfsinzicht met snelle technische uitvoering — geen eindeloze consultancytrajecten of losse agency-oplossingen, maar technologie die direct impact maakt op operatie, sales en groei.</p>
   </div>
   <div class="services-split__list">
-    <div class="build-list reveal reveal--group" data-stagger>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">001</p>
-        <h3>FlowLink</h3>
-        <p>Werk dat tussen systemen blijft hangen: overtypen, handmatige rapportages, statusupdates die iemand moet onthouden. We halen het weg en zetten er iets voor terug dat je kunt zien draaien.</p>
-        <a class="build-row__link" href="ai-automation.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">002</p>
-        <h3>SoftwareLink</h3>
-        <p>Wanneer een pakket je proces niet volgt maar voorschrijft, bouwen we het zelf. Van een interne tool die één proces oplost tot het platform waar je operatie op draait.</p>
-        <a class="build-row__link" href="softwarelink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">003</p>
-        <h3>MindLink</h3>
-        <p>Taken waar oordeel bij komt kijken en die te vaak voorkomen om met de hand te doen: aanvragen lezen, matchen, opvolgen. Met een mens erbij op de plekken waar het mis kan gaan.</p>
-        <a class="build-row__link" href="mindlink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">004</p>
-        <h3>DataLink</h3>
-        <p>De fundering onder alles wat je met AI wil doen. Data verzamelen, opschonen, koppelen en ontsluiten, zodat modellen en mensen op hetzelfde antwoord uitkomen.</p>
-        <a class="build-row__link" href="datalink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">005</p>
-        <h3>TechLink</h3>
-        <p>Onafhankelijk advies over welke software je kiest, wat je schrapt en hoe je het invoert. Geen partnercontracten, geen commissies — de aanbeveling volgt jouw belang.</p>
-        <a class="build-row__link" href="techlink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">006</p>
-        <h3>GrowthLink</h3>
-        <p>Meer omzet uit de leads die je al hebt. Opvolging, funnel en klantreis op orde voordat je één euro extra aan advertenties uitgeeft.</p>
-        <a class="build-row__link" href="growthlink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="build-row grid-spot">
-        <p class="build-row__num">007</p>
-        <h3>Uitzend &amp; staffing</h3>
-        <p>Een complete uitvoeringslaag voor uitzendbureaus: aanvraag binnen, gematcht, toegewezen, opgevolgd — bovenop je bestaande AFAS, ATS en planning. Je systemen blijven staan.</p>
-        <a class="build-row__link" href="uitzendbureaus.html">Bekijk de sectoroplossing <span aria-hidden="true">→</span></a>
-      </article>
+    <div class="svc-card-grid svc-card-grid--list reveal reveal--group" data-stagger>
+      <a class="svc-card" href="ai-automation.html" style="--svc-accent:var(--acc-flow)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">Automatiseringsdienst</span>
+          <span class="svc-card__mark"><span class="fl-flow">FLOW</span><span class="fl-link">LINK</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">Werk dat tussen systemen blijft hangen: overtypen, handmatige rapportages, statusupdates die iemand moet onthouden. We halen het weg en zetten er iets voor terug dat je kunt zien draaien.</span>
+          <span class="svc-card__cta">Bekijk de dienst <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="svc-card" href="softwarelink.html" style="--svc-accent:var(--acc-software)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">Ontwikkeldienst</span>
+          <span class="svc-card__mark"><span class="fl-flow">SOFTWARE</span><span class="fl-link">LINK</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">Wanneer een pakket je proces niet volgt maar voorschrijft, bouwen we het zelf. Van een interne tool die één proces oplost tot het platform waar je operatie op draait.</span>
+          <span class="svc-card__cta">Bekijk de dienst <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="svc-card" href="mindlink.html" style="--svc-accent:var(--acc-mind)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">AI-implementatiedienst</span>
+          <span class="svc-card__mark"><span class="fl-flow">MIND</span><span class="fl-link">LINK</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">Taken waar oordeel bij komt kijken en die te vaak voorkomen om met de hand te doen: aanvragen lezen, matchen, opvolgen. Met een mens erbij op de plekken waar het mis kan gaan.</span>
+          <span class="svc-card__cta">Bekijk de dienst <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="svc-card" href="datalink.html" style="--svc-accent:var(--acc-data)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">Datadienst</span>
+          <span class="svc-card__mark"><span class="fl-flow">DATA</span><span class="fl-link">LINK</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">De fundering onder alles wat je met AI wil doen. Data verzamelen, opschonen, koppelen en ontsluiten, zodat modellen en mensen op hetzelfde antwoord uitkomen.</span>
+          <span class="svc-card__cta">Bekijk de dienst <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="svc-card" href="techlink.html" style="--svc-accent:var(--acc-tech)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">Adviesdienst</span>
+          <span class="svc-card__mark"><span class="fl-flow">TECH</span><span class="fl-link">LINK</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">Onafhankelijk advies over welke software je kiest, wat je schrapt en hoe je het invoert. Geen partnercontracten, geen commissies — de aanbeveling volgt jouw belang.</span>
+          <span class="svc-card__cta">Bekijk de dienst <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="svc-card" href="growthlink.html" style="--svc-accent:var(--acc-growth)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">Conversiedienst</span>
+          <span class="svc-card__mark"><span class="fl-flow">GROWTH</span><span class="fl-link">LINK</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">Meer omzet uit de leads die je al hebt. Opvolging, funnel en klantreis op orde voordat je één euro extra aan advertenties uitgeeft.</span>
+          <span class="svc-card__cta">Bekijk de dienst <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="svc-card" href="uitzendbureaus.html" style="--svc-accent:var(--acc-staffing)">
+        <span class="svc-card__head">
+          <span class="svc-card__eyebrow">Sectoroplossing</span>
+          <span class="svc-card__mark"><span class="fl-flow">UITZEND &amp;</span> <span class="fl-link">STAFFING</span></span>
+        </span>
+        <span class="svc-card__body">
+          <span class="svc-card__desc">Een complete uitvoeringslaag voor uitzendbureaus: aanvraag binnen, gematcht, toegewezen, opgevolgd — bovenop je bestaande AFAS, ATS en planning. Je systemen blijven staan.</span>
+          <span class="svc-card__cta">Bekijk de sectoroplossing <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -225,9 +245,11 @@
         <h4>Services</h4>
         <ul>
           <li><a href="ai-automation.html">FlowLink</a></li>
-          <li><a href="services.html">Software development</a></li>
-          <li><a href="services.html">AI &amp; Agents</a></li>
-          <li><a href="services.html">API Integraties</a></li>
+          <li><a href="softwarelink.html">SoftwareLink</a></li>
+          <li><a href="mindlink.html">MindLink</a></li>
+          <li><a href="datalink.html">DataLink</a></li>
+          <li><a href="techlink.html">TechLink</a></li>
+          <li><a href="growthlink.html">GrowthLink</a></li>
           <li><a href="uitzendbureaus.html">Uitzend &amp; staffing</a></li>
         </ul>
       </div>

@@ -18,10 +18,12 @@
   .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
   @media (max-width:1024px){.about-grid{grid-template-columns:1fr;gap:40px}}
 
-  /* ---------- team: portret-cards, full width ---------- */
+  /* ---------- team: portret-cards, full width, 3 per row ---------- */
   .team-section{overflow:hidden}
-  .team.pcards{width:100%;padding:0 var(--bleed-gut)}
-  
+  .team.pcards{width:100%;padding:0 var(--bleed-gut);grid-template-columns:repeat(3,1fr)}
+  @media (max-width:900px){ .team.pcards{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .team.pcards{grid-template-columns:1fr} }
+
 
   /* ---------- wat ons onderscheidt: full-width met hover per regel ---------- */
   .diff-section{overflow:hidden}
@@ -231,9 +233,11 @@
         <h4>Services</h4>
         <ul>
           <li><a href="ai-automation.html">FlowLink</a></li>
-          <li><a href="services.html">Software development</a></li>
-          <li><a href="services.html">AI &amp; Agents</a></li>
-          <li><a href="services.html">API Integraties</a></li>
+          <li><a href="softwarelink.html">SoftwareLink</a></li>
+          <li><a href="mindlink.html">MindLink</a></li>
+          <li><a href="datalink.html">DataLink</a></li>
+          <li><a href="techlink.html">TechLink</a></li>
+          <li><a href="growthlink.html">GrowthLink</a></li>
           <li><a href="uitzendbureaus.html">Uitzend &amp; staffing</a></li>
         </ul>
       </div>

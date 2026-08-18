@@ -35,6 +35,20 @@
   --blue:#0073ff;
   --white:#ffffff;
 
+  /* Per-service accent, one token pair per "...Link" product plus the
+     staffing sector solution. Single source of truth: service-accents.css
+     (page accent) and the .svc-card component (listing-page cards) both
+     read from these instead of repeating hex values. FlowLink keeps the
+     house magenta above; staffing takes the structural blue since it is a
+     sector solution rather than one of the six "...Link" products. */
+  --acc-flow:var(--pink);          --acc-flow-soft:var(--pink-soft);
+  --acc-software:#00BE8A;          --acc-software-soft:#7FE3C6;
+  --acc-mind:#7B4DFF;              --acc-mind-soft:#B9A2FF;
+  --acc-data:#22D3EE;              --acc-data-soft:#8FE9F7;
+  --acc-tech:#F0B429;              --acc-tech-soft:#F8D77E;
+  --acc-growth:#FF5C39;            --acc-growth-soft:#FF9F8A;
+  --acc-staffing:var(--blue);      --acc-staffing-soft:#7DB6FF;
+
   /* text */
   --muted:#93939f;
   --slate:#75758a;

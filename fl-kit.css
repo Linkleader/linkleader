@@ -156,6 +156,69 @@
 }
 .build-row__link:hover{color:#fff;gap:14px}
 
+/* ---------------- branded service card ----------------
+   Used on the homepage and /services so a visitor sees the category first
+   ("AI & agent implementatie") and the product name second — the name
+   alone ("MindLink") means nothing on first contact, the category does.
+   The wordmark reuses .fl-flow / .fl-link verbatim, so the font and the
+   colour logic are pixel-identical to the hero on each service's own
+   page: first word white, "LINK" in the service's accent. Colour comes
+   from --svc-accent, set inline per card from the --acc-* tokens in
+   styles.css, so this one component renders every service correctly
+   without a modifier class per service. */
+.svc-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card-grid--list{grid-template-columns:1fr}
+
+.svc-card{
+  position:relative;display:flex;flex-direction:column;gap:16px;
+  padding:34px 30px 30px 32px;border-radius:var(--r-lg);
+  border:1px solid var(--fl-line);
+  background:linear-gradient(165deg,color-mix(in srgb,var(--svc-accent) 12%,transparent),var(--surface-1) 60%);
+  text-decoration:none;color:inherit;overflow:hidden;
+  transition:border-color .35s ease,transform .35s var(--ease-out),box-shadow .35s ease;
+}
+.svc-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--svc-accent);
+}
+.svc-card:hover{
+  border-color:color-mix(in srgb,var(--svc-accent) 55%,var(--fl-line));
+  transform:translateY(-4px);box-shadow:0 32px 64px -44px rgba(0,0,0,.9);
+}
+.svc-card__eyebrow{
+  margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--svc-accent);
+}
+/* No forced nowrap: every "...Link" name is one short word and never
+   wraps at this size, but the Uitzend & staffing card carries a longer
+   label and needs to be free to break onto a second line instead of
+   overflowing the card. */
+.svc-card__mark{margin:0;line-height:1.08;letter-spacing:-.02em;font-size:clamp(22px,2.4vw,32px)}
+.svc-card__mark .fl-flow{font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff}
+.svc-card__mark .fl-link{font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;color:var(--svc-accent)}
+.svc-card__desc{margin:0;color:var(--t-70);font-size:15px;line-height:1.65;flex:1}
+.svc-card__cta{
+  margin-top:2px;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;
+}
+.svc-card__cta span{transition:transform .3s var(--ease-out)}
+.svc-card:hover .svc-card__cta span{transform:translateX(5px)}
+
+/* The list variant (services.html, inside the sticky-split layout) keeps
+   the same card but lays the mark and copy side by side, since it only
+   ever has column width to work with, not a grid cell. */
+.svc-card-grid--list .svc-card{flex-direction:row;align-items:center;gap:28px;padding:28px 30px}
+.svc-card-grid--list .svc-card__head{flex:0 0 200px;display:flex;flex-direction:column;gap:10px}
+.svc-card-grid--list .svc-card__body{flex:1;display:flex;flex-direction:column;gap:14px}
+.svc-card-grid--list .svc-card__desc{margin:0}
+
+@media (max-width:1100px){ .svc-card-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){
+  .svc-card-grid{grid-template-columns:1fr}
+  .svc-card-grid--list .svc-card{flex-direction:column;align-items:flex-start;gap:14px}
+  .svc-card-grid--list .svc-card__head{flex:none}
+}
+
 /* ---------------- portrait card ----------------
    Photo fills the top of the card and fades into the surface, so the name
    sits on the image rather than in a separate strip below it. */
@@ -178,11 +241,12 @@
   transition:transform .7s var(--ease-out);
 }
 .pcard:hover .pcard__media img{transform:scale(1.06)}
-/* The fade is a sibling layer, not a filter, so the photo keeps its contrast.
-   It resolves to the card surface, so the photo melts into the card body. */
+/* A thin seam blend, not a fade over the face: the name sits in its own
+   solid caption panel below the photo now, so this only has to smooth the
+   handoff between the two, not darken enough to read on top of a portrait. */
 .pcard__media::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:78%;pointer-events:none;
-  background:linear-gradient(to top,var(--surface-1) 4%,rgba(11,26,61,.72) 38%,rgba(11,26,61,0) 100%);
+  content:"";position:absolute;left:0;right:0;bottom:0;height:34px;pointer-events:none;
+  background:linear-gradient(to top,var(--surface-1),rgba(11,26,61,0));
 }
 .pcard__media--initials{
   height:320px;display:flex;align-items:center;justify-content:center;
@@ -191,7 +255,10 @@
   font-size:82px;letter-spacing:-.04em;color:rgba(255,255,255,.86);
 }
 
-.pcard__body{position:relative;z-index:1;margin-top:-52px;padding:0 26px 26px}
+/* No negative margin: the caption sits below the photo instead of
+   overlapping it, so the fade above no longer has to double as a
+   readability layer over someone's face. */
+.pcard__body{position:relative;z-index:1;padding:20px 26px 26px}
 .pcard__name{margin:0;font-size:21px;font-weight:700;line-height:1.2;color:#fff;letter-spacing:-.018em}
 .pcard__role{
   margin:7px 0 0;font-size:13px;font-weight:600;letter-spacing:.01em;

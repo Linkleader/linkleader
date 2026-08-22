@@ -3,375 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Matching voor uitzendbureaus — LinkLeader</title>
-<meta name="description" content="Elke aanvraag binnen minuten gematcht, uit kandidaten die je al in huis hebt. Wij bouwen de matchinglaag boven je bestaande AFAS, ATS en planning.">
+<title>Van aanvraag naar plaatsing — LinkLeader voor uitzendbureaus</title>
+<meta name="description" content="De automatiseringslaag tussen aanvraag en plaatsing. Wij vervangen je ATS niet — we automatiseren het handwerk ertussen. Precies zover als jij wilt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=5">
 <link rel="stylesheet" href="fl-kit.css?v=9">
-<style>
-/* ===========================================================
-   MATCHING — sectorpagina uitzend & staffing
-   ===========================================================
-   Deze pagina draait op één accent: het staffing-blauw waarmee de
-   dienst ook op de homepage en /services staat. --pink wordt hier
-   naar dat blauw geschaduwd zodat de gedeelde componenten (knoppen,
-   links, eyebrows) meekleuren zonder dat er per element een
-   uitzondering nodig is. Hiërarchie komt daardoor niet uit een
-   tweede kleur maar uit helderheid: --ice voor secundair accent,
-   neutrale tinten voor de rest.
-   =========================================================== */
-body{
-  --pink:#0073FF;
-  --pink-soft:#7DB6FF;
-  --fl-accent-mid:#4DA3FF;
-  --ice:#8FC7FF;
-  --acc-wash:rgba(0,115,255,.08);
-  --acc-line:rgba(0,115,255,.32);
-}
-
-.crumb{font-size:14px;color:var(--muted);margin:0 0 26px}
-.crumb a{color:var(--muted);text-decoration:none}
-.crumb a:hover{color:#fff}
-.hero-note{margin:22px 0 0;font-size:14px;color:var(--t-62);max-width:52ch}
-
-/* Kleine mono-labels boven blokken. Eén stijl, overal hetzelfde,
-   zodat de pagina ondanks z'n lengte één ritme houdt. */
-.klabel{
-  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--ice);margin:0 0 14px;display:block;
-}
-
-/* ---------- twee verliezen ---------- */
-.loss-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-.loss{padding:40px 44px 40px 0}
-.loss + .loss{padding-left:44px;border-left:1px solid var(--rule)}
-.loss h3{margin:0 0 14px;font-size:22px;line-height:1.28;letter-spacing:-.018em;color:#fff}
-.loss p{margin:0;color:var(--t-70);line-height:1.7}
-.loss__synth{
-  grid-column:1 / -1;border-top:1px solid var(--rule);
-  padding:32px 0 0;color:var(--t-80);font-size:17px;line-height:1.7;max-width:78ch;
-}
-.loss__synth strong{color:#fff;font-weight:600}
-@media (max-width:860px){
-  .loss-grid{grid-template-columns:1fr}
-  .loss{padding:32px 0}
-  .loss + .loss{padding-left:0;border-left:none;border-top:1px solid var(--rule)}
-}
-
-/* ---------- signature: dubbele tijdlijn ----------
-   De kern van de pagina. Links het huidige verloop in neutrale grijs,
-   rechts hetzelfde uur in accent. Tijdstempels in tabular-nums zodat
-   ze exact onder elkaar staan — dat verschil in uitlijning is precies
-   wat het contrast tussen "uren" en "minuten" leesbaar maakt. */
-.clock{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-.track{padding:36px 44px 36px 0}
-.track--new{padding:36px 0 36px 44px;border-left:1px solid var(--acc-line);background:linear-gradient(180deg,var(--acc-wash),transparent 60%)}
-.track__head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.track__name{font-size:17px;font-weight:700;color:var(--t-80);letter-spacing:-.01em}
-.track--new .track__name{color:#fff}
-.track__badge{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  border:1px solid var(--rule-strong);border-radius:20px;padding:3px 10px;color:var(--muted);
-}
-.track--new .track__badge{border-color:var(--acc-line);color:var(--ice)}
-.track__total{font-size:14.5px;color:var(--t-62);margin:0 0 28px;line-height:1.55}
-.track--new .track__total{color:var(--t-80)}
-.track__total b{color:#fff;font-weight:600}
-
-.steps{list-style:none;margin:0;padding:0}
-.steps li{display:grid;grid-template-columns:58px 1fr;gap:20px;padding:0 0 22px;position:relative}
-.steps li:last-child{padding-bottom:0}
-.steps li::before{content:"";position:absolute;left:5px;top:19px;bottom:-3px;width:1px;background:var(--rule-strong)}
-.steps li:last-child::before{display:none}
-.track--new .steps li::before{background:var(--acc-line)}
-.time{
-  font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;letter-spacing:.02em;
-  color:var(--muted);position:relative;padding-left:22px;padding-top:1px;
-}
-.time::before{
-  content:"";position:absolute;left:1px;top:6px;width:9px;height:9px;border-radius:50%;
-  border:1px solid var(--slate);background:var(--surface-0);
-}
-.track--new .time{color:var(--ice)}
-.track--new .time::before{border-color:var(--pink);background:var(--pink)}
-.steps p{margin:0;font-size:15px;line-height:1.6;color:var(--t-70)}
-.track--new .steps p{color:var(--t-80)}
-.steps .kill{color:rgba(255,255,255,.42)}
-.clock__note{margin:26px 0 0;max-width:74ch;font-size:13.5px;color:var(--t-62);line-height:1.6}
-@media (max-width:900px){
-  .clock{grid-template-columns:1fr}
-  .track{padding:32px 0}
-  .track--new{padding:32px 0 32px 24px;border-left:1px solid var(--acc-line)}
-}
-
-/* ---------- situatiekaarten ---------- */
-.sit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.sit{
-  border:1px solid var(--fl-line);border-radius:var(--r-lg);
-  background:var(--surface-1);padding:28px 26px;
-  display:flex;flex-direction:column;
-  transition:border-color .35s ease,transform .35s var(--ease-out);
-}
-.sit:hover{border-color:var(--acc-line);transform:translateY(-3px)}
-.sit__q{
-  margin:0 0 16px;font-size:16.5px;font-weight:600;line-height:1.4;color:#fff;
-  padding-left:18px;border-left:2px solid var(--pink);
-}
-.sit p{margin:0;color:var(--t-70);font-size:14.8px;line-height:1.65}
-@media (max-width:980px){.sit-grid{grid-template-columns:1fr}}
-
-/* ---------- keuzemodellen ---------- */
-.models{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.model{
-  position:relative;border:1px solid var(--fl-line);border-radius:var(--r-lg);
-  background:var(--surface-1);padding:28px 30px;
-}
-.model--rec{border-color:var(--acc-line);background:linear-gradient(160deg,var(--acc-wash),var(--surface-1) 62%)}
-.model__tag{
-  position:absolute;top:-10px;left:26px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  background:var(--pink);color:#fff;border-radius:20px;padding:4px 12px;
-}
-.model h3{margin:0 0 10px;font-size:19px;letter-spacing:-.015em;color:#fff}
-.model p{margin:0;color:var(--t-70);font-size:15px;line-height:1.65}
-.model--quiet{background:transparent;border-style:dashed}
-@media (max-width:860px){.models{grid-template-columns:1fr}}
-
-/* ---------- uitgelicht statement ---------- */
-.statement{
-  border:1px solid var(--acc-line);border-radius:var(--r-xl);
-  background:linear-gradient(150deg,var(--acc-wash),rgba(6,15,38,0) 58%),var(--surface-1);
-  padding:clamp(34px,4.5vw,56px);
-}
-.statement h2{margin:0 0 20px}
-.statement p{margin:0 0 16px;color:var(--t-80);font-size:17px;line-height:1.72;max-width:74ch}
-.statement p:last-child{margin-bottom:0}
-.statement strong{color:#fff;font-weight:600}
-.statement__kicker{
-  display:block;margin:0 0 20px;font-size:19px;line-height:1.5;color:#fff;font-weight:600;
-  padding-left:20px;border-left:3px solid var(--pink);
-}
-
-/* ---------- twee kolommen positionering ---------- */
-.split2{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-.panel{padding:36px 44px 36px 0}
-.panel + .panel{padding:36px 0 36px 44px;border-left:1px solid var(--rule)}
-.panel h3{margin:0 0 14px;font-size:19px;color:#fff;letter-spacing:-.015em}
-.panel p{margin:0;color:var(--t-70);line-height:1.7}
-.split2__foot{grid-column:1 / -1;border-top:1px solid var(--rule);padding:30px 0 0}
-.split2__foot p{margin:0 0 14px;color:var(--t-70);line-height:1.7;max-width:80ch}
-.split2__foot p:last-child{margin-bottom:0}
-.notlist{
-  margin:22px 0 0;padding:18px 22px;border:1px solid var(--rule-strong);border-radius:var(--r-md);
-  background:rgba(255,255,255,.02);color:var(--t-80);font-size:15px;line-height:1.65;
-}
-.notlist b{color:#fff}
-@media (max-width:860px){
-  .split2{grid-template-columns:1fr}
-  .panel{padding:32px 0}
-  .panel + .panel{padding:32px 0;padding-left:0;border-left:none;border-top:1px solid var(--rule)}
-}
-
-/* ---------- drie lagen ---------- */
-.layers{display:grid;gap:0;border-top:1px solid var(--rule)}
-.layer-row{
-  display:grid;grid-template-columns:64px 220px 1fr;gap:32px;align-items:start;
-  padding:30px 0;border-bottom:1px solid var(--rule);
-  transition:background-color .25s ease,padding-left .25s ease;
-}
-.layer-row:hover{background:var(--acc-wash);padding-left:14px}
-.layer-row__n{
-  font-family:var(--mono);font-size:13px;font-weight:700;color:var(--pink);
-  font-variant-numeric:tabular-nums;padding-top:3px;
-}
-.layer-row h3{margin:0;font-size:19px;color:#fff;letter-spacing:-.015em}
-.layer-row p{margin:0;color:var(--t-70);line-height:1.68}
-@media (max-width:900px){
-  .layer-row{grid-template-columns:48px 1fr;gap:8px 18px}
-  .layer-row p{grid-column:2}
-}
-
-/* ---------- modulegrid (13) ---------- */
-.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.mod{background:var(--surface-0);padding:24px 24px 26px;transition:background-color .3s ease}
-.mod:hover{background:var(--surface-1)}
-.mod__n{
-  font-family:var(--mono);font-size:11px;color:var(--ice);letter-spacing:.14em;
-  font-variant-numeric:tabular-nums;display:block;margin-bottom:10px;
-}
-.mod h3{margin:0 0 8px;font-size:16px;color:#fff;letter-spacing:-.012em;line-height:1.3}
-.mod p{margin:0;color:var(--t-62);font-size:14px;line-height:1.6}
-.mods__foot{margin:24px 0 0;color:var(--t-70);max-width:74ch;line-height:1.7}
-@media (max-width:980px){.mods{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.mods{grid-template-columns:1fr}}
-
-/* ---------- aanbod-/conversieblokken ---------- */
-.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.offer{
-  border:1px solid var(--fl-line);border-radius:var(--r-lg);background:var(--surface-1);
-  padding:34px 34px 32px;display:flex;flex-direction:column;
-}
-.offer--lead{border-color:var(--acc-line);background:linear-gradient(155deg,var(--acc-wash),var(--surface-1) 60%)}
-.offer h3{margin:0 0 12px;font-size:23px;letter-spacing:-.02em;color:#fff;line-height:1.2}
-.offer > p{margin:0 0 20px;color:var(--t-70);line-height:1.68}
-.ticks{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:11px}
-.ticks li{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;color:var(--t-80);font-size:15px;line-height:1.55}
-.ticks svg{width:18px;height:18px;margin-top:2px;color:var(--pink);flex:none}
-.offer__foot{margin:auto 0 0;padding-top:4px}
-.offer__fine{margin:12px 0 0;font-size:13px;color:var(--t-62)}
-@media (max-width:860px){.offer-grid{grid-template-columns:1fr}}
-
-/* ---------- rekenmachine ---------- */
-.calc{
-  display:grid;grid-template-columns:1.05fr .95fr;gap:0;
-  border:1px solid var(--acc-line);border-radius:var(--r-xl);overflow:hidden;
-}
-.calc__inputs{padding:34px 36px;display:flex;flex-direction:column;gap:22px}
-.calc__field label{
-  display:block;font-size:14px;color:var(--t-80);margin-bottom:9px;font-weight:500;
-}
-.calc__row{display:flex;align-items:center;gap:14px}
-.calc__field input[type="range"]{
-  flex:1;-webkit-appearance:none;appearance:none;height:3px;border-radius:2px;
-  background:rgba(255,255,255,.16);outline:none;
-}
-.calc__field input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance:none;appearance:none;width:17px;height:17px;border-radius:50%;
-  background:var(--pink);cursor:pointer;border:2px solid #fff;
-}
-.calc__field input[type="range"]::-moz-range-thumb{
-  width:15px;height:15px;border-radius:50%;background:var(--pink);cursor:pointer;border:2px solid #fff;
-}
-.calc__val{
-  font-family:var(--mono);font-size:15px;font-variant-numeric:tabular-nums;color:#fff;
-  min-width:76px;text-align:right;
-}
-.calc__out{
-  padding:34px 36px;background:linear-gradient(160deg,var(--acc-wash),rgba(6,15,38,.4));
-  border-left:1px solid var(--acc-line);display:flex;flex-direction:column;justify-content:center;
-}
-.calc__outlabel{font-size:14.5px;color:var(--t-70);margin:0 0 10px;line-height:1.55}
-.calc__amount{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
-  font-size:clamp(34px,4.6vw,52px);line-height:1;letter-spacing:-.03em;color:#fff;
-  font-variant-numeric:tabular-nums;margin:0;
-}
-.calc__sub{margin:12px 0 0;font-size:14px;color:var(--t-70);line-height:1.55}
-.calc__fine{margin:18px 0 0;font-size:12.5px;color:var(--t-62)}
-@media (max-width:860px){
-  .calc{grid-template-columns:1fr}
-  .calc__out{border-left:none;border-top:1px solid var(--acc-line)}
-}
-
-/* ---------- voor wie ---------- */
-.fit{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-.fit__col{padding:34px 44px 34px 0}
-.fit__col + .fit__col{padding:34px 0 34px 44px;border-left:1px solid var(--rule)}
-.fit h3{margin:0 0 20px;font-size:18px;color:#fff;letter-spacing:-.015em}
-.fit ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
-.fit li{display:grid;grid-template-columns:20px 1fr;gap:13px;align-items:start;font-size:15.2px;line-height:1.55}
-.fit svg{width:17px;height:17px;margin-top:3px;flex:none}
-.fit--yes li{color:var(--t-80)}
-.fit--yes svg{color:var(--pink)}
-.fit--no li{color:var(--t-62)}
-.fit--no svg{color:var(--slate)}
-.fit--no em{font-style:normal;color:var(--t-70)}
-@media (max-width:860px){
-  .fit{grid-template-columns:1fr}
-  .fit__col{padding:30px 0}
-  .fit__col + .fit__col{padding:30px 0;padding-left:0;border-left:none;border-top:1px solid var(--rule)}
-}
-
-/* ---------- accordeon ---------- */
-.acc{border-top:1px solid var(--rule)}
-.acc__item{border-bottom:1px solid var(--rule)}
-.acc__btn{
-  width:100%;background:none;border:0;cursor:pointer;text-align:left;
-  display:grid;grid-template-columns:1fr 28px;gap:20px;align-items:center;
-  padding:22px 0;color:#fff;font:inherit;font-size:17px;font-weight:600;line-height:1.4;
-  letter-spacing:-.012em;transition:color .25s ease;
-}
-.acc__btn:hover{color:var(--ice)}
-.acc__icon{position:relative;width:16px;height:16px;justify-self:end}
-.acc__icon::before,.acc__icon::after{
-  content:"";position:absolute;background:var(--pink);transition:transform .3s var(--ease-out),opacity .3s ease;
-}
-.acc__icon::before{top:50%;left:0;width:16px;height:1.5px;transform:translateY(-50%)}
-.acc__icon::after{left:50%;top:0;width:1.5px;height:16px;transform:translateX(-50%)}
-.acc__item.is-open .acc__icon::after{transform:translateX(-50%) scaleY(0);opacity:0}
-.acc__panel{overflow:hidden;height:0;transition:height .34s var(--ease-out)}
-.acc__inner{padding:0 0 24px;max-width:82ch}
-.acc__inner p{margin:0;color:var(--t-70);line-height:1.7;font-size:15.5px}
-
-/* ---------- compliance ---------- */
-.comply{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule)}
-.comply__row{
-  display:grid;grid-template-columns:270px 1fr;gap:32px;
-  padding:24px 0;border-bottom:1px solid var(--rule);
-}
-.comply__row h3{margin:0;font-size:16.5px;color:#fff;letter-spacing:-.012em}
-.comply__row p{margin:0;color:var(--t-70);line-height:1.65}
-@media (max-width:820px){.comply__row{grid-template-columns:1fr;gap:8px}}
-
-/* ---------- prijstabel ---------- */
-.ptable-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--r-md)}
-.ptable{width:100%;border-collapse:collapse;min-width:620px}
-.ptable th,.ptable td{text-align:left;padding:18px 24px;border-bottom:1px solid var(--rule);vertical-align:top}
-.ptable thead th{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ice);font-weight:600;background:rgba(255,255,255,.02);
-}
-.ptable tbody tr:last-child th,.ptable tbody tr:last-child td{border-bottom:0}
-.ptable tbody tr{transition:background-color .25s ease}
-.ptable tbody tr:hover{background:var(--acc-wash)}
-.ptable tbody th{font-weight:600;color:#fff;font-size:15.5px;line-height:1.45}
-.ptable tbody th em{display:block;font-style:normal;font-weight:400;color:var(--t-62);font-size:13.5px;margin-top:4px}
-.ptable td{font-family:var(--mono);font-size:13.5px;color:var(--t-80);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* Zichtbare plaatshouder: maakt expliciet dat hier nog een bedrag in moet,
-   in plaats van een half-af tabel die af lijkt. */
-.tbd{
-  display:inline-block;border:1px dashed var(--rule-strong);border-radius:4px;
-  padding:3px 10px;color:var(--muted);font-size:12.5px;
-}
-.ptable__foot{margin:22px 0 0;color:var(--t-70);line-height:1.7;max-width:80ch}
-.ptable__foot + .ptable__foot{margin-top:12px}
-
-/* ---------- proces ----------
-   Eigen, compacte variant: de .process-timeline uit flowlink.css laadt
-   deze pagina niet, en die hele stylesheet binnenhalen voor vijf stappen
-   is zwaarder dan het waard is. */
-.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--acc-line)}
-.proc__step{padding:26px 22px 0 0;position:relative}
-.proc__step + .proc__step{padding-left:22px;border-left:1px solid var(--rule)}
-.proc__step::before{
-  content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;
-  background:var(--pink);
-}
-.proc__step + .proc__step::before{left:22px}
-.proc__k{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ice);margin:0 0 8px;
-}
-.proc__step h3{margin:0 0 8px;font-size:17px;color:#fff;letter-spacing:-.015em}
-.proc__step p{margin:0;color:var(--t-70);font-size:14.2px;line-height:1.6}
-@media (max-width:980px){
-  .proc{grid-template-columns:1fr 1fr}
-  .proc__step{padding:26px 22px 22px 0}
-  .proc__step + .proc__step{padding-left:22px}
-}
-@media (max-width:600px){
-  .proc{grid-template-columns:1fr}
-  .proc__step,.proc__step + .proc__step{padding:22px 0 0 22px;border-left:1px solid var(--rule)}
-  .proc__step::before,.proc__step + .proc__step::before{left:-4px;top:26px}
-}
-
-/* ---------- slot ---------- */
-.closing__actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:34px}
-</style>
+<link rel="stylesheet" href="matchlink.css?v=2">
 </head>
 <body>
+
+<div class="mx-progress" aria-hidden="true"><span></span></div>
 
 <header class="nav">
   <div class="wide nav__inner">
@@ -395,299 +38,415 @@ body{
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero-grid" id="uzHero">
-  <canvas class="hero-grid__canvas" id="uzHeroGrid" aria-hidden="true"></canvas>
-  <div class="hero-grid__content">
+<section class="mx-hero" id="mxHero">
+  <canvas class="mx-hero__canvas" id="mxHeroGrid" aria-hidden="true"></canvas>
+  <div class="mx-hero__in">
     <p class="crumb"><a href="services.html">Onze services</a> / Uitzend &amp; staffing</p>
-    <h1 class="h-product">Elke aanvraag binnen minuten gematcht — uit kandidaten die je al in huis hebt</h1>
-    <p class="phero__sub">Automatisering van het matchingproces voor uitzendbureaus en flexorganisaties</p>
-    <p class="lead hero-grid__lead">Een aanvraag komt binnen en gaat langs mail, WhatsApp, Excel en één planner voordat er iemand staat. Ondertussen zit de kandidaat die perfect past ergens in je bestand, en vindt niemand hem.</p>
-    <p class="lead hero-grid__lead">Wij bouwen en beheren de laag die dat werk overneemt. Jouw planner wijst toe, of je kandidaten claimen diensten zelf in een app — of allebei. In het systeem dat je al hebt, of in een omgeving die we voor je bouwen.</p>
-    <div class="hero-grid__actions">
-      <a class="btn btn--primary" href="#quickscan">Doe de quickscan — 3 minuten →</a>
-      <a class="link-under" href="#tijdlijn">Bekijk hoe het werkt</a>
+    <h1>Van aanvraag naar plaatsing. <em>Zonder het handwerk ertussen.</em></h1>
+    <p class="mx-hero__sub">Je hoeft je ATS niet te vervangen en geen nieuwe werkwijze te leren. Wij automatiseren het stuk tussen aanvraag, matching en plaatsing — precies zover als jij wilt. En werkt je opdrachtgever met een portaal, dan <b>staat je voorstel erin via de API voordat een concurrent de mail heeft geopend.</b></p>
+
+    <ul class="mx-entry">
+      <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Werk je nog met Excel? <b>Dan bouwen we het fundament.</b></span></li>
+      <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Heb je al een ATS? <b>Dan koppelen we erop.</b></span></li>
+      <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Planners in de regie houden? <b>Dat kan.</b></span></li>
+      <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles automatiseren? <b>Dat kan ook.</b></span></li>
+    </ul>
+
+    <div class="mx-hero__actions">
+      <a class="btn btn--primary" href="#quickscan" data-magnetic>Ontdek wat er bij jouw bureau kan →</a>
+      <a class="link-under" href="#hoe">Bekijk hoe het werkt ↓</a>
     </div>
-    <p class="hero-note">Geen verkooppraatje. Je krijgt direct te zien welk scenario bij je past en wat stap één is.</p>
+
+    <!-- De keten: wat er tussen aanvraag en plaatsing gebeurt, als één
+         lijn. Komt verderop terug als bedienbaar spectrum. -->
+    <div class="mx-chain">
+      <p class="mx-chain__lbl">Wat wij automatiseren</p>
+      <div class="mx-chain__row">
+        <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Aanvraag</span><span class="mx-node__w">Binnenkomst</span></div>
+        <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Uitlezen</span><span class="mx-node__w is-ai">AI</span></div>
+        <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Matchen</span><span class="mx-node__w is-ai">AI</span></div>
+        <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Uitvragen</span><span class="mx-node__w is-ai">AI</span></div>
+        <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Bevestigen</span><span class="mx-node__w is-ai">AI</span></div>
+        <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Terugschrijven</span><span class="mx-node__w is-ai">ATS / portaal</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ================= WAAR HET MISGAAT ================= -->
-<section class="band band--tight">
+<!-- ================= HERKEN JE JEZELF ================= -->
+<section class="mx-band">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Waar het misgaat</p>
-      <h2 class="h-section">Twee verliezen, elke week opnieuw</h2>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Herken je jezelf?</p>
+      <h2 class="mx-h2">Elk bureau begint <em>op een andere plek</em></h2>
+      <p class="mx-lead">Maar het probleem zit bijna altijd op dezelfde plek: tussen aanvraag en plaatsing gebeurt te veel met de hand. Kies de route die het dichtst bij je komt.</p>
     </div>
-    <div class="loss-grid reveal">
-      <div class="loss">
-        <h3>De klok begint bij de aanvraag</h3>
-        <p>Een opdrachtgever heeft morgen vier mensen nodig en stuurt dezelfde vraag naar drie bureaus. Wie als eerste een bevestigd team teruglegt, heeft de opdracht. Dat is geen matchingprobleem — dat is een doorlooptijdprobleem.</p>
-      </div>
-      <div class="loss">
-        <h3>En je bestand is groter dan je denkt</h3>
-        <p>Je planners plaatsen uit hun hoofd. Dat is geen luiheid, dat is de enige manier om binnen tien minuten iemand te vinden. Het gevolg: dezelfde vertrouwde twintig namen draaien je diensten, en de rest van je bestand bestaat in de praktijk niet. Voor die kandidaten heb je wél betaald — in werving, in intake, in onboarding.</p>
-      </div>
-      <p class="loss__synth">Beide problemen hebben dezelfde oorzaak: <strong>matchen zit in de hoofden van mensen in plaats van in je proces.</strong> En dezelfde oplossing: maak expliciet waarop je matcht, en laat een machine je hele bestand afgaan in plaats van iemands geheugen.</p>
+
+    <div class="mx-routes">
+      <article class="mx-route mx-rev" id="bouw">
+        <span class="mx-route__n">Route 01 — Bouw</span>
+        <h3>Je werkt nog met Excel</h3>
+        <p class="mx-route__q">"Mijn bestand zit in Excel, in mailboxen en in de hoofden van mijn planners."</p>
+        <p>Dat is geen slecht systeem — dat is nog géén systeem, en dat is een voorsprong. Je zit niet vast aan een pakket dat vijf jaar geleden door iemand anders is ingericht en je hoeft niets af te schrijven.</p>
+        <p>Wij maken van je bestaande bestand een werkende matchingomgeving: kandidaten, beschikbaarheid, certificaten, vaardigheden, voorkeuren en uitzonderingen gestructureerd. Daarboven komt de matching. Je hoeft geen ATS-traject te starten om te beginnen.</p>
+        <p class="mx-route__get"><b>Wat je krijgt</b>Eigen omgeving + matching + automatische uitvraag, in één traject.</p>
+      </article>
+
+      <article class="mx-route mx-rev" data-d="1" id="verbind">
+        <span class="mx-route__n">Route 02 — Verbind</span>
+        <h3>Je software staat er al</h3>
+        <p class="mx-route__q">"Mijn ATS staat er. Maar mijn planners zoeken, bellen, appen en typen nog steeds over."</p>
+        <p>Mooi. Dan vervangen we niets. Je bestaande software blijft het systeem van record — daar hoort je administratie, je contracten en je compliance ook thuis.</p>
+        <p>Wij koppelen met je ATS, databases, mailboxen en opdrachtgeversportalen en automatiseren de handelingen tussen aanvraag, match, uitvraag en plaatsing. Het resultaat gaat terug naar het systeem dat je al gebruikt.</p>
+        <p class="mx-route__get"><b>Wat je krijgt</b>Koppelingen + matching op jouw regels + communicatiestroom.</p>
+      </article>
+
+      <article class="mx-route mx-rev" data-d="2" id="automatiseer">
+        <span class="mx-route__n">Route 03 — Automatiseer</span>
+        <h3>Je wilt dat het werk gewoon gedaan wordt</h3>
+        <p class="mx-route__q">"Ik hoef geen nieuwe software. Ik wil dat aanvragen automatisch worden opgepakt."</p>
+        <p>Dan gaat het verder dan matchen. De AI matcht volgens jouw regels, benadert kandidaten, verwerkt de reacties, volgt op, stelt het team samen en communiceert terug naar de opdrachtgever.</p>
+        <p>Je planner krijgt geen lijst van honderd kandidaten. Die krijgt: <em>"dit zijn de drie beste matches, dit is waarom, zal ik ze uitzetten?"</em> Of, als je dat wilt: <em>"deze aanvraag is ingevuld."</em></p>
+        <p class="mx-route__get"><b>Wat je krijgt</b>De volledige keten, met de planner op de uitzonderingen.</p>
+      </article>
     </div>
+    <p class="mx-fine">Weet je niet welke route past? Verreweg het meest gegeven antwoord — en precies wat de quickscan in drie minuten voor je bepaalt.</p>
   </div>
 </section>
 
-<!-- ================= TIJDLIJN ================= -->
-<section class="band band--tight" id="tijdlijn">
+<!-- ================= HET PROBLEEM ================= -->
+<section class="mx-band mx-band--alt">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">De tijdlijn</p>
-      <h2 class="h-section">Zo ziet dat verschil eruit op één dag</h2>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Het probleem</p>
+      <h2 class="mx-h2">Je ATS is niet het probleem. <em>Het werk eromheen wel.</em></h2>
+      <p class="mx-lead">Er komt een aanvraag binnen. Dit gebeurt er dan, elke keer opnieuw:</p>
     </div>
 
-    <div class="clock reveal">
-      <div class="track">
-        <div class="track__head">
-          <span class="track__name">Zoals het nu gaat</span>
-          <span class="track__badge">Ruim 5 uur</span>
-        </div>
-        <p class="track__total">Doorlooptijd over <b>vier systemen</b> en <b>één planner</b>.</p>
-        <ul class="steps">
-          <li><span class="time">09:12</span><p>Aanvraag komt binnen per mail. En per WhatsApp. En telefonisch nagebeld.</p></li>
-          <li><span class="time">09:40</span><p>Planner leest hem en tikt hem over in het planbestand.</p></li>
-          <li><span class="time">11:05</span><p>Zoeken wie beschikbaar is, bellen, appen, wachten op antwoord.</p></li>
-          <li><span class="time">13:20</span><p>Twee reacties, één afzegging. Opnieuw zoeken.</p></li>
-          <li><span class="time">14:40</span><p class="kill">Bevestiging naar de opdrachtgever. Die heeft er om 11:00 al iemand op gezet.</p></li>
+    <ul class="mx-hands mx-rev">
+      <li><span>01</span>Iemand leest de aanvraag</li>
+      <li><span>02</span>Iemand typt hem over</li>
+      <li><span>03</span>Iemand zoekt kandidaten</li>
+      <li><span>04</span>Iemand controleert beschikbaarheid</li>
+      <li><span>05</span>Iemand checkt certificaten</li>
+      <li><span>06</span>Iemand belt kandidaat A</li>
+      <li><span>07</span>Iemand appt kandidaat B</li>
+      <li><span>08</span>Iemand belt terug</li>
+      <li><span>09</span>Iemand verwerkt de reactie</li>
+      <li><span>10</span>Iemand stuurt de bevestiging</li>
+      <li><span>11</span>Iemand zet alles terug in het systeem</li>
+      <li><span>12</span>En morgen weer</li>
+    </ul>
+
+    <p class="mx-verdict">Je software registreert het proces. Je planner voert het uit. Precies dát stuk automatiseren wij.</p>
+  </div>
+</section>
+
+<!-- ================= DE LAAG ================= -->
+<section class="mx-band" id="hoe">
+  <div class="wide">
+    <div class="mx-head mx-head--wide mx-rev">
+      <p class="mx-eyebrow">Wat wij bouwen</p>
+      <h2 class="mx-h2">Eén matchinglaag, <em>bovenop wat je al hebt</em></h2>
+      <p class="mx-lead">Wij staan niet tegenover je ATS. Wij zitten ertussen.</p>
+    </div>
+
+    <div class="mx-layer-vis mx-rev">
+      <div class="mx-layer-vis__top">
+        <p class="mx-layer-vis__k">Jouw bestaande wereld</p>
+        <ul class="mx-syslist">
+          <li>Excel</li><li>ATS</li><li>Mail</li><li>WhatsApp</li><li>Opdrachtgeversportalen</li><li>Urenregistratie</li>
         </ul>
       </div>
-
-      <div class="track track--new">
-        <div class="track__head">
-          <span class="track__name">Met MatchLink</span>
-          <span class="track__badge">4 minuten</span>
-        </div>
-        <p class="track__total">Je planner in de <b>regie</b> in plaats van in de uitvoering.</p>
-        <ul class="steps">
-          <li><span class="time">09:12</span><p>Aanvraag wordt automatisch uitgelezen en gestructureerd, ongeacht het kanaal.</p></li>
-          <li><span class="time">09:12</span><p>Match op beschikbaarheid, skills, certificaten, locatie, historie en de voorkeuren van de opdrachtgever — over je hele bestand, niet over de twintig namen die je planner uit z'n hoofd kent.</p></li>
-          <li><span class="time">09:13</span><p>De dienst gaat uit naar de beste matches, via het kanaal waar kandidaten wél op reageren.</p></li>
-          <li><span class="time">09:16</span><p>Bevestigingen komen binnen, toewijzing wordt vastgelegd in je eigen systeem.</p></li>
-          <li><span class="time">09:16</span><p>De opdrachtgever heeft antwoord. Jij als eerste.</p></li>
+      <div class="mx-layer-vis__mid">
+        <h3>Matching &amp; automatisering</h3>
+        <p>AI + jouw regels</p>
+      </div>
+      <div class="mx-layer-vis__bot">
+        <p class="mx-layer-vis__k">Geen zwarte doos — jij bepaalt</p>
+        <ul class="mx-rulebox">
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>welke eisen hard zijn en dus uitsluiten</span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>welke voorkeuren meewegen, en hoe zwaar</span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>welke kandidaten niet mogen worden voorgesteld</span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wanneer AI zelfstandig mag handelen</span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wanneer een planner moet goedkeuren</span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>welke communicatie automatisch mag</span></li>
         </ul>
       </div>
     </div>
-    <p class="clock__note">Illustratie van het proces, geen resultaatgarantie. Hoe snel het bij jou wordt, hangt af van je kandidatenbestand, je kanalen en de kwaliteit van je data — precies wat de quickscan vaststelt.</p>
+    <p class="mx-fine">De AI werkt volgens jouw bureau. Niet andersom.</p>
   </div>
 </section>
 
-<!-- ================= WAAR STA JE NU ================= -->
-<section class="band band--tight">
+<!-- ================= HET SPECTRUM ================= -->
+<section class="mx-band mx-band--alt">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Waar sta je nu?</p>
-      <h2 class="h-section">Geen bureau begint op hetzelfde punt</h2>
-      <p class="lead">Wat stap één is, hangt af van wat je vandaag al hebt staan.</p>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Hoeveel wil jij automatiseren?</p>
+      <h2 class="mx-h2">Welk deel van je matchingproces <em>wil je zelf blijven doen?</em></h2>
+      <p class="mx-lead">Dezelfde keten als hierboven, nu bedienbaar. Kies je niveau en zie welke stappen van hand wisselen.</p>
     </div>
-    <div class="sit-grid reveal reveal--group" data-stagger>
-      <article class="sit">
-        <h3 class="sit__q">"Alles zit in Excel en in de hoofden van m'n planners"</h3>
-        <p>Je hebt geen slecht systeem. Je hebt nog geen systeem — en dat is een voorsprong. Je zit niet vast in een pakket dat vijf jaar geleden door iemand anders is ingericht. Wij bouwen het fundament: één omgeving waarin je kandidaten, competenties, certificaten, beschikbaarheid en jouw eigen prioriteiten samenkomen. Geen ATS, geen urenregistratie — alleen wat nodig is om binnen minuten de juiste persoon te vinden.</p>
-      </article>
-      <article class="sit">
-        <h3 class="sit__q">"Ik heb software, maar zoeken werkt niet en de helft van de velden is leeg"</h3>
-        <p>Het systeem is niet je probleem, de data erin wel. Dubbele kandidaten, verlopen certificaten, beschikbaarheid uit 2023, competenties die in een vrij tekstveld staan. Automatisering op rommelige data levert rommelige uitkomsten — dus opschonen is bij jou stap één, geen bijzaak. Daarna de matchinglaag erbovenop, in jouw eigen systeem.</p>
-      </article>
-      <article class="sit">
-        <h3 class="sit__q">"Onze data is op orde, het matchen is nog handwerk"</h3>
-        <p>Dan bouwen we alleen wat ontbreekt: de koppelingen, de matching met jouw regels en wegingen, en de automatische uitvraag en bevestiging. Teruggeschreven naar je eigen systeem, zodat je administratie klopt zonder dat iemand iets overtikt.</p>
-      </article>
-    </div>
-    <p class="clock__note">Herken je jezelf in meer dan één, of in geen enkele? Dat komt vaker voor dan je denkt. <a class="link-under" href="#quickscan">Doe de quickscan →</a></p>
-  </div>
-</section>
 
-<!-- ================= WAAR WIL JE HEEN ================= -->
-<section class="band band--tight">
-  <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">En waar wil je heen?</p>
-      <h2 class="h-section">Planner wijst toe, kandidaat claimt zelf, of iets ertussenin</h2>
-      <p class="lead">Dit staat los van waar je nu staat. Ook als je vandaag nog in Excel werkt, kun je hier naartoe bouwen.</p>
-    </div>
-    <div class="models reveal reveal--group" data-stagger>
-      <article class="model">
-        <h3>Planner in de regie</h3>
-        <p>De aanvraag komt binnen, het systeem levert een gerangschikte shortlist, jouw planner beslist wie hij benadert. Uitvraag, herinnering en bevestiging gaan automatisch. Past bij je als opdrachtgevers kritisch zijn op wie er komt, of als je team het simpelweg zo wil houden.</p>
-      </article>
-      <article class="model model--rec">
-        <span class="model__tag">Meestal ons advies</span>
-        <h3>Getrapt aanbieden</h3>
-        <p>De matching bepaalt de rangorde en de dienst wordt getrapt aangeboden: eerst 30 minuten exclusief aan de beste matches, daarna aan de volgende groep, en pas als laatste breed open. Reageert er niemand, dan krijgt je planner een seintje. Je houdt de snelheid van self-service én de kwaliteit van gerichte matching.</p>
-      </article>
-      <article class="model">
-        <h3>Kandidaten claimen zelf</h3>
-        <p>Je kandidaten zien in een app of webomgeving welke diensten voor hen openstaan en schrijven zichzelf in. Bevestiging gaat direct door, toewijzing wordt vastgelegd. Past bij je als je veel korte, terugkerende diensten draait en een grote, flexibele pool hebt.</p>
-      </article>
-      <article class="model model--quiet">
-        <h3>Nog niet besloten</h3>
-        <p>Verreweg het meest gegeven antwoord. En geen probleem — zie hieronder.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= BOUW NU, BESLIS LATER ================= -->
-<section class="band band--tight">
-  <div class="wide">
-    <div class="statement reveal">
-      <p class="klabel">Je hoeft nu niet te kiezen</p>
-      <h2 class="h-section">Bouw nu, beslis later</h2>
-      <p>De meeste bureaus die wij spreken zitten er zo in: self-service klinkt goed, maar we weten niet of onze kandidaten het gebruiken, en we willen niet iets bouwen waar we over een jaar spijt van hebben.</p>
-      <span class="statement__kicker">De matching en de manier waarop je hem bedient zijn twee verschillende dingen.</span>
-      <p>Wij bouwen de matching zo dat je planner er vandaag mee werkt en je kandidaten er morgen zelf op kunnen. Dezelfde laag, dezelfde regels, dezelfde data — alleen wie de uitkomst te zien krijgt verschilt. Besluit je over een jaar dat kandidaten diensten zelf mogen claimen, dan zetten we daar een schil op. Niets opnieuw bouwen, niets weggooien.</p>
-      <p><strong>Zo is de keuze die je vandaag maakt geen keuze waar je aan vastzit.</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= EERST MATCHING, DAN APP ================= -->
-<section class="band band--tight">
-  <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Overweeg je een eigen kandidatenapp?</p>
-      <h2 class="h-section">Bouw eerst de matching. Dan pas de app.</h2>
-    </div>
-    <div class="split2 reveal">
-      <div class="panel">
-        <h3>Waarom dit advies ons werk kost</h3>
-        <p>Dit advies kost ons op korte termijn werk, en we geven het toch — omdat we zien wat er anders gebeurt. Een app waarin kandidaten diensten zien en zichzelf inschrijven is bouwtechnisch niet ingewikkeld. Elke app-bouwer kan hem maken. Het moeilijke deel is de vraag ervóór: wie krijgt welke dienst te zien, en wanneer?</p>
+    <div class="mx-spec mx-rev">
+      <div class="mx-spec__tabs" role="tablist">
+        <button class="mx-lvl" role="tab" aria-selected="false" data-lvl="1" type="button">
+          <span class="mx-lvl__k">Niveau 01</span>
+          <span class="mx-lvl__t">AI ondersteunt</span>
+        </button>
+        <button class="mx-lvl is-on" role="tab" aria-selected="true" data-lvl="2" type="button">
+          <span class="mx-lvl__k">Niveau 02</span>
+          <span class="mx-lvl__t">AI werkt, planner controleert</span>
+        </button>
+        <button class="mx-lvl" role="tab" aria-selected="false" data-lvl="3" type="button">
+          <span class="mx-lvl__k">Niveau 03</span>
+          <span class="mx-lvl__t">AI handelt af</span>
+        </button>
       </div>
-      <div class="panel">
-        <h3>Wat er gebeurt als je die vraag overslaat</h3>
-        <p>Dan bouw je in de praktijk wie-het-eerst-klikt. En dat levert je niet de beste kandidaat, maar degene die het snelst zijn telefoon pakt. Met alle gevolgen: mensen op diensten waarvoor ze het papiertje niet hebben, dubbele boekingen, no-shows, en een opdrachtgever die belt met de vraag wie je in vredesnaam hebt gestuurd.</p>
-      </div>
-      <div class="split2__foot">
-        <p>Bij ons is een dienst alleen zichtbaar voor kandidaten die hem daadwerkelijk mogen draaien. Certificaten geldig, beschikbaar, binnen de urennorm, geen dubbele boeking. Dat is geen extra feature — dat is de laag die self-service veilig maakt.</p>
-        <div class="notlist">
-          <b>Heb je al offertes liggen voor een kandidatenapp?</b> Leg ze naast onze quickscan. Als daar geen matchinglaag in zit, weet je nu welke vraag je moet stellen.
+      <div class="mx-spec__body">
+        <p class="mx-spec__say"></p>
+        <div class="mx-chain">
+          <div class="mx-chain__row">
+            <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Aanvraag</span><span class="mx-node__w">Binnenkomst</span></div>
+            <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Uitlezen</span><span class="mx-node__w">AI</span></div>
+            <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Matchen</span><span class="mx-node__w">AI</span></div>
+            <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Uitvragen</span><span class="mx-node__w">AI</span></div>
+            <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Bevestigen</span><span class="mx-node__w">AI</span></div>
+            <div class="mx-node"><span class="mx-node__dot" aria-hidden="true"></span><span class="mx-node__t">Terugschrijven</span><span class="mx-node__w">AI</span></div>
+          </div>
         </div>
-        <p style="margin-top:22px"><a class="btn btn--primary" href="#quickscan">Doe de quickscan →</a></p>
+        <p class="mx-spec__foot"><b>Je hoeft niet met niveau 3 te beginnen.</b> De meeste bureaus starten op 1 of 2 en schuiven op zodra ze zien dat de matching klopt. Dezelfde laag, andere instelling — geen herbouw.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= WIJ VERVANGEN NIETS ================= -->
-<section class="band band--tight">
+<!-- ================= JOUW REGELS ================= -->
+<section class="mx-band">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Positionering</p>
-      <h2 class="h-section">Wij vervangen niets. En als er niets is, bouwen we het.</h2>
+    <div class="mx-head mx-head--wide mx-rev">
+      <p class="mx-eyebrow">"Maar wij werken anders"</p>
+      <h2 class="mx-h2">Je planner heeft regels die <em>nergens in je software staan</em></h2>
     </div>
-    <div class="split2 reveal">
-      <div class="panel">
-        <h3>Heb je al systemen?</h3>
-        <p>AFAS, je ATS, je urenregistratie: die zijn gebouwd voor administratie, contracten en compliance. Ze leggen vast wat er is gebeurd. Ze zijn er niet voor beslissingen die binnen twee minuten moeten vallen. Jouw systemen blijven de bron van waarheid — wij lezen eruit en schrijven erin.</p>
+
+    <div class="mx-rules mx-rev">
+      <div class="mx-rules__l">
+        <p class="mx-rules__k">Wat er nu in zijn hoofd zit</p>
+        <ul class="mx-quotes">
+          <li>"Deze kandidaat komt niet meer bij die opdrachtgever, sinds dat incident."</li>
+          <li>"Zijn VCA verloopt over drie weken — niet meer inplannen op diensten in december."</li>
+          <li>"Zij mag maximaal twaalf uur per week in verband met haar uitkering."</li>
+          <li>"Hij is zeventien, dus geen nachtdiensten en niet achter die machine."</li>
+          <li>"Die twee moet je niet samen op een dienst zetten."</li>
+          <li>"Zij rijdt wel veertig minuten, maar alleen als de dienst acht uur of langer is."</li>
+          <li>"Deze krijgt altijd voorrang bij die klant, dat is afgesproken."</li>
+        </ul>
       </div>
-      <div class="panel">
-        <h3>Heb je die nog niet?</h3>
-        <p>Dan bouwen we geen ATS en verkopen we je geen pakket. Dan bouwen we alleen de laag die beslist, met precies de velden die in jouw proces voorkomen. Je kunt er later altijd een ATS naast zetten; de laag blijft werken.</p>
+      <div class="mx-rules__r">
+        <p class="mx-rules__k">Wat het wordt</p>
+        <p>Precies dit is waarom je planner onmisbaar is — en precies waarom het misgaat zodra hij op vakantie is of het te druk wordt. <strong>Wat vandaag in het hoofd van je planner zit, wordt een regel in het systeem.</strong></p>
+        <p>Harde eisen worden altijd afgedwongen: een kandidaat zonder geldig certificaat krijgt de dienst domweg niet te zien. Zachte voorkeuren wegen mee volgens jouw wegingen. Je mensen grijpen alleen nog in waar het echt nodig is, en zien meteen waaróm iemand bovenaan staat.</p>
+        <p class="mx-trust"><b>Geen zwarte doos.</b> Bij elke voorgestelde kandidaat staat de reden. Bruikbaar richting je opdrachtgever, en bruikbaar als onderbouwing richting de documentatieplicht uit de EU AI Act. Je data blijft in jouw omgeving, je kandidaten blijven van jou.</p>
       </div>
-      <div class="split2__foot">
-        <p>Welk systeem je ook gebruikt: wij bouwen de koppeling. Heeft je pakket geen bruikbare API, dan bouwen we de laag eromheen. Is het pakket écht een blokkade, dan zeggen we dat — en bouwen we het alternatief.</p>
-        <div class="notlist">
-          <b>En wat we níet zijn:</b> geen ATS, geen urenregistratie, geen platform met een eigen kandidatenpool. Jouw kandidaten blijven van jou.
+    </div>
+  </div>
+</section>
+
+<!-- ================= SYSTEMEN ================= -->
+<section class="mx-band mx-band--alt">
+  <div class="wide">
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Waar we op koppelen</p>
+      <h2 class="mx-h2">Je investering in je huidige software <em>blijft staan</em></h2>
+      <p class="mx-lead">Werkt je opdrachtgever met een portaal, dan gaat je reactie er via de API in terwijl een concurrent de mail nog moet openen. Dat is het verschil tussen wél en niet gegund worden.</p>
+    </div>
+
+    <div class="mx-stack mx-rev">
+      <div class="mx-stack__g">
+        <div class="mx-stack__c">
+          <h3>Opdrachtgeversportalen</h3>
+          <ul class="mx-tags">
+            <li class="is-todo">[ vul de portalen in die je écht koppelt ]</li>
+          </ul>
+        </div>
+        <div class="mx-stack__c">
+          <h3>ATS &amp; backoffice</h3>
+          <ul class="mx-tags">
+            <li class="is-todo">[ vul de systemen in die je écht koppelt ]</li>
+          </ul>
         </div>
       </div>
+      <p class="mx-fine">Werkt een portaal zonder bruikbare API? Dan koppelen we alsnog — via de route die dat portaal wél toelaat.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= DRIE LAGEN ================= -->
-<section class="band band--tight">
+<!-- ================= VOOR EN NA ================= -->
+<section class="mx-band">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Hoe het werkt</p>
-      <h2 class="h-section">Drie lagen, één keten</h2>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Wat er verandert</p>
+      <h2 class="mx-h2">Van uitvoerend werk naar <em>beslissingen en uitzonderingen</em></h2>
     </div>
-    <div class="layers reveal">
-      <div class="layer-row">
-        <span class="layer-row__n">01</span>
-        <h3>Input</h3>
-        <p>Aanvragen komen binnen via mail, WhatsApp, portalen of telefoon. Wij lezen ze uit en zetten ze om naar één gestructureerd formaat, zodat er niets meer handmatig wordt overgetikt.</p>
-      </div>
-      <div class="layer-row">
-        <span class="layer-row__n">02</span>
-        <h3>Beslissing</h3>
-        <p>Matching op beschikbaarheid, skills, certificaten, locatie, reistijd, historie en de voorkeuren van de opdrachtgever. Jij bepaalt de regels en het gewicht; het systeem past ze consequent toe op je hele bestand, ook op vrijdagmiddag.</p>
-      </div>
-      <div class="layer-row">
-        <span class="layer-row__n">03</span>
-        <h3>Uitvoering</h3>
-        <p>Uitvraag, herinnering, bevestiging en toewijzing gaan automatisch, of via de app waarin kandidaten zelf claimen. Alles wordt teruggeschreven naar je eigen systeem en gelogd, zodat je achteraf ziet wat er is gebeurd en waarom.</p>
-      </div>
+
+    <div class="mx-ba mx-rev">
+      <div class="mx-ba__h"><span>Handeling</span><span>Vandaag</span><span>Met de matchinglaag</span></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Aanvraag lezen</div><div class="mx-ba__now">Planner leest en interpreteert</div><div class="mx-ba__new"><b>Automatisch uitgelezen</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Aanvraag vastleggen</div><div class="mx-ba__now">Overtypen in het planbestand</div><div class="mx-ba__new"><b>Vervalt</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Kandidaten zoeken</div><div class="mx-ba__now">Uit het hoofd, of filteren tot je iets vindt</div><div class="mx-ba__new"><b>Volledig bestand getoetst</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Beschikbaarheid checken</div><div class="mx-ba__now">Bellen en navragen</div><div class="mx-ba__new"><b>Automatisch</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Certificaten controleren</div><div class="mx-ba__now">Handmatig, of het wordt vergeten</div><div class="mx-ba__new"><b>Automatisch, vóór de match</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Kandidaten benaderen</div><div class="mx-ba__now">Zes tot tien keer bellen en appen</div><div class="mx-ba__new"><b>Automatische uitvraag</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Nabellen wie niet reageert</div><div class="mx-ba__now">Als er tijd voor is</div><div class="mx-ba__new"><b>Herinnering loopt vanzelf</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Reacties verzamelen</div><div class="mx-ba__now">Doorspitten van losse berichten</div><div class="mx-ba__new"><b>Automatisch verwerkt</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Bevestiging opdrachtgever</div><div class="mx-ba__now">Mail, als je eraan denkt</div><div class="mx-ba__new"><b>Automatisch, of via de portaal-API</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Terugzetten in het systeem</div><div class="mx-ba__now">Overtypen, achteraf</div><div class="mx-ba__new"><b>Automatisch teruggeschreven</b></div></div>
+      <div class="mx-ba__r"><div class="mx-ba__k">Beoordelen en beslissen</div><div class="mx-ba__now">Wat overblijft na al het bovenstaande</div><div class="mx-ba__new"><b>Waar je planner nu zijn tijd aan besteedt</b></div></div>
     </div>
+
+    <p class="mx-verdict">De planner die je nu zoekt, hoef je misschien niet aan te nemen.</p>
+    <p class="mx-fine">Dat is geen belofte over ontslag — het is waar de tijd naartoe gaat. Je planner stopt met zoeken en gaat beoordelen: precies het deel waarvoor je hem hebt aangenomen. Hoeveel dat bij jou scheelt, is een meting, geen aanname. Zie hieronder.</p>
   </div>
 </section>
 
-<!-- ================= WAT WE KUNNEN BOUWEN ================= -->
-<section class="band band--tight">
+<!-- ================= ÉÉN DAG, TWEE VERSIES ================= -->
+<section class="mx-band mx-band--alt">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Wat we kunnen bouwen</p>
-      <h2 class="h-section">Dertien onderdelen. Jij krijgt er meestal drie tot vijf.</h2>
-      <p class="lead">Dit is het volledige palet. Wat jij nodig hebt volgt uit de quickscan — we bouwen nooit meer dan dat.</p>
+    <div class="mx-head mx-head--wide mx-rev">
+      <p class="mx-eyebrow">Eén dag, twee versies</p>
+      <h2 class="mx-h2">Wie als eerste een bevestigd team teruglegt, <em>heeft de opdracht</em></h2>
+      <p class="mx-lead">Drie bureaus krijgen dezelfde aanvraag. Beide sporen hieronder staan op dezelfde tijdas — dat de onderste balk zo klein is, is het hele punt.</p>
     </div>
-    <div class="mods reveal">
-      <article class="mod"><span class="mod__n">01</span><h3>Aanvraagintake</h3><p>Aanvragen uitlezen uit mail, WhatsApp, opdrachtgeversportalen of telefoon, omgezet naar één gestructureerd formaat.</p></article>
-      <article class="mod"><span class="mod__n">02</span><h3>Kandidaatdata op orde</h3><p>Dubbelen samenvoegen, ontbrekende velden vullen, cv's uitlezen, competenties uit vrije tekst omzetten naar iets waarop je kunt filteren.</p></article>
-      <article class="mod"><span class="mod__n">03</span><h3>Competentie- en certificaatmodel</h3><p>Vastleggen wat je kandidaten kunnen en mogen, inclusief verloopdata. Verloopt een certificaat, dan valt die kandidaat automatisch uit de match.</p></article>
-      <article class="mod"><span class="mod__n">04</span><h3>Beschikbaarheid</h3><p>Actueel houden per dag of per dienst. Kandidaten geven het zelf door in plaats van dat een planner het navraagt.</p></article>
-      <article class="mod"><span class="mod__n">05</span><h3>Matching-engine</h3><p>Jouw regels en wegingen, expliciet gemaakt. Harde eisen die uitsluiten, zachte voorkeuren die de rangorde bepalen, en de uitzonderingen — die ene opdrachtgever die altijd dezelfde vier mensen wil.</p></article>
-      <article class="mod"><span class="mod__n">06</span><h3>Distributie</h3><p>Wie krijgt de dienst te zien en wanneer. Direct toewijzen, getrapt aanbieden of breed publiceren.</p></article>
-      <article class="mod"><span class="mod__n">07</span><h3>Kandidaat-app of portaal</h3><p>Diensten zien en claimen, beschikbaarheid doorgeven, documenten uploaden, gegevens bijwerken.</p></article>
-      <article class="mod"><span class="mod__n">08</span><h3>Communicatie</h3><p>Uitvraag, herinnering en bevestiging via WhatsApp, sms, push of mail. Op het kanaal waar ze daadwerkelijk reageren.</p></article>
-      <article class="mod"><span class="mod__n">09</span><h3>Compliance-checks</h3><p>Geldig ID en certificaten, leeftijdsgrenzen, urennormen, geen dubbele boekingen. Automatisch vóór de match, niet achteraf.</p></article>
-      <article class="mod"><span class="mod__n">10</span><h3>Toewijzing en terugschrijven</h3><p>Bevestigingen vastgelegd in jouw systeem, zodat je administratie klopt zonder overtikwerk.</p></article>
-      <article class="mod"><span class="mod__n">11</span><h3>Opdrachtgeversportaal</h3><p>Je klant dient zelf aanvragen in, ziet de status en bevestigt. Scheelt jou het heen-en-weer per mail.</p></article>
-      <article class="mod"><span class="mod__n">12</span><h3>Uren en terugkoppeling</h3><p>Gewerkte uren terug naar je urenregistratie, en de uitkomst van elke plaatsing terug de matching in, zodat die scherper wordt.</p></article>
-      <article class="mod"><span class="mod__n">13</span><h3>Overzicht en beheer</h3><p>Doorlooptijd, gemiste aanvragen, bezettingsgraad, benutting van je bestand. Plus monitoring en onderhoud van alles wat draait.</p></article>
+
+    <div class="mx-race mx-rev">
+      <div class="mx-race__row">
+        <div class="mx-race__top">
+          <span class="mx-race__name">Zoals het nu gaat</span>
+          <span class="mx-race__dur">5 uur 28 min</span>
+          <span class="mx-race__meta">Vier systemen, één planner</span>
+        </div>
+        <div class="mx-track">
+          <div class="mx-fill" data-w="100"></div>
+          <div class="mx-pin" style="left:8.5%"><span>09:40</span></div>
+          <div class="mx-pin" style="left:34.5%"><span>11:05</span></div>
+          <div class="mx-pin" style="left:75.6%"><span>13:20</span></div>
+          <div class="mx-pin" style="left:100%"><span>14:40</span></div>
+        </div>
+      </div>
+      <div class="mx-race__row mx-race__row--new">
+        <div class="mx-race__top">
+          <span class="mx-race__name">Met de matchinglaag</span>
+          <span class="mx-race__dur">4 min</span>
+          <span class="mx-race__meta">Planner in de regie, niet in de uitvoering</span>
+        </div>
+        <div class="mx-track">
+          <div class="mx-fill" data-w="1.2"></div>
+          <span class="mx-race__callout">Dit streepje is dezelfde opdracht</span>
+        </div>
+      </div>
+      <div class="mx-race__verdict">
+        <p><b>Dezelfde aanvraag, hetzelfde bestand.</b> Het verschil zit in wie het zoekwerk doet.</p>
+        <span class="mx-race__delta">Om 09:16 sta jij erin</span>
+      </div>
     </div>
-    <p class="mods__foot">Bijna niemand heeft dit allemaal nodig, en niemand krijgt het in één keer. We beginnen met de één of twee onderdelen die vandaag het meeste kosten, en breiden uit als die draaien.</p>
+
+    <!-- De keten in de praktijk: één aanvraag, van binnenkomst tot rond. -->
+    <div class="mx-demo mx-rev" style="margin-top:34px;max-width:640px">
+      <div class="mx-demo__bar">
+        <span class="mx-demo__dot" aria-hidden="true"></span>
+        <span class="mx-demo__title">Aanvraag · live</span>
+        <span class="mx-demo__tag">Voorbeeld</span>
+      </div>
+      <div class="mx-demo__body">
+        <div class="mx-step">
+          <span class="mx-step__t">09:12:04</span>
+          <span class="mx-step__c"><b>Aanvraag binnen via WhatsApp</b><span>4 × magazijnmedewerker, morgen 06:00 — Rotterdam</span></span>
+        </div>
+        <div class="mx-step">
+          <span class="mx-step__t">09:12:07</span>
+          <span class="mx-step__c"><b>Uitgelezen en gestructureerd</b><span>Aantal, functie, datum, locatie en certificaateis herkend</span></span>
+        </div>
+        <div class="mx-step">
+          <span class="mx-step__t">09:12:11</span>
+          <span class="mx-step__c"><b>Hele bestand getoetst</b><span><i>1.847</i> kandidaten langs beschikbaarheid, certificaten en reistijd</span></span>
+        </div>
+        <div class="mx-step">
+          <span class="mx-step__t">09:13:02</span>
+          <span class="mx-step__c"><b>Uitgezet naar de beste matches</b><span>Top <i>6</i> benaderd via WhatsApp, 30 minuten exclusief</span></span>
+        </div>
+        <div class="mx-step">
+          <span class="mx-step__t">09:16:41</span>
+          <span class="mx-step__c"><b>Vier bevestigd — opdracht rond</b><span>Toewijzing teruggeschreven naar je eigen systeem</span></span>
+        </div>
+      </div>
+      <div class="mx-demo__foot">
+        <span class="mx-demo__elapsed">Verstreken <b>0:00</b></span>
+        <button class="mx-demo__replay" type="button">Opnieuw afspelen</button>
+      </div>
+    </div>
+
+    <p class="mx-fine">Illustratie van het proces, geen resultaatgarantie. Hoe snel het bij jou wordt, hangt af van je bestand, je kanalen en je datakwaliteit — precies wat we meten voordat we iets beloven.</p>
+  </div>
+</section>
+
+<!-- ================= MEET EERST ================= -->
+<section class="mx-band">
+  <div class="wide">
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Wat het bij jou oplevert</p>
+      <h2 class="mx-h2">Wij beginnen niet met een belofte. <em>We beginnen met meten.</em></h2>
+    </div>
+
+    <div class="mx-measure mx-rev">
+      <p>Je kunt op deze pagina een besparing verzinnen en die in een grote letter zetten. Dat doen we niet, want je gelooft het pas als het over jouw bureau gaat — en terecht.</p>
+      <p><strong>Dus pakken we één echte aanvraagstroom van je bureau en meten wat erin zit.</strong> Daarna laten we zien welk deel daarvan automatiseerbaar is, en wat dat concreet betekent.</p>
+      <ul class="mx-metrics">
+        <li><b>Volume</b>Hoeveel aanvragen er per week binnenkomen, en via welke kanalen</li>
+        <li><b>Handelingen</b>Hoeveel losse stappen er tussen aanvraag en plaatsing zitten</li>
+        <li><b>Doorlooptijd</b>Hoe lang een aanvraag er nu over doet, van binnenkomst tot bevestiging</li>
+        <li><b>Bereik</b>Hoeveel kandidaten je nu benadert, en hoeveel er in aanmerking kwamen</li>
+        <li><b>Uitzonderingen</b>Welke regels je planners toepassen die nergens vastliggen</li>
+      </ul>
+      <p style="margin-top:26px">Wat daaruit komt is geen brochure maar een cijfer over jouw operatie. Klopt de businesscase niet, dan zeggen we dat — dat is een goedkopere uitkomst voor jou dan een traject dat zich niet terugverdient.</p>
+    </div>
   </div>
 </section>
 
 <!-- ================= QUICKSCAN + PROEFMATCH ================= -->
-<section class="band band--tight" id="quickscan">
+<section class="mx-band mx-band--alt" id="quickscan">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Twee manieren om te beginnen</p>
-      <h2 class="h-section">Zonder dat je iets hoeft te kopen</h2>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Twee manieren om te beginnen</p>
+      <h2 class="mx-h2">Zonder dat je <em>iets hoeft te kopen</em></h2>
     </div>
-    <div class="offer-grid reveal reveal--group" data-stagger>
-      <article class="offer offer--lead">
-        <p class="klabel">De quickscan</p>
-        <h3>Weet binnen drie minuten waar je staat</h3>
-        <p>Geen verkoopgesprek met een andere naam. Je beantwoordt 8 vragen over hoe je vandaag werkt, en je krijgt direct terug:</p>
-        <ul class="ticks">
-          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>welk scenario bij je past, en waarom</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>de drie dingen die je vandaag het meeste kosten</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wat stap één is, en wat die ongeveer kost en duurt</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wat je beter níet moet doen — ook als dat betekent dat je ons niet nodig hebt</span></li>
+    <div class="mx-offers">
+      <article class="mx-offer mx-offer--lead mx-rev">
+        <p class="mx-offer__k">De quickscan</p>
+        <h3>Hoeveel van jouw matchingproces kan AI overnemen?</h3>
+        <p>Geen verkoopgesprek met een andere naam. Acht vragen over hoe je vandaag werkt, en je krijgt direct terug:</p>
+        <ul class="mx-ticks">
+          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>je huidige automatiseringsniveau</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>waar de meeste handelingen zitten</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>welke route bij jouw bureau past</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wat je als eerste kunt automatiseren — en wat je beter níet doet</span></li>
         </ul>
-        <div class="offer__foot">
+        <div class="mx-offer__foot">
           <a class="btn btn--primary" href="contact.html">Start de quickscan →</a>
-          <p class="offer__fine">Geen verplichtingen. Je advies is direct zichtbaar.</p>
+          <p class="mx-offer__fine">Gratis. Drie minuten. Geen verplicht verkoopgesprek.</p>
         </div>
       </article>
 
-      <article class="offer">
-        <p class="klabel">De proefmatch</p>
+      <article class="mx-offer mx-rev" data-d="1">
+        <p class="mx-offer__k">De proefmatch</p>
         <h3>Laat ons het bewijzen op je eigen bestand</h3>
         <p>Geen demo met verzonnen data. Stuur ons één openstaande aanvraag en een export van je kandidatenbestand — geanonimiseerd mag, en we tekenen vooraf een verwerkersovereenkomst. Binnen vijf werkdagen krijg je terug:</p>
-        <ul class="ticks">
+        <ul class="mx-ticks">
           <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>de shortlist die wij eruit halen, gerangschikt</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>per kandidaat de onderbouwing: waarom deze, op welke criteria</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wat we niet konden matchen omdat de data ontbrak — dat is meteen je opschoonlijst</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.2l2.4 2.4L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>wat we niet konden matchen omdat de data ontbrak — je opschoonlijst</span></li>
         </ul>
-        <div class="offer__foot">
+        <div class="mx-offer__foot">
           <a class="btn btn--ghost" href="contact.html">Vraag een proefmatch aan →</a>
-          <p class="offer__fine">Kost je een half uur. Levert je in het slechtste geval een gratis analyse van je datakwaliteit op.</p>
+          <p class="mx-offer__fine">Kost je een half uur. Levert in het slechtste geval een gratis analyse van je datakwaliteit op.</p>
         </div>
       </article>
     </div>
@@ -695,60 +454,60 @@ body{
 </section>
 
 <!-- ================= REKENMACHINE ================= -->
-<section class="band band--tight">
+<section class="mx-band">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Reken het zelf uit</p>
-      <h2 class="h-section">Wat kost een gemiste aanvraag je per jaar?</h2>
-      <p class="lead">Drie velden, direct antwoord, geen mailadres nodig.</p>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Reken het zelf uit</p>
+      <h2 class="mx-h2">Wat kost een gemiste aanvraag je <em>per jaar?</em></h2>
+      <p class="mx-lead">Op jouw cijfers, niet op een voorbeeld van ons. Drie schuifjes, direct antwoord, geen mailadres nodig.</p>
     </div>
 
-    <div class="calc reveal">
-      <div class="calc__inputs">
-        <div class="calc__field">
+    <div class="mx-calc mx-rev">
+      <div class="mx-calc__in">
+        <div class="mx-field">
           <label for="calcReq">Aanvragen per maand</label>
-          <div class="calc__row">
+          <div class="mx-field__row">
             <input type="range" id="calcReq" min="5" max="500" step="5" value="120">
-            <output class="calc__val" id="calcReqOut">120</output>
+            <output class="mx-field__v" id="calcReqOut">120</output>
           </div>
         </div>
-        <div class="calc__field">
+        <div class="mx-field">
           <label for="calcMiss">Percentage dat je niet of te laat oppakt</label>
-          <div class="calc__row">
+          <div class="mx-field__row">
             <input type="range" id="calcMiss" min="1" max="60" step="1" value="15">
-            <output class="calc__val" id="calcMissOut">15%</output>
+            <output class="mx-field__v" id="calcMissOut">15%</output>
           </div>
         </div>
-        <div class="calc__field">
+        <div class="mx-field">
           <label for="calcMargin">Gemiddelde marge per plaatsing</label>
-          <div class="calc__row">
+          <div class="mx-field__row">
             <input type="range" id="calcMargin" min="50" max="3000" step="50" value="450">
-            <output class="calc__val" id="calcMarginOut">€ 450</output>
+            <output class="mx-field__v" id="calcMarginOut">€ 450</output>
           </div>
         </div>
       </div>
-      <div class="calc__out">
-        <p class="calc__outlabel">Je laat naar schatting liggen op aanvragen die je niet of te laat oppakt:</p>
-        <p class="calc__amount" id="calcResult">€ 97.200</p>
-        <p class="calc__sub" id="calcSub">Dat zijn 216 gemiste aanvragen per jaar.</p>
-        <p class="calc__fine">Een indicatie op basis van je eigen cijfers, geen garantie.</p>
+      <div class="mx-calc__out">
+        <p class="mx-calc__lbl">Je laat naar schatting liggen op aanvragen die je niet of te laat oppakt:</p>
+        <p class="mx-calc__amt" id="calcAmount">€ 0</p>
+        <p class="mx-calc__sub" id="calcSub"></p>
+        <p class="mx-calc__fine">Een indicatie op basis van je eigen cijfers, geen garantie.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= VOOR WIE ================= -->
-<section class="band band--tight">
+<section class="mx-band mx-band--alt">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Voor wie</p>
-      <h2 class="h-section">Eerlijk over waar dit werkt</h2>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Voor wie</p>
+      <h2 class="mx-h2">Eerlijk over <em>waar dit werkt</em></h2>
     </div>
-    <div class="fit reveal">
-      <div class="fit__col fit--yes">
+    <div class="mx-fit mx-rev">
+      <div class="mx-fit__c mx-fit--yes">
         <h3>Dit is voor jou als…</h3>
         <ul>
-          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>je planners voor elke dienst of aanvraag opnieuw op zoek moeten naar iemand</span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>je planners voor elke aanvraag opnieuw op zoek moeten naar iemand</span></li>
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>dezelfde twintig namen je diensten draaien terwijl je bestand vele malen groter is</span></li>
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>aanvragen binnenkomen via mail, WhatsApp, portalen én telefoon</span></li>
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>je regelmatig te laat reageert en daardoor plaatsingen misloopt</span></li>
@@ -756,10 +515,10 @@ body{
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.2 3.2L14.5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>je operatie afhangt van één of twee mensen die "weten hoe het zit"</span></li>
         </ul>
       </div>
-      <div class="fit__col fit--no">
+      <div class="mx-fit__c mx-fit--no">
         <h3>Dit is niet voor jou als…</h3>
         <ul>
-          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>je een handvol aanvragen per maand verwerkt — dan verdient een volledig traject zich niet terug <em>(al kan een losse module dan wél uit; dat zegt de quickscan je)</em></span></li>
+          <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>je een handvol aanvragen per maand verwerkt — dan verdient een volledig traject zich niet terug <em>(een losse module kan dan wél uit)</em></span></li>
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>je met vaste, langlopende profielen werkt waarbij elke plaatsing een individueel beoordelingstraject is</span></li>
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>je op zoek bent naar een nieuw ATS of urenregistratiesysteem</span></li>
           <li><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>je geen enkele stap wilt veranderen aan hoe je nu werkt</span></li>
@@ -769,131 +528,66 @@ body{
   </div>
 </section>
 
-<!-- ================= WAT WE VAAK HOREN ================= -->
-<section class="band band--tight">
+<!-- ================= FAQ ================= -->
+<section class="mx-band">
   <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Wat we vaak horen</p>
-      <h2 class="h-section">De vragen die je nu al hebt</h2>
+    <div class="mx-head mx-rev">
+      <p class="mx-eyebrow">Wat we vaak horen</p>
+      <h2 class="mx-h2">De vragen die je <em>nu al hebt</em></h2>
     </div>
-    <div class="acc reveal" id="acc">
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"Wij hebben al software."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Die vervangen we niet. Je software is meestal prima in vastleggen; het probleem zit in de stappen ertussen. Wij zorgen dat wat er al staat in de praktijk sneller en automatisch werkt.</p></div></div>
+    <div class="mx-acc mx-rev">
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Moeten we van ATS veranderen?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Nee. Je pakket is prima in vastleggen — het probleem zit in de handelingen ertussen. Dát bouwen we, en het resultaat schrijven we terug naar het systeem dat je al gebruikt. Is een pakket écht een blokkade omdat er geen bruikbare koppeling in zit, dan zeggen we dat en bouwen we de laag eromheen.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"Onze data is een puinhoop, daar kun je niks mee."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Dat is bij bijna iedereen zo, en het is geen blokkade — het is stap één. De proefmatch laat vooraf zien hoe ver je data je nu al brengt. Je weet dus wat je koopt voordat je koopt.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Kan dit ook als we alleen Excel hebben?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Ja. Dan bouwen we eerst het fundament: één omgeving waarin kandidaten, competenties, certificaten met verloopdatum, beschikbaarheid en voorkeuren samenkomen — met de matching er direct bovenop. Je koopt geen apart ATS; fundament en automatisering zijn één traject. Je hoeft dus niet eerst Excel → nieuw ATS → migratie → implementatie → training voordat je iets merkt.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"We hebben net een duur pakket aangeschaft."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Dan is het fundament er al. Wij vervangen dat pakket niet en schrijven het niet af. We bouwen de stappen ertussen die je pakket niet doet.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Moet AI alles zelfstandig doen?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Nee, en dat is de belangrijkste knop op deze pagina. Jij bepaalt waar AI adviseert, waar je planner goedkeurt en waar het systeem zelfstandig handelt — per stap, niet in één keer voor alles. De meeste bureaus beginnen op niveau 1 of 2 en schuiven op zodra ze zien dat de matching klopt.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"Wij hebben helemaal geen software, alleen Excel."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Dan bouwen we het fundament, en zit je nergens aan vast.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Wat als onze matchingregels heel specifiek zijn?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Dan zijn die regels juist het uitgangspunt, niet de rand van het systeem. Elke uitzondering die je planner in zijn hoofd heeft — deze kandidaat niet meer naar die klant, die twee niet samen, dit certificaat moet nog dertig dagen geldig zijn — wordt expliciet gemaakt en consequent toegepast. Ook op vrijdagmiddag, ook als je planner op vakantie is.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"We wilden zelf al een kandidaat-app laten bouwen."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Bouw eerst de matching, dan de app. Of laat ons allebei doen. De reden staat hierboven: zonder matchinglaag bouw je in de praktijk wie-het-eerst-klikt.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Wat als onze data niet netjes is?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Dat is bij bijna iedereen zo, en het is geen blokkade maar stap één: dubbele kandidaten samenvoegen, cv's uitlezen, competenties uit vrije tekst halen, verlopen certificaten eruit. De proefmatch laat vooraf zien hoe ver je data je nu al brengt en wat er ontbreekt — je weet dus wat je koopt voordat je koopt.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"Onze kandidaten zijn niet digitaal genoeg voor een app."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Bij een deel van je pool klopt dat waarschijnlijk, en daarom bouwen we het nooit als enige route. Wie de app gebruikt, gebruikt de app; wie dat niet doet, krijgt gewoon een WhatsApp of een telefoontje. Beide komen uit dezelfde matching.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Wat als het systeem de verkeerde kandidaat kiest?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Dan grijp jij in. We spreken samen af welke beslissingen automatisch mogen en welke langs een mens gaan. Alles wordt gelogd, dus je ziet altijd welke kandidaat is voorgesteld en op welke grond — bruikbaar richting een opdrachtgever die vraagt waarom, en richting de documentatieplicht uit de EU AI Act.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"Wij werken anders dan andere bureaus."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Dat klopt vrijwel altijd, en daarom bouwen we maatwerk. Directe toewijzing of pool-based, strakke regels of veel handmatige controle — jouw werkwijze is het uitgangspunt, niet ons sjabloon.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Wij overwegen een eigen kandidatenapp. Slim?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Bouw dan eerst de matching. Een app waarin kandidaten diensten zien en zichzelf inschrijven is bouwtechnisch niet ingewikkeld — het moeilijke deel is de vraag ervóór: wie krijgt welke dienst te zien, en wanneer? Sla je die over, dan bouw je in de praktijk wie-het-eerst-klikt, en dat levert je niet de beste kandidaat maar degene die het snelst zijn telefoon pakt.</p><p>Bij ons is een dienst alleen zichtbaar voor kandidaten die hem daadwerkelijk mogen draaien. Dat is geen extra feature, dat is de laag die self-service veilig maakt.</p></div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"We hebben nu geen tijd voor een project."<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Precies daarom. We beginnen met één workflow die tijd oplevert in plaats van kost. De belasting voor jouw team zit vooral in de intake.</p></div></div>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">Welke onderdelen kunnen jullie bouwen?<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in">
+          <p>Dit is het volledige palet. Bijna niemand heeft dit allemaal nodig; de meeste bureaus krijgen er drie tot vijf, en nooit allemaal tegelijk.</p>
+          <div class="mx-mods">
+            <div class="mx-mod"><span class="mx-mod__n">01</span><h4>Aanvraagintake</h4><p>Uitlezen uit mail, WhatsApp, portalen of telefoon, omgezet naar één formaat.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">02</span><h4>Kandidaatdata op orde</h4><p>Dubbelen samenvoegen, cv's uitlezen, competenties uit vrije tekst filterbaar maken.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">03</span><h4>Competentie- en certificaatmodel</h4><p>Wat kandidaten kunnen en mogen, inclusief verloopdata die automatisch uitsluiten.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">04</span><h4>Beschikbaarheid</h4><p>Actueel per dag of dienst, doorgegeven door de kandidaat zelf.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">05</span><h4>Matching-engine</h4><p>Jouw harde eisen, zachte voorkeuren en uitzonderingen, expliciet gemaakt.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">06</span><h4>Distributie</h4><p>Wie krijgt de dienst te zien en wanneer: direct, getrapt of breed.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">07</span><h4>Kandidaat-app of portaal</h4><p>Diensten zien en claimen, beschikbaarheid doorgeven, documenten uploaden.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">08</span><h4>Communicatie</h4><p>Uitvraag, herinnering en bevestiging via WhatsApp, sms, push of mail.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">09</span><h4>Compliance-checks</h4><p>Certificaten, leeftijdsgrenzen, urennormen, dubbele boekingen — vóór de match.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">10</span><h4>Toewijzing en terugschrijven</h4><p>Bevestigingen vastgelegd in jouw systeem, zonder overtikwerk.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">11</span><h4>Opdrachtgeversportaal</h4><p>Je klant dient zelf in, ziet de status en bevestigt.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">12</span><h4>Uren en terugkoppeling</h4><p>Uren terug naar je registratie, resultaat terug de matching in.</p></div>
+            <div class="mx-mod"><span class="mx-mod__n">13</span><h4>Overzicht en beheer</h4><p>Doorlooptijd, gemiste aanvragen, benutting van je bestand, plus monitoring.</p></div>
+          </div>
+        </div></div>
       </div>
-      <div class="acc__item">
-        <button class="acc__btn" aria-expanded="false">"En als het systeem de verkeerde kandidaat kiest?"<span class="acc__icon" aria-hidden="true"></span></button>
-        <div class="acc__panel"><div class="acc__inner"><p>Dan grijp jij in. We bepalen samen welke beslissingen automatisch mogen en welke langs een mens gaan. Alles wordt gelogd, dus je ziet altijd waarom een keuze is gemaakt.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= COMPLIANCE ================= -->
-<section class="band band--tight">
-  <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Verantwoord matchen</p>
-      <h2 class="h-section">Automatisch matchen, met de mens aan het stuur</h2>
-      <p class="lead">AI die kandidaten voorselecteert valt onder de EU AI Act in de categorie hoog risico. Die verplichtingen zijn met de Digital Omnibus uitgesteld naar <strong>2 december 2027</strong> — je hebt dus tijd. Maar het is een stuk goedkoper om het nu goed te bouwen dan het later te verbouwen.</p>
-    </div>
-    <div class="comply reveal">
-      <div class="comply__row"><h3>Jij bepaalt de regels</h3><p>Geen zwarte doos: het zijn jouw criteria en gewichten, expliciet gemaakt.</p></div>
-      <div class="comply__row"><h3>Mens in de lus waar het telt</h3><p>We spreken samen af welke beslissingen automatisch mogen.</p></div>
-      <div class="comply__row"><h3>Alles gelogd en navolgbaar</h3><p>Achteraf zie je welke kandidaat is voorgesteld en op welke grond — bruikbaar voor je documentatieplicht én voor een opdrachtgever die vraagt waarom.</p></div>
-      <div class="comply__row"><h3>Ook bij self-service</h3><p>Welke kandidaat een dienst wél of niet te zien krijgt, is óók een selectiebeslissing. Die filters zijn net zo navolgbaar als een shortlist.</p></div>
-      <div class="comply__row"><h3>AVG vanaf het ontwerp</h3><p>Verwerkersovereenkomst, dataminimalisatie, bewaartermijnen. Kandidaatdata blijft binnen jouw omgeving.</p></div>
-    </div>
-    <p class="clock__note">Wij zijn geen juridisch adviseur en de AI Act is in beweging. Wij leveren techniek die aan de eisen kán voldoen; de verantwoordelijkheid als gebruiksverantwoordelijke blijft bij jou.</p>
-  </div>
-</section>
-
-<!-- ================= WAT HET KOST ================= -->
-<section class="band band--tight">
-  <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Wat het kost</p>
-      <h2 class="h-section">Wat je betaalt hangt af van waar je begint</h2>
-    </div>
-    <div class="ptable-wrap reveal">
-      <table class="ptable">
-        <thead>
-          <tr><th scope="col">Jouw situatie</th><th scope="col">Eenmalig</th><th scope="col">Per maand</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Losse module<em>bijv. alleen aanvraagintake of eenmalig opschonen</em></th><td><span class="tbd">vanaf € —</span></td><td><span class="tbd">€ —</span></td></tr>
-          <tr><th scope="row">Matching op je bestaande systeem</th><td><span class="tbd">vanaf € —</span></td><td><span class="tbd">€ —</span></td></tr>
-          <tr><th scope="row">Opschonen + matching</th><td><span class="tbd">vanaf € —</span></td><td><span class="tbd">€ —</span></td></tr>
-          <tr><th scope="row">Fundament: eigen omgeving + matching</th><td><span class="tbd">vanaf € —</span></td><td><span class="tbd">€ —</span></td></tr>
-          <tr><th scope="row">Kandidaat-app of self-service<em>bovenop een van bovenstaande</em></th><td><span class="tbd">vanaf € —</span></td><td><span class="tbd">€ —</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="ptable__foot">Het maandbedrag dekt hosting, monitoring, koppelingen werkend houden als leveranciers hun API wijzigen, en het aanscherpen van de matching naarmate er meer plaatsingen doorheen gaan. Bij een kandidaat-app komt ondersteuning op je kandidaten daarbij.</p>
-    <p class="ptable__foot">De exacte prijs volgt uit de quickscan en het gesprek. Wat we niet doen: een traject verkopen dat zich bij jouw volume niet terugverdient.</p>
-  </div>
-</section>
-
-<!-- ================= PROCES ================= -->
-<section class="band band--tight">
-  <div class="wide">
-    <div class="band__head reveal">
-      <p class="eyebrow">Ons proces</p>
-      <h2 class="h-section">Van quickscan tot draaiende matching</h2>
-    </div>
-    <div class="proc reveal reveal--group" data-stagger>
-      <div class="proc__step">
-        <p class="proc__k">Fase 01</p>
-        <h3>Learn</h3>
-        <p>De quickscan en een sessie waarin we je proces doorlopen van aanvraag tot plaatsing.</p>
-      </div>
-      <div class="proc__step">
-        <p class="proc__k">Fase 02</p>
-        <h3>Lay out</h3>
-        <p>We prioriteren op impact en leggen vast wat we bouwen, in welke volgorde en wat het oplevert.</p>
-      </div>
-      <div class="proc__step">
-        <p class="proc__k">Fase 03</p>
-        <h3>Link</h3>
-        <p>We bouwen en koppelen. Eerst een pilot op een deel van je aanvragen.</p>
-      </div>
-      <div class="proc__step">
-        <p class="proc__k">Fase 04</p>
-        <h3>Launch</h3>
-        <p>Bedrijfsbreed live, met je team meegenomen in de nieuwe werkwijze.</p>
-      </div>
-      <div class="proc__step">
-        <p class="proc__k">Fase 05</p>
-        <h3>Leverage</h3>
-        <p>We monitoren, houden koppelingen werkend en scherpen de matching verder aan.</p>
+      <div class="mx-acc__i">
+        <button class="mx-acc__b" type="button" aria-expanded="false">We hebben nu geen tijd voor een project.<span class="mx-acc__ic" aria-hidden="true"></span></button>
+        <div class="mx-acc__p"><div class="mx-acc__in"><p>Precies daarom beginnen we bij wat je nú tijd kost, met één stroom in plaats van een bedrijfsbrede uitrol. De belasting voor jouw team zit vooral in de intake: wij moeten begrijpen hoe je werkt. Daarna is het ons werk.</p></div></div>
       </div>
     </div>
   </div>
@@ -905,11 +599,11 @@ body{
   <div class="linkup__inner">
     <div>
       <p class="sec-index"><span class="sec-index__n">&rarr;</span> Slot</p>
-      <h2 class="linkup__title" data-split>Begin waar het <em>pijn doet.</em></h2>
-      <p class="linkup__lead">Doe de quickscan en je weet binnen drie minuten waar je staat. Wil je liever meteen sparren: neem je huidige proces mee, dan lopen we samen door waar je tijd verliest. Je hoort eerlijk wat er mogelijk is — ook als het antwoord is dat je hier nog niet aan toe bent.</p>
+      <h2 class="linkup__title" data-split>Je hoeft niet te weten <em>wat je moet automatiseren.</em></h2>
+      <p class="linkup__lead">Je hoeft alleen te weten waar je planners vandaag hun tijd verliezen. Wij brengen de rest in kaart — en zeggen eerlijk wat er mogelijk is, ook als het antwoord is dat je hier nog niet aan toe bent.</p>
       <div class="linkup__actions">
-        <a class="btn btn--primary btn--lg" href="#quickscan" data-magnetic>Doe de quickscan</a>
-        <a class="link-under" href="contact.html">Plan een kennismaking</a>
+        <a class="btn btn--primary btn--lg" href="#quickscan" data-magnetic>Ontdek jouw automatiseringskansen</a>
+        <a class="link-under" href="contact.html">Liever direct sparren?</a>
       </div>
     </div>
     <figure class="linkup__person">
@@ -961,98 +655,24 @@ body{
   </div>
 </footer>
 
+<div class="mx-sticky">
+  <div class="mx-sticky__in">
+    <p class="mx-sticky__txt"><b>Hoeveel van jouw matchingproces kan AI overnemen?</b> Acht vragen, drie minuten, direct antwoord.</p>
+    <a class="btn btn--primary" href="#quickscan">Start de quickscan →</a>
+  </div>
+</div>
+
 <script src="site.js?v=3"></script>
 <script src="kinetic-grid.js?v=5"></script>
 <script src="card-grid.js?v=3"></script>
-<script src="fl-motion.js?v=2"></script>
+<script src="matchlink.js?v=2"></script>
 <script>
 (function(){
   'use strict';
-
-  window.initKineticGrid(document.getElementById('uzHeroGrid'), document.getElementById('uzHero'));
+  window.initKineticGrid(document.getElementById('mxHeroGrid'), document.getElementById('mxHero'));
   window.initKineticGrid(document.getElementById('linkupGrid'), document.getElementById('kennismaken'));
   var navCta = document.querySelector('.nav__cta');
   if(navCta) window.initCardGrid(navCta);
-
-  /* ---------- accordeon ----------
-     Animeert op een gemeten pixelhoogte in plaats van max-height, zodat
-     lange en korte antwoorden dezelfde snelheid houden; daarna terug naar
-     auto zodat een vensterwijziging de hoogte niet vastzet. */
-  var items = Array.prototype.slice.call(document.querySelectorAll('.acc__item'));
-  items.forEach(function(item){
-    var btn = item.querySelector('.acc__btn');
-    var panel = item.querySelector('.acc__panel');
-    if(!btn || !panel) return;
-
-    btn.addEventListener('click', function(){
-      var isOpen = item.classList.contains('is-open');
-
-      items.forEach(function(other){
-        if(other === item) return;
-        var op = other.querySelector('.acc__panel');
-        var ob = other.querySelector('.acc__btn');
-        if(other.classList.contains('is-open')){
-          op.style.height = op.scrollHeight + 'px';
-          requestAnimationFrame(function(){ op.style.height = '0px'; });
-          other.classList.remove('is-open');
-          ob.setAttribute('aria-expanded','false');
-        }
-      });
-
-      if(isOpen){
-        panel.style.height = panel.scrollHeight + 'px';
-        requestAnimationFrame(function(){ panel.style.height = '0px'; });
-        item.classList.remove('is-open');
-        btn.setAttribute('aria-expanded','false');
-      } else {
-        item.classList.add('is-open');
-        btn.setAttribute('aria-expanded','true');
-        panel.style.height = panel.scrollHeight + 'px';
-        panel.addEventListener('transitionend', function once(e){
-          if(e.propertyName !== 'height') return;
-          panel.style.height = 'auto';
-          panel.removeEventListener('transitionend', once);
-        });
-      }
-    });
-  });
-
-  /* ---------- rekenmachine ---------- */
-  var req = document.getElementById('calcReq');
-  var miss = document.getElementById('calcMiss');
-  var margin = document.getElementById('calcMargin');
-
-  if(req && miss && margin){
-    var euro = new Intl.NumberFormat('nl-NL', {
-      style:'currency', currency:'EUR', maximumFractionDigits:0
-    });
-    var num = new Intl.NumberFormat('nl-NL');
-
-    var outReq = document.getElementById('calcReqOut');
-    var outMiss = document.getElementById('calcMissOut');
-    var outMargin = document.getElementById('calcMarginOut');
-    var result = document.getElementById('calcResult');
-    var sub = document.getElementById('calcSub');
-
-    function update(){
-      var r = +req.value, m = +miss.value, g = +margin.value;
-      var missedPerYear = Math.round(r * 12 * (m / 100));
-
-      outReq.textContent = num.format(r);
-      outMiss.textContent = m + '%';
-      outMargin.textContent = euro.format(g);
-
-      result.textContent = euro.format(missedPerYear * g);
-      sub.textContent = missedPerYear === 1
-        ? 'Dat is 1 gemiste aanvraag per jaar.'
-        : 'Dat zijn ' + num.format(missedPerYear) + ' gemiste aanvragen per jaar.';
-    }
-
-    [req, miss, margin].forEach(function(el){
-      el.addEventListener('input', update);
-    });
-    update();
-  }
 })();
 </script>
 </body>

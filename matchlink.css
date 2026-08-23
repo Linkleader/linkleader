@@ -65,15 +65,54 @@ body{
 .mx-lead{margin:18px 0 0;font-size:17px;line-height:1.7;color:var(--t-70)}
 .mx-fine{margin:24px 0 0;font-size:13.5px;color:var(--t-62);line-height:1.6;max-width:78ch}
 
-/* ---------------- hero ---------------- */
+/* ---------------- hero ----------------
+   Drie lagen: foto onderop, raster erboven, tekst bovenaan. De foto
+   zit rechtsboven en het raster is naar links verschoven, zodat ze
+   elkaar niet overlappen — anders zouden de rasterlijnen dwars over
+   een gezicht lopen. */
 .mx-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
+
+/* De aangeleverde foto heeft een felmagenta achtergrond. Onbewerkt
+   vecht die met het staffing-blauw van deze pagina, dus wordt de
+   verzadiging teruggebracht en er een navy waas overheen gelegd: de
+   foto voegt zich naar het palet in plaats van andersom. */
+.mx-hero__photo{
+  /* Eigen verhouding aanhouden in plaats van het hele hero-vlak vullen:
+     de hero is bijna twee keer zo hoog als de foto breed is, dus cover
+     over inset:0 zoomde tot alleen de lege achtergrond boven haar hoofd
+     in beeld stond. */
+  position:absolute;top:0;right:0;z-index:0;pointer-events:none;
+  width:min(68%,880px);aspect-ratio:1024/572;
+  background:url("hero-matcher.jpg") center right / cover no-repeat;
+  filter:saturate(.38) contrast(1.05) brightness(.95);
+  /* Twee maskers die elkaar snijden: links uitfaden zodat het raster
+     zichtbaar blijft, onderaan uitfaden zodat de USP-grafieken op een
+     schone ondergrond staan. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, transparent 22%, #000 68%),
+    linear-gradient(to bottom, #000 0%, #000 46%, transparent 92%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, transparent 22%, #000 68%),
+    linear-gradient(to bottom, #000 0%, #000 46%, transparent 92%);
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
+}
+.mx-hero__photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,
+    rgba(6,15,38,.94) 0%,
+    rgba(6,15,38,.58) 38%,
+    rgba(8,30,74,.24) 100%);
+}
+@media (max-width:900px){.mx-hero__photo{display:none}}
+
 .mx-hero__canvas{
-  position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none;
-  -webkit-mask-image:radial-gradient(120% 110% at 70% 30%, #000 6%, transparent 66%);
-  mask-image:radial-gradient(120% 110% at 70% 30%, #000 6%, transparent 66%);
+  position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(120% 110% at 20% 42%, #000 6%, transparent 64%);
+  mask-image:radial-gradient(120% 110% at 20% 42%, #000 6%, transparent 64%);
 }
 .mx-hero__in{
-  position:relative;z-index:1;max-width:var(--shell);margin:0 auto;
+  position:relative;z-index:2;max-width:var(--shell);margin:0 auto;
   padding:clamp(92px,10vw,142px) var(--bleed-gut) clamp(56px,6vw,80px);
 }
 .crumb{font-size:13.5px;color:var(--muted);margin:0 0 24px}

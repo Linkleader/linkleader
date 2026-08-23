@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=5">
 <link rel="stylesheet" href="fl-kit.css?v=9">
-<link rel="stylesheet" href="matchlink.css?v=3">
+<link rel="stylesheet" href="matchlink.css?v=5">
 </head>
 <body>
 
@@ -45,10 +45,50 @@
     <p class="mx-kick">De slimste AI-stap voor uitzendbureaus</p>
     <h1>Automatiseer je <em>matchingproces.</em></h1>
 
-    <ul class="mx-pillars">
-      <li>Minder plannerscapaciteit nodig</li>
-      <li>Draai meer diensten</li>
-      <li>Verhoog de kwaliteit</li>
+    <ul class="mx-usps">
+      <li class="mx-usp">
+        <!-- Volume dat oploopt: meer vervulde diensten per periode. -->
+        <svg class="mx-usp__viz" viewBox="0 0 96 44" aria-hidden="true">
+          <rect x="0"  y="32" width="11" height="12" rx="2" fill="rgba(255,255,255,.16)"/>
+          <rect x="17" y="27" width="11" height="17" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="34" y="22" width="11" height="22" rx="2" fill="rgba(0,115,255,.45)"/>
+          <rect x="51" y="16" width="11" height="28" rx="2" fill="rgba(0,115,255,.65)"/>
+          <rect x="68" y="9"  width="11" height="35" rx="2" fill="rgba(0,115,255,.85)"/>
+          <rect x="85" y="0"  width="11" height="44" rx="2" fill="#0073FF"/>
+        </svg>
+        <p class="mx-usp__cap">Vervulde diensten</p>
+        <p>Genereer meer omzet door meer diensten sneller te vervullen.</p>
+      </li>
+      <li class="mx-usp">
+        <!-- Wisselende uitslag die vlak wordt: van toevalstreffers naar
+             een niveau dat elke keer gehaald wordt. -->
+        <svg class="mx-usp__viz" viewBox="0 0 96 44" aria-hidden="true">
+          <rect x="0"  y="10" width="11" height="34" rx="2" fill="rgba(255,255,255,.16)"/>
+          <rect x="17" y="28" width="11" height="16" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="34" y="8"  width="11" height="36" rx="2" fill="rgba(0,115,255,.55)"/>
+          <rect x="51" y="8"  width="11" height="36" rx="2" fill="rgba(0,115,255,.7)"/>
+          <rect x="68" y="8"  width="11" height="36" rx="2" fill="rgba(0,115,255,.85)"/>
+          <rect x="85" y="8"  width="11" height="36" rx="2" fill="#0073FF"/>
+        </svg>
+        <p class="mx-usp__cap">Matchkwaliteit</p>
+        <p>Verhoog klanttevredenheid door consistente, kwalitatieve matches.</p>
+      </li>
+      <li class="mx-usp">
+        <!-- Output loopt op terwijl de stippellijn — je bezetting —
+             op dezelfde hoogte blijft liggen. -->
+        <svg class="mx-usp__viz" viewBox="0 0 96 44" aria-hidden="true">
+          <rect x="0"  y="30" width="11" height="14" rx="2" fill="rgba(255,255,255,.16)"/>
+          <rect x="17" y="25" width="11" height="19" rx="2" fill="rgba(255,255,255,.22)"/>
+          <rect x="34" y="19" width="11" height="25" rx="2" fill="rgba(0,115,255,.45)"/>
+          <rect x="51" y="13" width="11" height="31" rx="2" fill="rgba(0,115,255,.65)"/>
+          <rect x="68" y="6"  width="11" height="38" rx="2" fill="rgba(0,115,255,.85)"/>
+          <rect x="85" y="0"  width="11" height="44" rx="2" fill="#0073FF"/>
+          <line class="mx-usp__line" x1="0" y1="26" x2="96" y2="26"
+                stroke="#8FC7FF" stroke-width="1.9" stroke-dasharray="5 4" opacity=".9"/>
+        </svg>
+        <p class="mx-usp__cap">Output vs. bezetting</p>
+        <p>Verhoog de planningsproductiviteit zonder extra planners.</p>
+      </li>
     </ul>
 
     <p class="mx-hero__sub">Wij bouwen automatisering met AI die kandidaten zoekt, matcht, uitvraagt en automatisch opvolgt — <b>volgens de regels van jouw bureau.</b></p>
@@ -694,7 +734,7 @@
 <script src="site.js?v=3"></script>
 <script src="kinetic-grid.js?v=5"></script>
 <script src="card-grid.js?v=3"></script>
-<script src="matchlink.js?v=2"></script>
+<script src="matchlink.js?v=3"></script>
 <script>
 (function(){
   'use strict';

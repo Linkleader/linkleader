@@ -90,21 +90,71 @@ body{
 }
 .mx-hero h1 em{font-style:normal;color:var(--pink)}
 
-/* De drie beloftes waar de kop op rust: capaciteit, volume, kwaliteit.
-   Kolommen met een streep erboven in plaats van bullets — het zijn
-   gelijkwaardige uitkomsten, geen opsomming met een volgorde. */
-.mx-pillars{
-  list-style:none;margin:0 0 30px;padding:0;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 26px;max-width:74ch;
+/* De drie beloftes waar de kop op rust: omzet, klanttevredenheid,
+   productiviteit. Elk met een eigen micro-grafiek in dezelfde
+   beeldtaal — staafjes — zodat het drie varianten van één verhaal
+   zijn en geen drie losse iconen. De grafiek vertelt wat de zin
+   vertelt: volume dat stijgt, uitslag die vlak wordt, output die
+   groeit terwijl de bezetting gelijk blijft. */
+.mx-usps{
+  list-style:none;margin:0 0 34px;padding:0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:none;
 }
-.mx-pillars li{
-  padding-top:14px;border-top:2px solid var(--pink);
-  font-size:16px;font-weight:600;color:#fff;line-height:1.35;letter-spacing:-.014em;
+.mx-usp{
+  border-top:2px solid var(--pink);padding-top:18px;
+  display:flex;flex-direction:column;gap:14px;
 }
-@media (max-width:720px){
-  .mx-pillars{grid-template-columns:1fr;gap:0}
-  .mx-pillars li{padding:12px 0;border-top:1px solid var(--acc-line)}
-  .mx-pillars li:first-child{border-top:2px solid var(--pink)}
+.mx-usp p{
+  margin:0;font-size:15.6px;font-weight:600;color:#fff;
+  line-height:1.42;letter-spacing:-.012em;
+}
+.mx-usp__viz{display:block;width:116px;height:53px;overflow:visible}
+.mx-usp__viz rect{
+  transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.06);
+  transition:transform .75s var(--ease-out);
+}
+.mx-hero.is-lit .mx-usp__viz rect{transform:scaleY(1)}
+.mx-usp:nth-child(1) rect:nth-of-type(1){transition-delay:.05s}
+.mx-usp:nth-child(1) rect:nth-of-type(2){transition-delay:.10s}
+.mx-usp:nth-child(1) rect:nth-of-type(3){transition-delay:.15s}
+.mx-usp:nth-child(1) rect:nth-of-type(4){transition-delay:.20s}
+.mx-usp:nth-child(1) rect:nth-of-type(5){transition-delay:.25s}
+.mx-usp:nth-child(1) rect:nth-of-type(6){transition-delay:.30s}
+.mx-usp:nth-child(2) rect:nth-of-type(1){transition-delay:.15s}
+.mx-usp:nth-child(2) rect:nth-of-type(2){transition-delay:.20s}
+.mx-usp:nth-child(2) rect:nth-of-type(3){transition-delay:.25s}
+.mx-usp:nth-child(2) rect:nth-of-type(4){transition-delay:.30s}
+.mx-usp:nth-child(2) rect:nth-of-type(5){transition-delay:.35s}
+.mx-usp:nth-child(2) rect:nth-of-type(6){transition-delay:.40s}
+.mx-usp:nth-child(3) rect:nth-of-type(1){transition-delay:.25s}
+.mx-usp:nth-child(3) rect:nth-of-type(2){transition-delay:.30s}
+.mx-usp:nth-child(3) rect:nth-of-type(3){transition-delay:.35s}
+.mx-usp:nth-child(3) rect:nth-of-type(4){transition-delay:.40s}
+.mx-usp:nth-child(3) rect:nth-of-type(5){transition-delay:.45s}
+.mx-usp:nth-child(3) rect:nth-of-type(6){transition-delay:.50s}
+/* De referentielijn in grafiek 3 (gelijkblijvende bezetting) schuift
+   pas open nadat de staven staan — anders leest hij als onderdeel van
+   de assen in plaats van als de vergelijking. Via scaleX en niet via
+   stroke-dashoffset, want dat laatste zou de streepjes zelf opeten. */
+.mx-usp__line{
+  transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);
+  transition:transform .8s var(--ease-out) .55s;
+}
+.mx-hero.is-lit .mx-usp__line{transform:scaleX(1)}
+.mx-usp__cap{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:-4px 0 0;
+}
+@media (max-width:820px){
+  .mx-usps{grid-template-columns:1fr;gap:0}
+  .mx-usp{border-top:1px solid var(--acc-line);padding:18px 0;flex-direction:row;align-items:center;gap:20px}
+  .mx-usp:first-child{border-top:2px solid var(--pink)}
+  .mx-usp__viz{flex:none}
+  .mx-usp__cap{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .mx-usp__viz rect{transform:scaleY(1);transition:none}
+  .mx-usp__line{transform:scaleX(1);transition:none}
 }
 
 .mx-hero__sub{margin:0 0 16px;font-size:17.5px;line-height:1.65;color:var(--t-80);max-width:62ch}

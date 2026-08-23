@@ -57,6 +57,22 @@
     if(scan) new IntersectionObserver(function(e){ scanIn = e[0].isIntersecting; sync(); }, { threshold:0 }).observe(scan);
   }
 
+  /* ---------------- hero-grafieken ----------------
+     De staafjes bij de drie beloftes groeien op na binnenkomst. De
+     hero staat per definitie al in beeld, dus geen observer — alleen
+     een tik uitstel zodat de eerste frame de nulstand toont en de
+     beweging dus ook echt gezien wordt. */
+  var heroEl = document.querySelector('.mx-hero');
+  if(heroEl){
+    if(REDUCED){
+      heroEl.classList.add('is-lit');
+    } else {
+      requestAnimationFrame(function(){
+        setTimeout(function(){ heroEl.classList.add('is-lit'); }, 180);
+      });
+    }
+  }
+
   /* ---------------- de keten ----------------
      Licht de knopen na elkaar op, zodat je de richting van de lijn
      leest voordat je de labels leest. */

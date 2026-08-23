@@ -217,28 +217,6 @@ body{
   .mx-node__t{margin-top:0}
 }
 
-/* ---------------- routes ---------------- */
-.mx-routes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.mx-route{
-  position:relative;border:1px solid var(--fl-line);border-radius:var(--r-lg);
-  background:var(--surface-1);padding:30px 30px 32px;display:flex;flex-direction:column;
-  transition:border-color .35s ease,transform .35s var(--ease-out);
-}
-.mx-route:hover{border-color:var(--acc-line);transform:translateY(-3px)}
-.mx-route__n{
-  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ice);
-  display:block;margin-bottom:14px;
-}
-.mx-route h3{margin:0 0 6px;font-size:22px;letter-spacing:-.024em;color:#fff}
-.mx-route__q{margin:0 0 16px;font-size:15px;color:var(--pink-soft);font-style:italic;line-height:1.45}
-.mx-route p{margin:0 0 14px;color:var(--t-70);line-height:1.66;font-size:15px}
-.mx-route p:last-of-type{margin-bottom:0}
-.mx-route__get{
-  margin-top:auto;padding-top:18px;border-top:1px solid var(--rule);
-  font-size:13.8px;color:var(--t-62);line-height:1.55;
-}
-.mx-route__get b{display:block;color:var(--ice);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
-@media (max-width:900px){.mx-routes{grid-template-columns:1fr}}
 
 /* ---------------- het probleem: de handelingen ---------------- */
 /* Vaste kolomaantallen in plaats van auto-fill: twaalf handelingen
@@ -375,6 +353,9 @@ body{
   font-size:15.2px;line-height:1.5;color:var(--t-80);font-style:italic;
   padding-left:18px;border-left:2px solid var(--warm-line);
 }
+/* Deze regels beschrijven niet meer de pijn maar wat het systeem doet.
+   Dus rechtop en in het accent, niet cursief en warm. */
+.mx-quotes--rules li{font-style:normal;border-left-color:var(--acc-line)}
 .mx-rules__r p{margin:0 0 16px;color:var(--t-80);line-height:1.7;font-size:15.5px}
 .mx-rules__r p:last-child{margin-bottom:0}
 .mx-rules__r strong{color:#fff;font-weight:600}
@@ -388,20 +369,6 @@ body{
   .mx-rules__r{border-left:0;border-top:1px solid var(--rule)}
 }
 
-/* ---------------- systemen ---------------- */
-.mx-stack{border:1px solid var(--rule);border-radius:var(--r-lg);padding:32px 34px;background:var(--surface-1)}
-.mx-stack__g{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
-.mx-stack__c h3{
-  margin:0 0 16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ice);
-}
-.mx-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.mx-tags li{
-  border:1px solid var(--rule-strong);border-radius:6px;padding:8px 14px;
-  font-size:14px;color:var(--t-80);
-}
-.mx-tags li.is-todo{border-style:dashed;color:var(--muted);font-family:var(--mono);font-size:12.5px}
-@media (max-width:760px){.mx-stack__g{grid-template-columns:1fr}}
 
 /* ---------------- voor en na (proces) ---------------- */
 .mx-ba{border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden}

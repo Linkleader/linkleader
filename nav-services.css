@@ -1,0 +1,165 @@
+/* ===========================================================
+   DIENSTENNAVIGATIE
+   ===========================================================
+   Twee lagen door de hele site: Diensten (wat we bouwen) en
+   Sectoren (voor wie we het samenstellen). Het onderscheid zit in
+   de groepering, niet in de naamgeving — een sectoroplossing is
+   geen zevende dienst maar een voorgemonteerde combinatie van de
+   zes. Elk item draagt zijn eigen accent uit --acc-* in styles.css,
+   dus de kleur die een dienstpagina voert komt hier terug.
+   =========================================================== */
+
+/* .nav klipt normaal alles weg voor het rastermasker in ::before.
+   Zolang het paneel openstaat mag dat niet. */
+.nav.is-mega{overflow:visible}
+
+.nav__svc{position:relative}
+.nav__svc::after{
+  content:"";display:inline-block;width:5px;height:5px;margin-left:9px;
+  border-right:1.4px solid currentColor;border-bottom:1.4px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);transition:transform .25s var(--ease-out);
+}
+.nav.is-mega .nav__svc::after{transform:translateY(1px) rotate(-135deg)}
+
+/* ---------------- uitklappaneel ---------------- */
+.mega{
+  position:absolute;top:100%;left:0;right:0;z-index:70;
+  background:linear-gradient(180deg,var(--surface-1),var(--surface-0));
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule-strong);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.85);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .22s ease,transform .28s var(--ease-out),visibility .22s;
+}
+.mega.is-open{opacity:1;visibility:visible;transform:none}
+.mega__in{
+  display:grid;grid-template-columns:1.55fr .95fr;gap:0;
+  padding:30px 0 8px;
+}
+.mega__col{padding:0 40px 26px 0}
+.mega__col + .mega__col{padding:0 0 26px 40px;border-left:1px solid var(--rule)}
+.mega__k{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;
+}
+.mega__k span{
+  font-size:10px;letter-spacing:.08em;text-transform:none;color:var(--muted);font-weight:400;
+}
+.mega__hint{margin:0 0 18px;font-size:12.5px;color:var(--t-62);line-height:1.5}
+.mega__grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.mega__col--sect .mega__grid{grid-template-columns:1fr}
+
+/* ---------------- een item ---------------- */
+.svci{
+  position:relative;display:block;text-decoration:none;
+  padding:11px 14px 12px 16px;border-radius:var(--r-sm);
+  transition:background-color .2s ease;
+}
+.svci::before{
+  content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;border-radius:2px;
+  background:var(--a,var(--pink));transform:scaleY(0);transform-origin:50% 50%;
+  transition:transform .28s var(--ease-out);
+}
+a.svci:hover{background:color-mix(in srgb,var(--a,var(--pink)) 10%,transparent)}
+a.svci:hover::before,a.svci:focus-visible::before{transform:scaleY(1)}
+.svci[aria-current="page"]{background:color-mix(in srgb,var(--a,var(--pink)) 14%,transparent)}
+.svci[aria-current="page"]::before{transform:scaleY(1)}
+
+.svci__w{
+  display:block;font-size:15px;line-height:1.2;letter-spacing:-.014em;
+  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff;
+}
+.svci__w i{font-style:normal;font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;color:var(--a,var(--pink))}
+.svci__d{display:block;margin-top:3px;font-size:12.5px;color:var(--t-62);line-height:1.4}
+
+/* Sectoren die er nog niet zijn: zichtbaar maar geen link, zodat het
+   aanbod compleet oogt zonder dat er iets doodloopt. */
+.svci--soon{cursor:default}
+.svci--soon .svci__w{color:var(--slate)}
+.svci--soon .svci__d{color:var(--slate)}
+.svci__soon{
+  display:inline-block;margin-left:8px;vertical-align:2px;
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--rule-strong);border-radius:20px;padding:2px 7px;color:var(--muted);
+}
+
+/* ---------------- voet van het paneel ---------------- */
+.mega__foot{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:14px 0;border-top:1px solid var(--rule);
+}
+.mega__foot a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pink-soft);text-decoration:none;
+}
+.mega__foot a:hover{color:#fff}
+.mega__foot p{margin:0;font-size:13px;color:var(--t-62)}
+.mega__foot p a{text-transform:none;letter-spacing:0;font-family:inherit;font-size:13px}
+
+@media (max-width:1080px){
+  .mega__in{grid-template-columns:1fr;padding-bottom:0}
+  .mega__col{padding:0 0 22px}
+  .mega__col + .mega__col{padding:22px 0;border-left:0;border-top:1px solid var(--rule)}
+}
+@media (max-width:900px){.mega{display:none}}
+
+/* ---------------- mobiel menu ---------------- */
+.mnav__grp{border-bottom:1px solid var(--rule)}
+.mnav__grp > summary{
+  list-style:none;cursor:pointer;padding:12px 0;font-size:17px;color:var(--t-80);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.mnav__grp > summary::-webkit-details-marker{display:none}
+.mnav__grp > summary::after{
+  content:"";width:7px;height:7px;flex:none;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);transition:transform .25s var(--ease-out);
+}
+.mnav__grp[open] > summary{color:#fff}
+.mnav__grp[open] > summary::after{transform:translateY(1px) rotate(-135deg)}
+.mnav__body{padding:4px 0 16px}
+.mnav__k{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:14px 0 6px;
+}
+.mnav__k:first-child{margin-top:4px}
+/* De algemene .nav__panel a-regel geeft alles een onderrand en 17px;
+   binnen de groep willen we een compactere lijst. */
+.nav__panel .mnav__body a,
+.nav__panel .mnav__body span.svci--soon{
+  border-bottom:0;padding:9px 0 9px 14px;font-size:15px;position:relative;display:block;
+}
+.nav__panel .mnav__body a::before{
+  content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;border-radius:2px;
+  background:var(--a,var(--pink));
+}
+.nav__panel .mnav__body a[aria-current="page"]{color:#fff}
+.mnav__body .svci__d{font-size:12px;margin-top:2px}
+
+/* ---------------- dienstenbalk onderaan een pagina ---------------- */
+.svcband{
+  border-top:1px solid var(--rule);
+  background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);
+  padding:clamp(44px,5vw,66px) 0 clamp(36px,4vw,52px);
+}
+.svcband__k{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 16px;display:flex;align-items:center;gap:10px;
+}
+.svcband__k::before{content:"";width:20px;height:1px;background:var(--rule-strong)}
+.svcband__k--2{margin-top:30px}
+.svcband__row{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
+.svcband__row--sect{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){
+  .svcband__row{grid-template-columns:repeat(3,1fr)}
+  .svcband__row--sect{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:620px){
+  .svcband__row,.svcband__row--sect{grid-template-columns:1fr}
+}
+.svcband .svci{padding:13px 14px 14px 16px}
+.svcband .svci__w{font-size:14.5px}
+
+@media (prefers-reduced-motion:reduce){
+  .mega,.svci::before,.nav__svc::after,.mnav__grp > summary::after{transition:none}
+}

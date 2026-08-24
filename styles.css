@@ -364,7 +364,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 /* ---------------- footer ---------------- */
 .footer{border-top:1px solid var(--rule);padding:72px 0 40px;margin-top:40px}
-.footer__grid{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:48px}
+/* Vier kolommen sinds de diensten en de sectoren gescheiden staan:
+   merk, Diensten, Sectoren, Bedrijf. */
+.footer__grid{display:grid;grid-template-columns:1.5fr .8fr .9fr .6fr;gap:44px}
+@media (max-width:900px){.footer__grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media (max-width:560px){.footer__grid{grid-template-columns:1fr}}
+/* Sectoren die nog niet bestaan: wel tonen, niet klikbaar. */
+.foot-soon{color:var(--slate);font-size:15px}
 .footer p{margin:0 0 18px;max-width:420px;color:var(--t-62)}
 .footer-brand{display:flex;align-items:center;margin-bottom:22px}
 .footer-brand img{width:58px;height:58px;object-fit:contain}

@@ -416,3 +416,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .footer__grid{grid-template-columns:1fr}
   .phero{padding:56px 0 56px}
 }
+
+/* Honeypot in het contactformulier: uit beeld voor mensen, wel
+   invulbaar voor bots. display:none zou het veld bij sommige bots
+   juist overslaan, vandaar wegpositioneren in plaats van verbergen. */
+.is-hidden{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}

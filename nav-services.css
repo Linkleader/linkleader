@@ -178,10 +178,14 @@ a.svci:hover::before,a.svci:focus-visible::before{transform:scaleY(1)}
 .mnav__sect,               /* groep Sectoren in het mobiele menu */
 .svcband__k--2,            /* kop boven de sectorrij            */
 .svcband__row--sect,       /* sectorrij in de dienstenbalk      */
-.foot-sect,                /* footerkolom Sectoren              */
-.build-row--sector{        /* rij op de homepage en /services   */
+.sector-cta,               /* CTA-blok naar de sectorpagina     */
+.foot-sect{                /* footerkolom Sectoren              */
   display:none;
 }
+/* Twee klassen, want fl-kit.css laadt ná dit bestand en zet
+   .build-row op display:grid. Met één klasse wint die van de
+   display:none hierboven en blijft de rij gewoon staan. */
+.build-row.build-row--sector{display:none}
 
 /* Zonder de sectorkolom heeft het megamenu nog één kolom over. */
 .mega__in{grid-template-columns:1fr}

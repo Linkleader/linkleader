@@ -258,8 +258,7 @@
     <!-- Netlify Forms: de inzending wordt bij de deploy herkend aan
          data-netlify en de name. Het verzendadres (info@linkleader.nl)
          staat als e-mailnotificatie in het Netlify-dashboard, niet hier. -->
-    <form id="intake" name="contact" method="POST"
-          data-netlify="true" netlify-honeypot="bot-field">
+    <form id="intake" name="contact" method="POST" action="/contact.html" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact">
       <!-- Vangnet voor bots: mensen zien dit veld niet, bots vullen het
            wel in en die inzending wordt dan genegeerd. -->

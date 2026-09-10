@@ -148,6 +148,27 @@ body{
   .cs-was__c + .cs-was__c{padding:28px 0;border-left:0;border-top:1px solid var(--rule)}
 }
 
+/* ---------------- wat de applicatie doet ----------------
+   Genummerde regels over de volle breedte. Zakelijke opsomming,
+   geen kaartjes: de lezer moet dit van boven naar beneden kunnen
+   doorlopen als een functieomschrijving. */
+.cs-does{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.cs-does li{
+  display:grid;grid-template-columns:56px minmax(0,20ch) minmax(0,1fr);
+  gap:0 28px;align-items:baseline;
+  padding:22px 4px;border-bottom:1px solid var(--rule);
+  transition:background-color .25s ease;
+}
+.cs-does li:hover{background:var(--acc-wash)}
+.cs-does__n{font-family:var(--mono);font-size:11.5px;color:var(--ice);letter-spacing:.14em}
+.cs-does b{color:#fff;font-size:16.5px;font-weight:600;letter-spacing:-.014em;line-height:1.4}
+.cs-does span{color:var(--t-70);font-size:15px;line-height:1.62}
+@media (max-width:860px){
+  .cs-does li{grid-template-columns:36px minmax(0,1fr);gap:6px 16px;padding:20px 2px}
+  .cs-does b{grid-column:2}
+  .cs-does span{grid-column:2}
+}
+
 /* ---------------- de klok: het beeld van de case ----------------
    Alleen de twee tijdstippen die echt gemeten zijn staan als tijd op
    de as. Wat ertussen gebeurt krijgt geen verzonnen kloktijd. */

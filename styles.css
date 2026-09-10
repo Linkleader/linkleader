@@ -421,3 +421,95 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
    invulbaar voor bots. display:none zou het veld bij sommige bots
    juist overslaan, vandaar wegpositioneren in plaats van verbergen. */
 .is-hidden{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---------------- case-teaser ----------------
+   Staat alleen op de sectorpagina uitzendbureaus.html, direct na het
+   voorbeeldscenario: eerst de illustratie, dan de klant. Het hele blok
+   is één link. De hover tilt de kaart en zet de rand aan, zodat er geen
+   twijfel is dat er een pagina achter zit. */
+.caseteaser{
+  position:relative;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:
+    radial-gradient(120% 150% at 85% 0%, rgba(0,115,255,.20), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),
+    var(--surface-1);
+  transition:background-color .35s ease;
+}
+.caseteaser::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 60% 100% at 100% 0%, #000 20%, transparent 78%);
+  mask-image:radial-gradient(ellipse 60% 100% at 100% 0%, #000 20%, transparent 78%);
+}
+.caseteaser__in{
+  position:relative;display:grid;text-decoration:none;color:inherit;
+  max-width:var(--shell);margin:0 auto;padding:clamp(52px,6vw,86px) var(--gut);
+  grid-template-columns:1.25fr .75fr;gap:clamp(34px,5vw,72px);align-items:center;
+}
+.caseteaser__body{
+  transition:transform .4s cubic-bezier(.22,.61,.36,1);
+}
+.caseteaser__in:hover .caseteaser__body{transform:translateY(-3px)}
+
+.caseteaser__k{
+  display:inline-flex;align-items:center;gap:10px;margin:0 0 20px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc-staffing-soft);
+  border:1px solid rgba(0,115,255,.32);border-radius:20px;padding:6px 14px;
+  transition:border-color .35s ease,background-color .35s ease;
+}
+.caseteaser__k::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.caseteaser__in:hover .caseteaser__k{border-color:var(--blue);background:rgba(0,115,255,.12)}
+
+.caseteaser h2{
+  font-family:"Univia Pro Black","Plus Jakarta Sans",sans-serif;font-weight:800;
+  font-size:clamp(24px,2.9vw,38px);line-height:1.12;letter-spacing:-.028em;
+  color:#fff;margin:0 0 18px;text-wrap:balance;
+}
+.caseteaser h2 em{font-style:normal;color:var(--blue)}
+.caseteaser__lead{margin:0 0 26px;color:var(--t-70);font-size:16.5px;line-height:1.65;max-width:54ch}
+
+/* Verticale stack, geen drie smalle kokers. Het getal krijgt de ruimte
+   die het verdient en het label leest door op één regel. */
+.caseteaser__stats{
+  list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);
+}
+.caseteaser__stats li{
+  display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:18px;
+  padding:18px 2px;border-bottom:1px solid var(--rule);
+  transition:border-color .35s ease;
+}
+.caseteaser__in:hover .caseteaser__stats li{border-color:rgba(0,115,255,.28)}
+.caseteaser__stats b{
+  font-family:"Univia Pro Black","Plus Jakarta Sans",sans-serif;font-weight:800;
+  font-size:clamp(26px,3vw,36px);line-height:1;letter-spacing:-.03em;color:#fff;
+  font-variant-numeric:tabular-nums;min-width:3.4ch;
+}
+.caseteaser__stats span{font-size:13.5px;color:var(--t-62);line-height:1.45}
+
+/* Ziet eruit als een knop, is het niet: de hele kaart is de link. */
+.caseteaser__cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;border-radius:var(--r-pill);
+  background:var(--blue);color:#fff;
+  font-size:14px;font-weight:700;letter-spacing:.01em;
+  transition:background-color .3s ease,box-shadow .3s ease;
+}
+.caseteaser__in:hover .caseteaser__cta{background:#2f8bff;box-shadow:0 10px 30px rgba(0,115,255,.28)}
+.caseteaser__cta span{transition:transform .3s ease}
+.caseteaser__in:hover .caseteaser__cta span{transform:translateX(4px)}
+.caseteaser__in:focus-visible{outline:2px solid var(--blue);outline-offset:-6px;border-radius:var(--r-md)}
+
+@media (max-width:900px){
+  .caseteaser__in{grid-template-columns:1fr;gap:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .caseteaser__body,.caseteaser__cta,.caseteaser__cta span{transition:none}
+  .caseteaser__in:hover .caseteaser__body{transform:none}
+  .caseteaser__in:hover .caseteaser__cta span{transform:none}
+}

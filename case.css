@@ -1,0 +1,299 @@
+/* ===========================================================
+   CASE STUDY
+   ===========================================================
+   Accent is het staffing-blauw, dezelfde kleur als de
+   sectorpagina waar deze case bij hoort. --pink wordt daarnaartoe
+   geschaduwd zodat de gedeelde componenten (knoppen, eyebrows,
+   het slotblok) meekleuren zonder uitzonderingen per element.
+   =========================================================== */
+body{
+  --pink:var(--acc-staffing);
+  --pink-soft:var(--acc-staffing-soft);
+  --ice:#8FC7FF;
+  --acc-wash:rgba(0,115,255,.08);
+  --acc-line:rgba(0,115,255,.30);
+  --warm:#FF8A4C;
+  --warm-line:rgba(255,138,76,.34);
+}
+
+/* ---------------- hero ---------------- */
+.cs-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
+.cs-hero__canvas{
+  position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none;
+  -webkit-mask-image:radial-gradient(120% 110% at 78% 35%, #000 6%, transparent 68%);
+  mask-image:radial-gradient(120% 110% at 78% 35%, #000 6%, transparent 68%);
+}
+.cs-hero__in{
+  position:relative;z-index:1;max-width:var(--shell);margin:0 auto;
+  padding:clamp(88px,10vw,138px) var(--bleed-gut) clamp(48px,5vw,68px);
+}
+.cs-crumb{font-size:13.5px;color:var(--muted);margin:0 0 26px}
+.cs-crumb a{color:var(--muted);text-decoration:none}
+.cs-crumb a:hover{color:#fff}
+.cs-tag{
+  display:inline-flex;align-items:center;gap:10px;margin:0 0 24px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ice);border:1px solid var(--acc-line);border-radius:20px;padding:7px 15px;
+}
+.cs-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink)}
+.cs-hero h1{
+  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.034em;
+  color:#fff;margin:0 0 20px;max-width:20ch;text-wrap:balance;
+}
+.cs-hero h1 em{font-style:normal;color:var(--pink)}
+.cs-hero__kicker{
+  margin:0 0 26px;font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;
+  font-size:clamp(17px,2vw,22px);color:var(--ice);letter-spacing:-.018em;
+}
+.cs-hero__lead{margin:0;font-size:17.5px;line-height:1.65;color:var(--t-80);max-width:60ch}
+
+/* Kerncijfers: alleen wat werkelijk gemeten is in dit project. */
+.cs-stats{
+  list-style:none;margin:clamp(38px,4.4vw,58px) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--rule);border:1px solid var(--rule);
+}
+.cs-stats li{background:var(--surface-0);padding:22px 24px}
+.cs-stats b{
+  display:block;font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(26px,3vw,38px);line-height:1;letter-spacing:-.03em;color:#fff;
+  font-variant-numeric:tabular-nums;
+}
+.cs-stats span{display:block;margin-top:10px;font-size:13.5px;color:var(--t-62);line-height:1.45}
+@media (max-width:820px){.cs-stats{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.cs-stats{grid-template-columns:1fr}}
+
+/* ---------------- secties ---------------- */
+.cs-band{padding:clamp(62px,7.5vw,102px) 0;position:relative}
+.cs-band--alt{background:linear-gradient(180deg,rgba(255,255,255,.014),transparent)}
+.cs-head{max-width:66ch;margin:0 0 clamp(30px,3.6vw,46px)}
+.cs-eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ice);margin:0 0 15px;display:flex;align-items:center;gap:10px;
+}
+.cs-eyebrow::before{content:"";width:22px;height:1px;background:var(--pink);flex:none}
+.cs-h2{
+  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(25px,3vw,40px);line-height:1.1;letter-spacing:-.028em;
+  color:#fff;margin:0;text-wrap:balance;
+}
+.cs-h2 em{font-style:normal;color:var(--pink)}
+.cs-lead{margin:18px 0 0;font-size:17px;line-height:1.7;color:var(--t-70)}
+.cs-fine{margin:22px 0 0;font-size:13.5px;color:var(--t-62);line-height:1.6;max-width:76ch}
+
+/* ---------------- in het kort ----------------
+   De vaste kop van elke case: wie, welke sector, welke vraag, wat we
+   gebouwd hebben en in welke rol. Een lezer die alleen dit blok leest
+   moet al weten of de case op hem slaat. */
+.cs-snap{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;
+}
+.cs-snap > div{background:var(--surface-1);padding:22px 26px}
+.cs-snap dt{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 9px;
+}
+.cs-snap dd{margin:0;color:#fff;font-size:15.5px;line-height:1.55}
+.cs-snap dd .cs-snap__sub{display:block;margin-top:6px;color:var(--t-62);font-size:14px;line-height:1.55}
+.cs-snap__wide{grid-column:1 / -1}
+@media (max-width:720px){.cs-snap{grid-template-columns:1fr}}
+
+/* ---------------- de opdracht ----------------
+   Wat er moest kloppen voordat iemand dit systeem zou vertrouwen.
+   Staat bewust vóór de oplossing: zonder deze eisen is elke oplossing
+   willekeurig. */
+.cs-goals{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cs-goals li{
+  border:1px solid var(--fl-line);border-left:2px solid var(--pink);
+  border-radius:0 var(--r-md) var(--r-md) 0;background:var(--surface-1);
+  padding:24px 26px;
+}
+.cs-goals b{display:block;color:#fff;font-size:16.5px;margin-bottom:9px;letter-spacing:-.016em}
+.cs-goals span{color:var(--t-70);font-size:14.8px;line-height:1.62}
+@media (max-width:900px){.cs-goals{grid-template-columns:1fr}}
+
+/* ---------------- resultaat in cijfers ---------------- */
+.cs-res{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--acc-line);border:1px solid var(--acc-line);border-radius:var(--r-lg);overflow:hidden;
+  margin-bottom:28px;
+}
+.cs-res > div{background:var(--surface-1);padding:26px 28px}
+.cs-res b{
+  display:block;font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-size:clamp(24px,2.8vw,34px);line-height:1;letter-spacing:-.03em;color:#fff;
+  font-variant-numeric:tabular-nums;margin-bottom:11px;
+}
+.cs-res span{display:block;color:var(--t-70);font-size:14.5px;line-height:1.6}
+@media (max-width:820px){.cs-res{grid-template-columns:1fr}}
+
+/* ---------------- de oude situatie ---------------- */
+.cs-was{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border-top:1px solid var(--rule)}
+.cs-was__c{padding:32px 44px 32px 0}
+.cs-was__c + .cs-was__c{padding:32px 0 32px 44px;border-left:1px solid var(--rule)}
+.cs-was h3{margin:0 0 14px;font-size:19px;color:#fff;letter-spacing:-.018em}
+.cs-was p{margin:0 0 14px;color:var(--t-70);line-height:1.7}
+.cs-was p:last-child{margin-bottom:0}
+.cs-hands{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.cs-hands li{
+  display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;
+  font-size:15px;line-height:1.55;color:var(--t-70);
+}
+.cs-hands span{font-family:var(--mono);font-size:11px;color:var(--warm);padding-top:3px}
+@media (max-width:880px){
+  .cs-was{grid-template-columns:1fr}
+  .cs-was__c{padding:28px 0}
+  .cs-was__c + .cs-was__c{padding:28px 0;border-left:0;border-top:1px solid var(--rule)}
+}
+
+/* ---------------- de klok: het beeld van de case ----------------
+   Alleen de twee tijdstippen die echt gemeten zijn staan als tijd op
+   de as. Wat ertussen gebeurt krijgt geen verzonnen kloktijd. */
+.cs-clock{
+  border:1px solid var(--acc-line);border-radius:var(--r-xl);overflow:hidden;
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(0,115,255,.14), transparent 62%),
+    var(--surface-1);
+}
+.cs-clock__top{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:20px 30px;border-bottom:1px solid var(--acc-line);background:rgba(6,15,38,.4);
+}
+.cs-clock__k{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0;
+}
+.cs-clock__delta{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ice);border:1px solid var(--acc-line);border-radius:20px;padding:5px 13px;
+}
+.cs-clock__body{padding:32px 30px 34px}
+.cs-rail{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-bottom:26px}
+.cs-node{position:relative;padding-right:14px}
+.cs-node::after{
+  content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:var(--acc-line);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--ease-out);
+}
+.cs-clock.is-on .cs-node::after{transform:scaleX(1)}
+.cs-node:last-child::after{right:14px}
+.cs-node__dot{
+  position:relative;z-index:1;display:block;width:13px;height:13px;border-radius:50%;
+  border:1px solid var(--rule-strong);background:var(--surface-1);
+  transition:border-color .4s ease,background-color .4s ease,box-shadow .4s ease;
+}
+.cs-clock.is-on .cs-node.is-lit .cs-node__dot{
+  border-color:var(--pink);background:var(--pink);box-shadow:0 0 0 5px rgba(0,115,255,.16);
+}
+.cs-node__t{display:block;margin:15px 0 0;font-size:14px;font-weight:600;color:#fff;line-height:1.3;letter-spacing:-.012em}
+.cs-node__time{
+  display:block;margin:6px 0 0;font-family:var(--mono);font-size:12px;
+  font-variant-numeric:tabular-nums;color:var(--ice);
+}
+.cs-node__time--none{color:var(--slate)}
+.cs-clock__note{
+  margin:0;padding-top:22px;border-top:1px solid var(--rule);
+  font-size:16px;line-height:1.6;color:var(--t-80);
+}
+.cs-clock__note b{color:#fff}
+@media (max-width:900px){
+  .cs-rail{grid-template-columns:repeat(3,1fr);gap:26px 0}
+  .cs-node:nth-child(3)::after{right:14px}
+}
+@media (max-width:560px){
+  .cs-rail{grid-template-columns:1fr;gap:0}
+  .cs-node{padding:0 0 20px 24px}
+  .cs-node::after{left:6px;right:auto;top:0;bottom:0;width:1px;height:auto;transform:scaleY(0);transform-origin:50% 0}
+  .cs-clock.is-on .cs-node::after{transform:scaleY(1)}
+  .cs-node:last-child::after{display:none}
+  .cs-node__dot{position:absolute;left:0;top:0}
+  .cs-node__t{margin-top:0}
+  .cs-clock__body{padding:26px 20px 28px}
+  .cs-clock__top{padding:18px 20px}
+}
+
+/* ---------------- waarop wordt gematcht ---------------- */
+.cs-checks{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--rule);border:1px solid var(--rule);
+}
+.cs-check{background:var(--surface-0);padding:22px 24px 24px;transition:background-color .3s ease}
+.cs-check:hover{background:var(--surface-1)}
+.cs-check__n{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ice);
+  display:block;margin-bottom:11px;
+}
+.cs-check h3{margin:0 0 8px;font-size:16px;color:#fff;letter-spacing:-.014em}
+.cs-check p{margin:0;color:var(--t-62);font-size:14px;line-height:1.6}
+@media (max-width:980px){.cs-checks{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cs-checks{grid-template-columns:1fr}}
+
+/* ---------------- waar de mens beslist ---------------- */
+.cs-human{
+  border:1px solid var(--acc-line);border-radius:var(--r-xl);
+  background:
+    radial-gradient(120% 140% at 88% 10%, rgba(0,115,255,.16), transparent 58%),
+    var(--surface-1);
+  padding:clamp(32px,4.4vw,58px);
+}
+.cs-human > p{margin:0 0 18px;color:var(--t-80);font-size:17px;line-height:1.72;max-width:72ch}
+.cs-human strong{color:#fff;font-weight:600}
+.cs-rules{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--acc-line);border:1px solid var(--acc-line);border-radius:var(--r-md);overflow:hidden}
+.cs-rules li{background:var(--surface-1);padding:20px 22px}
+.cs-rules b{display:block;color:#fff;font-size:15.5px;margin-bottom:6px;letter-spacing:-.012em}
+.cs-rules span{color:var(--t-70);font-size:14.5px;line-height:1.58}
+@media (max-width:760px){.cs-rules{grid-template-columns:1fr}}
+.cs-kicker{
+  display:block;margin:30px 0 0;font-size:19px;line-height:1.5;color:#fff;font-weight:600;
+  padding-left:22px;border-left:3px solid var(--pink);letter-spacing:-.015em;
+}
+
+/* ---------------- voor en na ---------------- */
+.cs-ba{border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden}
+.cs-ba__h,.cs-ba__r{display:grid;grid-template-columns:1fr 1fr}
+.cs-ba__h{background:rgba(255,255,255,.025);border-bottom:1px solid var(--rule)}
+.cs-ba__h span{
+  padding:14px 24px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.cs-ba__h span:first-child{color:var(--warm)}
+.cs-ba__h span:last-child{color:var(--ice)}
+.cs-ba__r{border-bottom:1px solid var(--rule);transition:background-color .25s ease}
+.cs-ba__r:last-child{border-bottom:0}
+.cs-ba__r:hover{background:var(--acc-wash)}
+.cs-ba__r > *{padding:15px 24px;font-size:14.8px;line-height:1.55}
+.cs-ba__was{color:var(--t-62)}
+.cs-ba__nu{color:var(--t-80);border-left:1px solid var(--rule)}
+.cs-ba__nu b{color:var(--ice);font-weight:600}
+@media (max-width:720px){
+  .cs-ba__h{display:none}
+  .cs-ba__r{grid-template-columns:1fr;padding:6px 0}
+  .cs-ba__r > *{padding:5px 20px}
+  .cs-ba__was{padding-top:14px}
+  .cs-ba__was::before{content:"Was: ";font-family:var(--mono);font-size:11px;color:var(--warm)}
+  .cs-ba__nu{border-left:0;padding-bottom:14px}
+  .cs-ba__nu::before{content:"Nu: ";font-family:var(--mono);font-size:11px;color:var(--ice)}
+}
+
+/* ---------------- losse winstpunten ---------------- */
+.cs-extra{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cs-extra__i{
+  border:1px solid var(--fl-line);border-radius:var(--r-lg);background:var(--surface-1);
+  padding:26px 28px;transition:border-color .35s ease,transform .35s var(--ease-out);
+}
+.cs-extra__i:hover{border-color:var(--acc-line);transform:translateY(-3px)}
+.cs-extra__i h3{margin:0 0 10px;font-size:17px;color:#fff;letter-spacing:-.018em}
+.cs-extra__i p{margin:0;color:var(--t-70);font-size:14.8px;line-height:1.62}
+@media (max-width:900px){.cs-extra{grid-template-columns:1fr}}
+
+/* ---------------- reveal ---------------- */
+.cs-rev{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.cs-rev.is-in{opacity:1;transform:none}
+.cs-rev[data-d="1"]{transition-delay:.08s}
+.cs-rev[data-d="2"]{transition-delay:.16s}
+
+@media (prefers-reduced-motion:reduce){
+  .cs-rev{opacity:1;transform:none;transition:none}
+  .cs-node::after{transform:none!important}
+}

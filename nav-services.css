@@ -163,34 +163,3 @@ a.svci:hover::before,a.svci:focus-visible::before{transform:scaleY(1)}
 @media (prefers-reduced-motion:reduce){
   .mega,.svci::before,.nav__svc::after,.mnav__grp > summary::after{transition:none}
 }
-
-/* ===========================================================
-   SECTOROPLOSSINGEN — TIJDELIJK VERBORGEN
-   ===========================================================
-   uitzendbureaus.html blijft bestaan en blijft direct bereikbaar,
-   maar er wijst nergens meer een link naartoe. Terugzetten is dit
-   hele blok verwijderen — de opmaak eronder is ongemoeid gelaten.
-   Op uitzendbureaus.html zelf staat daarnaast een noindex, zodat
-   een pagina zonder inkomende links ook niet in Google verschijnt
-   zolang hij niet af is.
-   =========================================================== */
-.mega__col--sect,          /* kolom Sectoren in het megamenu   */
-.mnav__sect,               /* groep Sectoren in het mobiele menu */
-.svcband__k--2,            /* kop boven de sectorrij            */
-.svcband__row--sect,       /* sectorrij in de dienstenbalk      */
-.sector-cta,               /* CTA-blok naar de sectorpagina     */
-.foot-sect{                /* footerkolom Sectoren              */
-  display:none;
-}
-/* Twee klassen, want fl-kit.css laadt ná dit bestand en zet
-   .build-row op display:grid. Met één klasse wint die van de
-   display:none hierboven en blijft de rij gewoon staan. */
-.build-row.build-row--sector{display:none}
-
-/* Zonder de sectorkolom heeft het megamenu nog één kolom over. */
-.mega__in{grid-template-columns:1fr}
-
-/* En de footer nog drie in plaats van vier. */
-.footer__grid{grid-template-columns:1.5fr .8fr .6fr}
-@media (max-width:900px){.footer__grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.footer__grid{grid-template-columns:1fr}}

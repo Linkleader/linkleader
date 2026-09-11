@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case: MediMatch — LinkLeader</title>
-<meta name="description" content="MediMatch plande in Excel, mail en WhatsApp. Nu komt elke aanvraag automatisch binnen en ligt er binnen vijf minuten een kandidaat bij de opdrachtgever — zonder extra planners.">
+<meta name="description" content="Hoe we voor uitzendbureau MediMatch het handmatige zoek-, controle- en matchwerk automatiseerden: 83% minder zoektijd per handmatig aangeboden shift, terwijl planners de controle hielden over uitzonderingen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=9">
 <link rel="stylesheet" href="nav-services.css?v=5">
 <link rel="stylesheet" href="fl-kit.css?v=9">
-<link rel="stylesheet" href="case.css?v=3">
+<link rel="stylesheet" href="case.css?v=5">
 </head>
 <body>
 
@@ -90,399 +90,405 @@
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="cs-hero" id="csHero">
+<section class="cs-hero cs-hero--photo" id="csHero">
   <canvas class="cs-hero__canvas" id="csHeroGrid" aria-hidden="true"></canvas>
+  <div class="cs-hero__photo" aria-hidden="true"></div>
+  <div class="cs-hero__scrim" aria-hidden="true"></div>
   <div class="cs-hero__in">
     <p class="cs-crumb"><a href="index.html">LinkLeader</a> / <a href="uitzendbureaus.html">Uitzend &amp; staffing</a> / Case</p>
     <p class="cs-tag">Klantcase &middot; MediMatch &middot; zorgbemiddeling</p>
-    <h1>Van Excel naar een eigen app. Van uren naar <em>vijf minuten.</em></h1>
-    <p class="cs-hero__kicker">Zonder één planner extra aan te nemen.</p>
-    <p class="cs-hero__lead">MediMatch bemiddelt zorgpersoneel naar zorginstellingen. Het inplannen ging via een gedeeld Excel-bestand, mail, WhatsApp en telefoon. Nu komt elke aanvraag automatisch binnen, toetst de applicatie het volledige medewerkersbestand en ligt er binnen vijf minuten een kandidaat bij de opdrachtgever. Ook 's nachts en in het weekend.</p>
+    <h1>Van handmatig matchen naar een <em>geautomatiseerde matchingoperatie</em></h1>
+    <p class="cs-hero__lead">Hoe we voor MediMatch het grootste deel van het handmatige zoek-, controle- en matchwerk automatiseerden &mdash; terwijl de planners de controle hielden over uitzonderingen.</p>
+  </div>
+</section>
 
+<!-- ================= DE CIJFERS ================= -->
+<section class="cs-facts">
+  <div class="cs-facts__in">
     <ul class="cs-stats">
-      <li><b>5 min</b><span>Van binnenkomende aanvraag tot aangeboden kandidaat</span></li>
-      <li><b>5 van 6</b><span>Handelingen per aanvraag verdwenen bij de planner</span></li>
-      <li><b>24/7</b><span>Aanvragen worden direct opgepakt, ook buiten kantooruren</span></li>
-      <li><b>0</b><span>Extra planners nodig om meer aanvragen te verwerken</span></li>
+      <li><b>83%</b><span>Minder zoektijd per handmatig aangeboden shift: van 24 naar 4 minuten</span></li>
+      <li><b>6&times;</b><span>Zoveel handmatige aanbiedingen per planneruur, bij hetzelfde team</span></li>
+      <li><b>24/7</b><span>Shifts komen via API binnen en worden direct beoordeeld, ook als er niemand werkt</span></li>
+      <li><b>48u</b><span>Onder die grens beslist altijd een mens, niet het systeem</span></li>
     </ul>
+    <p class="cs-facts__note">De eerste twee cijfers komen van MediMatch zelf en gaan over het handmatig aanbieden van een shift. Wat de automatisering aan extra gevulde shifts oplevert, is niet door ons gemeten; zie <a href="#roi" style="color:var(--pink-soft)">de ROI-sectie</a>.</p>
   </div>
 </section>
 
-<!-- ================= IN HET KORT ================= -->
-<section class="cs-band">
-  <div class="wide">
-    <div class="cs-head cs-rev">
-      <p class="cs-eyebrow">In het kort</p>
-      <h2 class="cs-h2">Waar deze case <em>over gaat</em></h2>
-    </div>
-
-    <dl class="cs-snap cs-rev">
-      <div>
-        <dt>Klant</dt>
-        <dd>MediMatch<span class="cs-snap__sub">Bemiddelt zorgpersoneel naar zorginstellingen</span></dd>
-      </div>
-      <div>
-        <dt>Sector</dt>
-        <dd>Uitzend &amp; staffing, zorg<span class="cs-snap__sub">Korte reactietijden en harde eisen aan diploma's en bevoegdheden</span></dd>
-      </div>
-      <div>
-        <dt>De vraag</dt>
-        <dd>Meer aanvragen aankunnen zonder meer planners<span class="cs-snap__sub">Elke aanvraag kostte zes handelingen. Meer omzet betekende meer personeel.</span></dd>
-      </div>
-      <div>
-        <dt>Onze rol</dt>
-        <dd>Proces uitschrijven, data op orde brengen, applicatie bouwen<span class="cs-snap__sub">FlowLink en SoftwareLink, binnen de sectoroplossing uitzend &amp; staffing</span></dd>
-      </div>
-      <div class="cs-snap__wide">
-        <dt>Wat er nu staat</dt>
-        <dd>Eén applicatie die aanvragen binnenhaalt, het volledige bestand toetst en de kandidaat aanbiedt bij de opdrachtgever. Medewerkers geven hun beschikbaarheid zelf door in een portaal.<span class="cs-snap__sub">De systemen die MediMatch al gebruikte blijven leidend. Er is niets vervangen dat werkte.</span></dd>
-      </div>
-    </dl>
-  </div>
-</section>
-
-<!-- ================= DE UITDAGING ================= -->
-<section class="cs-band cs-band--alt">
-  <div class="wide">
-    <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">De uitdaging</p>
-      <h2 class="cs-h2">Het planwerk zat in Excel <em>en in hoofden</em></h2>
-      <p class="cs-lead">Het was geen moeilijk werk. Het waren veel handelingen, ze kwamen bij elke aanvraag terug, en ze lagen bij dezelfde paar mensen.</p>
-    </div>
-
-    <div class="cs-was cs-rev">
-      <div class="cs-was__c">
-        <h3>Zes handelingen per aanvraag</h3>
-        <ul class="cs-hands">
-          <li><span>01</span>Meerdere keren per dag handmatig het portaal van de opdrachtgever controleren op nieuwe aanvragen</li>
-          <li><span>02</span>Beschikbaarheid opzoeken in een gedeeld Excel-bestand, bijgehouden op basis van appjes</li>
-          <li><span>03</span>Per kandidaat uit het hoofd zeven eisen nalopen: functie, diploma's, locatie, vrij, niet dubbel gepland</li>
-          <li><span>04</span>Bellen wie geschikt leek. Bij "nee" terug naar de lijst</li>
-          <li><span>05</span>De kandidaat overtypen in het portaal, inclusief het juiste tarief en het cv</li>
-          <li><span>06</span>Verlof en ziekte nakijken in weer een ander bestand</li>
-        </ul>
-      </div>
-      <div class="cs-was__c">
-        <h3>Wat dat kostte</h3>
-        <p><strong>Gemiste opdrachten.</strong> Zorginstellingen zetten een dienst bij meerdere bureaus tegelijk uit. Wie te laat reageerde, kwam bij een gevulde dienst uit.</p>
-        <p><strong>Stilstand buiten kantooruren.</strong> Een aanvraag die 's avonds binnenkwam, werd de volgende ochtend pas gezien.</p>
-        <p><strong>Fouten in de eisen.</strong> Diploma's en bevoegdheden werden uit het hoofd getoetst. Dat gaat een keer mis.</p>
-        <p><strong>Groei kostte personeel.</strong> Meer aanvragen aannemen betekende meer planners aannemen. De omzet groeide, maar de kosten groeiden even hard mee.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DE OPDRACHT ================= -->
+<!-- ================= 01 DE SITUATIE ================= -->
 <section class="cs-band">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">De opdracht</p>
-      <h2 class="cs-h2">Drie voorwaarden, <em>vooraf vastgelegd</em></h2>
-      <p class="cs-lead">Voordat er iets gebouwd werd, is afgesproken waaraan het moest voldoen.</p>
+      <p class="cs-num"><span class="cs-num__n">01</span> De situatie</p>
+      <h2 class="cs-h2">Een bureau dat elke dag mensen aan <em>shifts koppelt</em></h2>
+      <p class="cs-lead">MediMatch bemiddelt zorgpersoneel naar zorginstellingen. Dagelijks worden medewerkers gekoppeld aan beschikbare shifts bij opdrachtgevers.</p>
+      <p class="cs-lead">Een groot deel van dat proces ging handmatig. De data stond verspreid over Excel-bestanden en losse systemen, terwijl planners beschikbaarheid, kwalificaties en voorkeuren via mail, WhatsApp en telefoon bijhielden.</p>
     </div>
 
-    <ul class="cs-goals cs-rev">
-      <li>
-        <b>Sneller reageren dan de concurrent</b>
-        <span>Wie als eerste een geschikte kandidaat teruglegt, krijgt de dienst. De reactietijd moest van uren naar minuten, ook buiten kantooruren.</span>
-      </li>
-      <li>
-        <b>Groeien zonder extra planners</b>
-        <span>Meer aanvragen mocht niet automatisch meer mensen betekenen. Het werk dat bij elke aanvraag terugkwam, moest eruit.</span>
-      </li>
-      <li>
-        <b>De planner houdt het laatste woord</b>
-        <span>Een systeem dat blind toewijst, wordt niet gebruikt. Er moest vooraf vastliggen waar de mens beslist.</span>
-      </li>
-    </ul>
+    <p class="cs-punch cs-rev">Naarmate het aantal medewerkers en shifts groeide, groeide vooral <b>de hoeveelheid operationeel werk</b> mee.</p>
   </div>
 </section>
 
-<!-- ================= DE OPLOSSING ================= -->
+<!-- ================= 02 HET PROBLEEM ================= -->
 <section class="cs-band cs-band--alt">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">De oplossing</p>
-      <h2 class="cs-h2">Van een gedeeld Excel-bestand <em>naar één applicatie</em></h2>
-      <p class="cs-lead">Eerst is het proces uitgeschreven: welke stappen zijn uitvoerend werk, en welke vragen een oordeel van de planner? Daarna pas is er gebouwd. Dit is wat de applicatie doet.</p>
+      <p class="cs-num"><span class="cs-num__n">02</span> Het probleem</p>
+      <h2 class="cs-h2">Tien handelingen, <em>bij elke nieuwe shift opnieuw</em></h2>
+      <p class="cs-lead">Niet "het proces was inefficiënt". Dit is wat er daadwerkelijk gebeurde voordat één shift gevuld was.</p>
+    </div>
+
+    <ul class="cs-steps cs-rev">
+      <li><span>01</span>De shift bekijken</li>
+      <li><span>02</span>Geschikte kandidaten zoeken</li>
+      <li><span>03</span>Beschikbaarheid controleren</li>
+      <li><span>04</span>Certificaten en bevoegdheden controleren</li>
+      <li><span>05</span>Locatie en voorwaarden controleren</li>
+      <li><span>06</span>Klantvoorkeuren meenemen</li>
+      <li><span>07</span>Kandidaten benaderen</li>
+      <li><span>08</span>Reacties verwerken</li>
+      <li><span>09</span>De juiste kandidaat selecteren</li>
+      <li><span>10</span>De match terugkoppelen naar de opdrachtgever</li>
+    </ul>
+
+    <p class="cs-punch cs-rev">Het probleem was niet dat planners niet konden matchen. Het probleem was dat ervaren planners hun tijd besteedden aan <b>werk dat software beter en sneller uitvoert</b>.</p>
+  </div>
+</section>
+
+<!-- ================= 03 DE BUSINESS IMPACT ================= -->
+<section class="cs-band">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-num"><span class="cs-num__n">03</span> De business impact</p>
+      <h2 class="cs-h2">Wat dat operationeel <em>daadwerkelijk kostte</em></h2>
+    </div>
+
+    <ul class="cs-impact cs-rev">
+      <li>Planners waren continu bezig met zoeken en controleren in plaats van met opdrachtgevers</li>
+      <li>Beschikbaarheid moest actief worden nagejaagd via appjes en telefoon</li>
+      <li>De kennis om goed te matchen zat deels in de hoofden van individuele planners</li>
+      <li>De kwaliteit van een match hing af van hoeveel kandidaten een planner handmatig meenam</li>
+      <li>Buiten kantooruren bleef een aanvraag liggen tot de volgende ochtend</li>
+      <li>Data moest handmatig worden bijgehouden om überhaupt goed te kunnen matchen</li>
+      <li>Groei betekende direct meer druk op de planning</li>
+    </ul>
+
+    <p class="cs-punch cs-rev">Iedere extra shift creëerde niet alleen omzetpotentieel, maar ook <b>extra operationeel werk</b>. Dat is het probleem dat we hebben opgelost.</p>
+  </div>
+</section>
+
+<!-- ================= 04 DE UITDAGING ================= -->
+<section class="cs-band cs-band--alt">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-num"><span class="cs-num__n">04</span> De uitdaging</p>
+      <h2 class="cs-h2">Niet hóe matching te automatiseren, maar <em>welk deel dat überhaupt mocht</em></h2>
+      <p class="cs-lead">Een systeem dat alles automatisch toewijst is technisch eenvoudig en wordt in de praktijk omzeild. De eerste vraag was daarom niet technisch maar operationeel: waar mag software beslissen, en waar niet?</p>
+    </div>
+
+    <div class="cs-human cs-rev">
+      <p><strong>De grens die daaruit volgde:</strong> shifts die binnen 48 uur starten blijven onder menselijke controle. Ze worden bewust niet automatisch ingevuld, krijgen de markering "handmatig toewijzen" en staan bovenaan in de wachtrij.</p>
+      <p>Dat is geen fallback omdat de automatisering tekortschiet. Het is een ontwerpbeslissing: bij spoed telt context die niet in data zit &mdash; welke medewerker je op dit moment wél kunt bellen, welke opdrachtgever je niet wilt teleurstellen, welke uitzondering vandaag verdedigbaar is.</p>
+      <span class="cs-kicker">Het systeem weet zowel "dit kan ik automatisch afhandelen" als "hier moet een mens naar kijken".</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 DE AANPAK ================= -->
+<section class="cs-band">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-num"><span class="cs-num__n">05</span> De aanpak</p>
+      <h2 class="cs-h2">Eerst het proces ontleden, <em>daarna pas bouwen</em></h2>
+      <p class="cs-lead">Voordat er één regel code geschreven werd, hebben we het matchingproces uit elkaar getrokken aan de hand van acht vragen. De antwoorden bepaalden wat het systeem wel en niet zelfstandig doet.</p>
+    </div>
+
+    <ul class="cs-qs cs-rev">
+      <li>Welke criteria zijn harde eisen?</li>
+      <li>Welke criteria zijn voorkeuren?</li>
+      <li>Welke informatie moet altijd beschikbaar zijn?</li>
+      <li>Welke uitzonderingen bestaan er in de praktijk?</li>
+      <li>Welke beslissingen maakt een planner werkelijk zelf?</li>
+      <li>Wanneer is menselijke beoordeling noodzakelijk?</li>
+      <li>Welke processen kunnen volledig automatisch?</li>
+      <li>Waar moet het systeem juist stoppen?</li>
+    </ul>
+
+    <p class="cs-fine">Uit die inventarisatie kwamen zeven harde controles per kandidaat &mdash; functie, bevoegdheden, locatie, beschikbaarheid, afwezigheid, overlap en actieve status &mdash; plus de voorkeuren die de volgorde bepalen. Precies de zeven controles die een planner eerst uit het hoofd naliep.</p>
+  </div>
+</section>
+
+<!-- ================= 06 DE OPLOSSING ================= -->
+<section class="cs-band cs-band--alt">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-num"><span class="cs-num__n">06</span> De oplossing</p>
+      <h2 class="cs-h2">Geen matchingtool, maar een <em>automatiseringslaag om het hele proces</em></h2>
+      <p class="cs-lead">Een tool die alleen kandidaten rangschikt lost het probleem niet op, want het werk zit in alles eromheen. We hebben daarom zes lagen gebouwd, van databron tot terugkoppeling.</p>
     </div>
 
     <ul class="cs-does cs-rev">
       <li>
         <span class="cs-does__n">01</span>
-        <b>Aanvragen komen binnen</b>
-        <span>Zodra een opdrachtgever een dienst plaatst, staat die in de applicatie. Niemand hoeft nog een portaal te controleren.</span>
+        <b>Data foundation</b>
+        <span>Excel-bestanden en de overige databronnen omgezet naar opgeschoonde, gestructureerde data: competenties, diploma's met verloopdatum, locaties, tarieven en beschikbaarheid.</span>
       </li>
       <li>
         <span class="cs-does__n">02</span>
-        <b>Medewerkers vullen hun eigen agenda</b>
-        <span>Via een portaal geven zij een vast weekpatroon door plus afwijkingen per datum, en vragen ze verlof aan. Het Excel-bestand en de appjes zijn daarmee verdwenen.</span>
+        <b>Data quality</b>
+        <span>Het systeem blijft controleren op ontbrekende gegevens, dubbele records, incomplete profielen, verlopen certificeringen en gaten in de beschikbaarheid. Wat niet klopt, is zichtbaar in plaats van stil.</span>
       </li>
       <li>
         <span class="cs-does__n">03</span>
-        <b>Het hele bestand wordt getoetst</b>
-        <span>Zeven controles per medewerker, bij elke aanvraag opnieuw. Niet alleen bij de mensen die de planner toevallig voor ogen had.</span>
+        <b>Matching engine</b>
+        <span>Elke nieuwe shift wordt getoetst langs beschikbaarheid, kwalificaties, locatie, certificaten, klantvoorkeuren en de overige business rules. Over het volledige personeelsbestand, niet alleen bij de mensen die een planner voor ogen had.</span>
       </li>
       <li>
         <span class="cs-does__n">04</span>
-        <b>De planner krijgt een volgorde</b>
-        <span>Geen lijst om door te spitten, maar een rangschikking: eerst fulltimers, daarna op prioriteit. Bovenaan staat de kandidaat die past.</span>
+        <b>Human-in-the-loop</b>
+        <span>Automatisch waar het kan, planner waar het moet. Spoed onder 48 uur, uitzonderingen en overrulen liggen bij de mens &mdash; vooraf vastgelegd, niet achteraf toegevoegd.</span>
       </li>
       <li>
         <span class="cs-does__n">05</span>
-        <b>Aanbieden gaat automatisch</b>
-        <span>De kandidaat gaat naar het systeem van de opdrachtgever met het juiste tarief en het cv erbij. Tarieven liggen vast per medewerker per opdrachtgever, dus niemand hoeft iets op te zoeken.</span>
+        <b>Employee self-service</b>
+        <span>Medewerkers houden hun eigen beschikbaarheid bij en krijgen de shifts die bij hen passen. Zij reageren, het systeem verwerkt de reactie. Het gedeelde Excel-bestand en het najagen via appjes zijn daarmee verdwenen.</span>
       </li>
       <li>
         <span class="cs-does__n">06</span>
-        <b>Alles wordt vastgelegd</b>
-        <span>Elke uitwisseling met tijdstip en inhoud. Bij discussie over wie wanneer wat heeft aangeboden, is dat na te kijken.</span>
+        <b>Integrations</b>
+        <span>Nieuwe shifts komen automatisch via API binnen, matches gaan automatisch terug naar het systeem van de opdrachtgever &mdash; met het juiste tarief en het cv erbij. Elke uitwisseling wordt vastgelegd met tijdstip en inhoud.</span>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- ================= WAAROM GEEN EXTRA PLANNERS ================= -->
+<!-- ================= 07 HOE HET WERKT ================= -->
 <section class="cs-band">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">Waarom er geen planners bij hoefden</p>
-      <h2 class="cs-h2">Zes handelingen per aanvraag <em>werden er één</em></h2>
-      <p class="cs-lead">Dit is de kern van de businesscase. Het werk dat bij élke aanvraag terugkwam, is het werk dat meegroeit met je volume. Precies dat werk is eruit gehaald.</p>
+      <p class="cs-num"><span class="cs-num__n">07</span> Hoe het werkt</p>
+      <h2 class="cs-h2">Van binnenkomende shift <em>tot bevestigde match</em></h2>
+      <p class="cs-lead">Eén route, met één splitsing: kan het systeem dit zelf afhandelen, of moet er een planner naar kijken?</p>
+    </div>
+
+    <div class="cs-flow cs-rev" id="csFlow">
+      <div class="cs-fl cs-fl--in"><b>Opdrachtgever</b><span>Plaatst een shift in het eigen systeem</span></div>
+      <div class="cs-arrow" aria-hidden="true"><span>API</span></div>
+      <div class="cs-fl"><b>Nieuwe shift</b><span>Automatisch binnengehaald, uitgelezen en vertaald naar de juiste locatie</span></div>
+      <div class="cs-arrow" aria-hidden="true"></div>
+      <div class="cs-fl cs-fl--engine">
+        <b>Matching engine</b>
+        <span>Toetst het volledige personeelsbestand</span>
+        <div class="cs-fl__chips">
+          <i>Beschikbaarheid</i><i>Certificaten</i><i>Locatie</i><i>Ervaring</i><i>Klantvoorkeur</i><i>Business rules</i>
+        </div>
+      </div>
+      <div class="cs-arrow" aria-hidden="true"></div>
+      <div class="cs-fl"><b>Top matches</b><span>Gerangschikt op geschiktheid en prioriteit, met de reden waarom ze passen</span></div>
+      <div class="cs-arrow" aria-hidden="true"></div>
+      <div class="cs-split">
+        <div class="cs-fl cs-fl--auto"><b>Automatisch</b><span>Buiten kantooruren, of wanneer er geen planner nodig is</span></div>
+        <div class="cs-fl cs-fl--human"><b>Planner</b><span>Spoed onder 48 uur en uitzonderingen</span></div>
+      </div>
+      <div class="cs-arrow" aria-hidden="true"></div>
+      <div class="cs-fl"><b>Medewerker</b><span>Krijgt de shift aangeboden via het portaal en reageert</span></div>
+      <div class="cs-arrow" aria-hidden="true"></div>
+      <div class="cs-fl"><b>Bevestiging</b><span>Reactie verwerkt, dubbele toewijzing technisch uitgesloten</span></div>
+      <div class="cs-arrow" aria-hidden="true"><span>API</span></div>
+      <div class="cs-fl cs-fl--out"><b>Terug naar de opdrachtgever</b><span>Inclusief het juiste tarief en het cv, met watermerk</span></div>
+    </div>
+
+    <p class="cs-fine">In de automatische route kwam een aanvraag om 02:14 binnen en lag er om 02:19 een kandidaat bij de opdrachtgever. Er was op dat moment niemand aan het werk. Voorheen was diezelfde aanvraag pas de volgende ochtend gezien, en dan is een nachtdienst vaak al door een ander bureau gevuld.</p>
+  </div>
+</section>
+
+<!-- ================= 08 IMPLEMENTATIE ================= -->
+<section class="cs-band cs-band--alt">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-num"><span class="cs-num__n">08</span> Implementatie</p>
+      <h2 class="cs-h2">Van verspreide bestanden <em>naar één systeem</em></h2>
+    </div>
+
+    <div class="cs-impl cs-rev">
+      <div>
+        <span class="cs-impl__n">Stap 1</span>
+        <h3>Begrijpen</h3>
+        <p>De bestaande workflow volledig in kaart gebracht, inclusief de uitzonderingen die nergens opgeschreven stonden.</p>
+      </div>
+      <div>
+        <span class="cs-impl__n">Stap 2</span>
+        <h3>Fundament</h3>
+        <p>Data opgeschoond, gestructureerd en gecentraliseerd. Zonder deze stap is betrouwbaar matchen niet mogelijk.</p>
+      </div>
+      <div>
+        <span class="cs-impl__n">Stap 3</span>
+        <h3>Beslislogica</h3>
+        <p>Matchingcriteria, voorkeuren en uitzonderingen vertaald naar software. Harde eisen hard, voorkeuren wegend.</p>
+      </div>
+      <div>
+        <span class="cs-impl__n">Stap 4</span>
+        <h3>Automatiseren</h3>
+        <p>API-koppelingen, matching engine, ranking en automatische terugkoppeling naar de opdrachtgever.</p>
+      </div>
+      <div>
+        <span class="cs-impl__n">Stap 5</span>
+        <h3>Uitbreiden</h3>
+        <p>Medewerkersportaal en verdere automatisering rondom beschikbaarheid en verlof.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 HET RESULTAAT ================= -->
+<section class="cs-band">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-num"><span class="cs-num__n">09</span> Het resultaat</p>
+      <h2 class="cs-h2">Wat er veranderde <em>in de operatie</em></h2>
+    </div>
+
+    <div class="cs-res cs-res--4 cs-rev">
+      <div>
+        <b>83%</b>
+        <span><strong>Snelheid.</strong> Handmatig een shift aanbieden kostte 24 minuten zoeken. Nu 4 minuten kiezen, omdat de voorselectie al klaarstaat.</span>
+      </div>
+      <div>
+        <b>6&times;</b>
+        <span><strong>Capaciteit.</strong> In dezelfde planuren passen zes keer zoveel handmatige aanbiedingen. Eén planner kan een groter volume aan zonder dat het team evenredig meegroeit.</span>
+      </div>
+      <div>
+        <b>24/7</b>
+        <span><strong>Dekking.</strong> Buiten kantooruren, in het weekend en wanneer er geen planner nodig is, reageert de laag zelf. Er blijft geen shift meer onopgemerkt liggen.</span>
+      </div>
+      <div>
+        <b>7</b>
+        <span><strong>Kwaliteit.</strong> Iedere kandidaat wordt op dezelfde zeven criteria beoordeeld, over het volledige bestand in plaats van de mensen die iemand toevallig voor ogen had.</span>
+      </div>
     </div>
 
     <div class="cs-ba cs-rev">
-      <div class="cs-ba__h"><span>Wat de planner per aanvraag deed</span><span>Wat daarvan over is</span></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Meerdere keren per dag het portaal controleren</div><div class="cs-ba__nu"><b>Vervalt.</b> Aanvragen komen binnen zodra ze geplaatst zijn.</div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Beschikbaarheid bijhouden in Excel op basis van appjes</div><div class="cs-ba__nu"><b>Vervalt.</b> Medewerkers vullen dit zelf in via het portaal.</div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Per kandidaat zeven eisen uit het hoofd nalopen</div><div class="cs-ba__nu"><b>Vervalt.</b> De applicatie toetst het volledige bestand.</div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Bellen wie geschikt leek, bij "nee" terug naar de lijst</div><div class="cs-ba__nu"><b>Blijft.</b> Maar de kandidaat die past staat nu bovenaan.</div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Kandidaat overtypen in het portaal, met tarief en cv</div><div class="cs-ba__nu"><b>Vervalt.</b> Gaat automatisch, met de juiste gegevens.</div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Verlof en ziekte nakijken in een ander bestand</div><div class="cs-ba__nu"><b>Vervalt.</b> Zit in dezelfde toets.</div></div>
+      <div class="cs-ba__h"><span>Voor</span><span>Na</span></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Nieuwe shift &mdash; planner detecteert en verwerkt</div><div class="cs-ba__nu"><b>Automatisch via API</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Kandidaten zoeken &mdash; handmatig, 24 minuten per shift</div><div class="cs-ba__nu"><b>Automatisch, voorselectie staat klaar</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Beschikbaarheid &mdash; controleren en navragen via appjes</div><div class="cs-ba__nu"><b>Centraal beschikbaar, door de medewerker zelf bijgehouden</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Certificaten &mdash; handmatig controleren</div><div class="cs-ba__nu"><b>Automatische controle op aanwezigheid en geldigheid</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Kandidaten vergelijken &mdash; de planner, uit het hoofd</div><div class="cs-ba__nu"><b>Matching engine, over het volledige bestand</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Uitzonderingen &mdash; de planner ontdekt ze zelf</div><div class="cs-ba__nu"><b>Het systeem escaleert ze actief</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Medewerker benaderen &mdash; bellen, bij "nee" terug naar de lijst</div><div class="cs-ba__nu"><b>Medewerkersportaal, reactie wordt verwerkt</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Match terugkoppelen &mdash; handmatig overtypen met tarief en cv</div><div class="cs-ba__nu"><b>Automatisch, met de juiste gegevens</b></div></div>
+      <div class="cs-ba__r"><div class="cs-ba__was">Buiten kantooruren &mdash; alles blijft liggen tot de ochtend</div><div class="cs-ba__nu"><b>De laag reageert zelf, binnen minuten</b></div></div>
     </div>
 
-    <p class="cs-fine">Wat overblijft is kiezen en bevestigen. Vijf van de zes handelingen die met elke nieuwe aanvraag terugkwamen, komen niet meer terug. Daarom kon het aantal aanvragen omhoog zonder dat het planteam meegroeide &mdash; en daarom is de planner nu bezig met opdrachtgevers en uitzonderingen in plaats van met opzoekwerk.</p>
+    <p class="cs-punch cs-rev">De planner is niet minder gaan werken. De planner is <b>ander werk gaan doen</b>: opdrachtgevers, spoed en uitzonderingen, in plaats van zoeken en controleren.</p>
   </div>
 </section>
 
-<!-- ================= DE ZEVEN CONTROLES ================= -->
-<section class="cs-band cs-band--alt">
+<!-- ================= 10 ROI ================= -->
+<section class="cs-band cs-band--alt" id="roi">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">Waarop de applicatie toetst</p>
-      <h2 class="cs-h2">De zeven controles die eerst <em>uit het hoofd kwamen</em></h2>
-      <p class="cs-lead">Deze zeven punten liep de planner per kandidaat na. De applicatie doet ze bij elke aanvraag over het volledige bestand, ook 's nachts en ook in een drukke week.</p>
+      <p class="cs-num"><span class="cs-num__n">10</span> Wat het oplevert</p>
+      <h2 class="cs-h2">Drie effecten, <em>niet één</em></h2>
+      <p class="cs-lead">Automatisering wordt meestal verkocht op bespaarde uren. Dat is hier het kleinste effect van de drie.</p>
     </div>
 
-    <div class="cs-checks cs-rev">
-      <div class="cs-check">
-        <span class="cs-check__n">01</span>
-        <h3>Functie</h3>
-        <p>Een directe match, of een functie die daarmee uitwisselbaar is. Zorginstellingen vragen vaak samengestelde functies; die worden in beide richtingen herkend.</p>
+    <div class="cs-roi cs-rev">
+      <div>
+        <p class="cs-roi__k">Effect 1</p>
+        <h3>Lagere operationele kosten</h3>
+        <p>Minder planneruren per shift. Bij MediMatch ging de zoektijd per handmatig aangeboden shift van 24 naar 4 minuten: twintig minuten minder, elke keer opnieuw.</p>
+        <p class="cs-roi__sum">shifts per week &times; 20 min<br>= bespaarde planuren</p>
       </div>
-      <div class="cs-check">
-        <span class="cs-check__n">02</span>
-        <h3>Bevoegdheden</h3>
-        <p>Alle verplichte diploma's en certificeringen aanwezig en geldig. Staat er een specifieke bevoegdheid in de toelichting, dan is die hard vereist.</p>
+      <div>
+        <p class="cs-roi__k">Effect 2</p>
+        <h3>Hogere capaciteit</h3>
+        <p>Meer shifts verwerken met hetzelfde team. In dezelfde planuren passen zes keer zoveel handmatige aanbiedingen, en buiten kantooruren loopt de verwerking door zonder dat er iemand aan het werk is.</p>
+        <p class="cs-roi__sum">zelfde team<br>= 6&times; handmatige capaciteit</p>
       </div>
-      <div class="cs-check">
-        <span class="cs-check__n">03</span>
-        <h3>Locatie</h3>
-        <p>Gekoppeld aan precies deze locatie van deze opdrachtgever, niet aan de instelling in het algemeen.</p>
-      </div>
-      <div class="cs-check">
-        <span class="cs-check__n">04</span>
-        <h3>Beschikbaarheid</h3>
-        <p>Het opgegeven blok moet de dienst volledig afdekken, inclusief nachtdiensten die over middernacht heen lopen.</p>
-      </div>
-      <div class="cs-check">
-        <span class="cs-check__n">05</span>
-        <h3>Afwezigheid</h3>
-        <p>Geen goedgekeurd verlof en geen ziekmelding op die datum. Goedgekeurd verlof blokkeert de matching automatisch.</p>
-      </div>
-      <div class="cs-check">
-        <span class="cs-check__n">06</span>
-        <h3>Overlap</h3>
-        <p>Geen andere dienst binnen een instelbare marge, zodat reistijd en rust gerespecteerd blijven.</p>
-      </div>
-      <div class="cs-check">
-        <span class="cs-check__n">07</span>
-        <h3>Actief</h3>
-        <p>De medewerker is niet gedeactiveerd. Wie uit dienst is, verschijnt nergens meer in een voorstel.</p>
-      </div>
-      <div class="cs-check">
-        <span class="cs-check__n">&rarr;</span>
-        <h3>Daarna de volgorde</h3>
-        <p>Wat overblijft wordt gerangschikt: eerst fulltimers, daarna op prioriteit. De planner krijgt geen lijst, maar een volgorde.</p>
+      <div>
+        <p class="cs-roi__k">Effect 3</p>
+        <h3>Hogere omzet</h3>
+        <p>Meer shifts die daadwerkelijk gevuld worden. Een dienst gaat naar meerdere bureaus tegelijk; wie het eerst een geschikte kandidaat teruglegt, krijgt hem. Er blijft nu geen aanvraag meer onopgemerkt.</p>
+        <p class="cs-roi__sum">extra gevulde shifts<br>&times; marge per shift</p>
       </div>
     </div>
+
+    <p class="cs-fine">Het derde effect is het grootste en tegelijk het effect dat wij bij MediMatch niet hebben gemeten. Wij weten wat er aan zoektijd verdwenen is en dat er geen aanvraag meer blijft liggen; hoeveel extra shifts dat oplevert, hangt af van het volume en de marge per shift. Daarom staat het hier als rekensom en niet als claim.</p>
+
+    <p class="cs-punch cs-rev">De boodschap is niet "we besparen planners". De boodschap is dat <b>de operatie meer omzet kan verwerken zonder lineair meer personeel</b> toe te voegen.</p>
   </div>
 </section>
 
-<!-- ================= SNELHEID ================= -->
+<!-- ================= 11 WAAROM HET WERKTE ================= -->
 <section class="cs-band">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">Reactietijd</p>
-      <h2 class="cs-h2">Wie het eerst een kandidaat teruglegt, <em>krijgt de opdracht</em></h2>
-      <p class="cs-lead">Een dienst wordt bij meerdere bureaus tegelijk uitgezet. Snelheid is daarmee geen luxe maar het verschil tussen wel of geen omzet. Zo verliep een aanvraag die midden in de nacht binnenkwam:</p>
-    </div>
-
-    <div class="cs-clock cs-rev" id="csClock">
-      <div class="cs-clock__top">
-        <p class="cs-clock__k">Eén aanvraag, van binnenkomst tot aanbieding</p>
-        <span class="cs-clock__delta">5 minuten</span>
-      </div>
-      <div class="cs-clock__body">
-        <div class="cs-rail">
-          <div class="cs-node">
-            <span class="cs-node__dot" aria-hidden="true"></span>
-            <span class="cs-node__t">Aanvraag binnen</span>
-            <span class="cs-node__time">02:14</span>
-          </div>
-          <div class="cs-node">
-            <span class="cs-node__dot" aria-hidden="true"></span>
-            <span class="cs-node__t">Uitgelezen</span>
-            <span class="cs-node__time cs-node__time--none">gestructureerd</span>
-          </div>
-          <div class="cs-node">
-            <span class="cs-node__dot" aria-hidden="true"></span>
-            <span class="cs-node__t">Vertaald</span>
-            <span class="cs-node__time cs-node__time--none">naar locatie</span>
-          </div>
-          <div class="cs-node">
-            <span class="cs-node__dot" aria-hidden="true"></span>
-            <span class="cs-node__t">Getoetst</span>
-            <span class="cs-node__time cs-node__time--none">hele bestand</span>
-          </div>
-          <div class="cs-node">
-            <span class="cs-node__dot" aria-hidden="true"></span>
-            <span class="cs-node__t">Gerangschikt</span>
-            <span class="cs-node__time cs-node__time--none">beste eerst</span>
-          </div>
-          <div class="cs-node">
-            <span class="cs-node__dot" aria-hidden="true"></span>
-            <span class="cs-node__t">Aangeboden</span>
-            <span class="cs-node__time">02:19</span>
-          </div>
-        </div>
-        <p class="cs-clock__note">Er was op dat moment <b>niemand aan het werk</b>. Voorheen was deze aanvraag pas de volgende ochtend gezien &mdash; en dan is een nachtdienst vaak al door een ander bureau gevuld.</p>
-      </div>
-    </div>
-
-    <p class="cs-fine">Opdrachtgevers sturen hun eigen afdelings- en klantcodes mee. Die worden bij binnenkomst vertaald naar de locatie zoals MediMatch die kent, zodat niemand die codes hoeft te onthouden.</p>
-  </div>
-</section>
-
-<!-- ================= WAAR DE PLANNER BESLIST ================= -->
-<section class="cs-band cs-band--alt">
-  <div class="wide">
-    <div class="cs-head cs-rev">
-      <p class="cs-eyebrow">Waar de planner beslist</p>
-      <h2 class="cs-h2">Het systeem adviseert, <em>de planner beslist</em></h2>
+      <p class="cs-num"><span class="cs-num__n">11</span> Waarom het werkte</p>
+      <h2 class="cs-h2">Vier keuzes die <em>het verschil maakten</em></h2>
     </div>
 
     <div class="cs-human cs-rev">
-      <p>De derde voorwaarde uit de opdracht is geen belofte gebleven maar een set regels. Deze vier punten zitten in de applicatie, niet ernaast.</p>
-
       <ul class="cs-rules">
         <li>
-          <b>Spoed blijft mensenwerk</b>
-          <span>Diensten die binnen 48 uur beginnen worden bewust niet automatisch ingevuld. Ze krijgen de markering "handmatig toewijzen" en staan bovenaan.</span>
+          <b>We automatiseerden het proces, niet alleen de beslissing</b>
+          <span>De meeste oplossingen kijken alleen naar matching. Hier is de hele keten geautomatiseerd: input, data, matching, medewerker, bevestiging en terugkoppeling. Een goede match die daarna handmatig overgetypt moet worden, levert nauwelijks tijd op.</span>
         </li>
         <li>
-          <b>Je ziet welke eis blokkeerde</b>
-          <span>Bij geen match is per medewerker zichtbaar waarop hij afviel: locatie ontbreekt, geen beschikbaarheid, verkeerde functie. Dat is het verschil tussen "het lukt niet" en "deze persoon moet nog aan die locatie gekoppeld worden".</span>
+          <b>Data werd onderdeel van het product</b>
+          <span>Niet "we hebben de Excel opgeschoond", maar een systeem dat de kwaliteit van de data blijft bewaken. Onbetrouwbare data maakt automatisch matchen onbetrouwbaar, hoe goed de logica ook is.</span>
         </li>
         <li>
-          <b>Overrulen mag altijd</b>
-          <span>De planner kan iedereen kiezen, ook iemand die op een filter afvalt. Met een expliciete waarschuwing erbij.</span>
+          <b>AI werd gecombineerd met regels</b>
+          <span>Niet alles hoeft door een taalmodel. Harde eisen als diploma's, verlof en dubbele planning blijven hard en controleerbaar. AI zit waar interpretatie en flexibiliteit waarde toevoegen, zoals het uitlezen van een vrij geformuleerde aanvraag.</span>
         </li>
         <li>
-          <b>Twee kandidaten op één dienst kan niet</b>
-          <span>Zolang de automatische verwerking met een dienst bezig is, is die geblokkeerd voor het portaal en andersom. Dubbel aanbieden is technisch uitgesloten.</span>
+          <b>Human-in-the-loop is ontworpen, geen fallback</b>
+          <span>De momenten waarop een planner beslist zijn vooraf vastgelegd, niet toegevoegd omdat de automatisering tekortschoot. Dat verschil bepaalt of een systeem vertrouwd wordt of omzeild.</span>
         </li>
       </ul>
-
-      <span class="cs-kicker">Ook bij handmatig kiezen is het zoekwerk weg: de planner ziet meteen de passende kandidaten, met de reden waarom ze passen.</span>
     </div>
   </div>
 </section>
 
-<!-- ================= WAT ER VERDER BIJ KWAM ================= -->
-<section class="cs-band">
-  <div class="wide">
-    <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">Wat er verder bij kwam</p>
-      <h2 class="cs-h2">Drie dingen die het <em>in de praktijk laten werken</em></h2>
-    </div>
-
-    <div class="cs-extra cs-rev">
-      <div class="cs-extra__i">
-        <h3>De vertrouwde vorm behouden</h3>
-        <p>De maandweergave is opgezet als een spreadsheet: medewerkers verticaal, dagen horizontaal, maandtabbladen onderin. Het team kwam uit Excel. Door die vorm te houden was er geen nieuwe denkwijze nodig om ermee te gaan werken.</p>
-      </div>
-      <div class="cs-extra__i" data-d="1">
-        <h3>Ontbrekende gegevens vallen op</h3>
-        <p>Waar gegevens missen of niet kloppen, is dat zichtbaar in plaats van stil. Planners houden hun bestand daardoor beter bij, en dat maakt de matching op zijn beurt scherper.</p>
-      </div>
-      <div class="cs-extra__i" data-d="2">
-        <h3>Cv's beschermd</h3>
-        <p>Elk cv krijgt automatisch het MediMatch-watermerk voordat het naar een opdrachtgever gaat. Leesbaar, maar onmiskenbaar gemerkt, zodat een instelling niet rechtstreeks om het bureau heen gaat werken.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= HET RESULTAAT ================= -->
+<!-- ================= 12 LESSEN ================= -->
 <section class="cs-band cs-band--alt">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
-      <p class="cs-eyebrow">Het resultaat</p>
-      <h2 class="cs-h2">Terug naar <em>de drie voorwaarden</em></h2>
+      <p class="cs-num"><span class="cs-num__n">12</span> Lessen</p>
+      <h2 class="cs-h2">Drie dingen die we <em>meenemen naar het volgende bureau</em></h2>
     </div>
 
-    <div class="cs-res cs-rev">
-      <div>
-        <b>5 minuten</b>
-        <span>Reactietijd van binnenkomende aanvraag tot aangeboden kandidaat. Eerst uren, of de volgende ochtend.</span>
-      </div>
-      <div>
-        <b>0</b>
-        <span>Extra planners nodig om meer aanvragen te verwerken. Vijf van de zes handelingen per aanvraag zijn vervallen.</span>
-      </div>
-      <div>
-        <b>Planner beslist</b>
-        <span>Spoed, uitzonderingen en overrulen liggen bij de mens. Vastgelegd in regels, niet toevallig.</span>
-      </div>
-    </div>
-
-    <div class="cs-ba cs-rev">
-      <div class="cs-ba__h"><span>Was</span><span>Nu</span></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Reactietijd van uren, of pas de volgende ochtend</div><div class="cs-ba__nu"><b>Minuten, dag en nacht</b></div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Beschikbaarheid in een gedeeld Excel-bestand via appjes</div><div class="cs-ba__nu"><b>Medewerkers vullen hun agenda zelf in</b></div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">De kennis om te matchen zat in hoofden</div><div class="cs-ba__nu"><b>Vastgelegd in regels, navolgbaar en overdraagbaar</b></div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Alleen de kandidaten die de planner voor ogen had</div><div class="cs-ba__nu"><b>Het volledige bestand, bij elke aanvraag</b></div></div>
-      <div class="cs-ba__r"><div class="cs-ba__was">Meer aanvragen betekende meer planners</div><div class="cs-ba__nu"><b>Meer aanvragen zonder groter planteam</b></div></div>
-    </div>
+    <ul class="cs-goals cs-rev">
+      <li>
+        <b>01 &mdash; Automatisering begint bij data</b>
+        <span>Als beschikbaarheid, certificering en kandidaatdata niet betrouwbaar zijn, kun je geen betrouwbare automatisering bouwen. Het fundament kost tijd en is niet zichtbaar in een demo, maar zonder dat fundament werkt de rest niet.</span>
+      </li>
+      <li>
+        <b>02 &mdash; De uitzonderingen zijn onderdeel van het ontwerp</b>
+        <span>Een goed systeem probeert niet 100% van de gevallen automatisch af te handelen. Het weet wanneer het moet escaleren. De 48-uursregel is daar het duidelijkste voorbeeld van.</span>
+      </li>
+      <li>
+        <b>03 &mdash; De grootste winst zat niet in AI</b>
+        <span>De grootste efficiëntiewinst kwam uit het opnieuw ontwerpen van de volledige workflow rondom matching. AI is daar een onderdeel van, geen antwoord op zichzelf.</span>
+      </li>
+    </ul>
   </div>
 </section>
 
-<!-- ================= NAAR JOUW SITUATIE ================= -->
+<!-- ================= CTA ================= -->
 <section class="cs-band">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-eyebrow">En bij jou?</p>
-      <h2 class="cs-h2">MediMatch begon bij Excel. <em>Dat is geen uitzondering.</em></h2>
-      <p class="cs-lead">De meeste bureaus die wij spreken herkennen dit beeld: een planner die het proces draagt, beschikbaarheid in een bestand, en groei die alleen kan door mensen aan te nemen. Waar je begint bepaalt het startpunt, niet of het kan.</p>
+      <h2 class="cs-h2">Hoeveel van jouw matchingproces <em>kan eigenlijk automatisch?</em></h2>
     </div>
 
     <div class="cs-human cs-rev">
-      <p><strong>Wij beginnen niet met een belofte, maar met een meting.</strong> Eén werkelijke aanvraagstroom van jouw bureau: hoeveel aanvragen er binnenkomen, hoe lang ze onderweg zijn, hoeveel handelingen ze kosten en hoeveel van je bestand je nu daadwerkelijk benut.</p>
-      <p>Daarna zie je welk deel daarvan overdraagbaar is, en wat dat bij jouw volume oplevert. Levert die meting geen sluitende businesscase op, dan hoor je dat van ons.</p>
+      <p>We analyseren je huidige workflow, je data en je uitzonderingen, en brengen in kaart welke onderdelen volledig automatisch kunnen, welke ondersteuning nodig hebben en waar menselijke controle waardevol blijft.</p>
+      <p><strong>Wij beginnen niet met een belofte, maar met een meting.</strong> Levert die analyse geen sluitende businesscase op, dan hoor je dat van ons.</p>
       <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin-top:28px">
-        <a class="btn btn--primary btn--lg" href="contact.html" data-magnetic>Vraag de automatiseringsscan aan &rarr;</a>
+        <a class="btn btn--primary btn--lg" href="contact.html" data-magnetic>Laat je matchingproces analyseren &rarr;</a>
         <a class="link-under" href="uitzendbureaus.html">Bekijk de sectoroplossing</a>
       </div>
     </div>
@@ -566,7 +572,8 @@
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  window.initKineticGrid(document.getElementById('csHeroGrid'), document.getElementById('csHero'));
+  var heroGrid = document.getElementById('csHeroGrid');
+  if(heroGrid) window.initKineticGrid(heroGrid, document.getElementById('csHero'));
   var navCta = document.querySelector('.nav__cta');
   if(navCta) window.initCardGrid(navCta);
 
@@ -585,27 +592,26 @@
     revs.forEach(function(el){ obs.observe(el); });
   }
 
-  /* De klok licht zijn knopen na elkaar op, zodat je de vijf minuten
-     ziet verlopen in plaats van leest. */
-  var clock = document.getElementById('csClock');
-  if(clock){
-    var nodes = [].slice.call(clock.querySelectorAll('.cs-node'));
-    var run = function(){
-      clock.classList.add('is-on');
-      nodes.forEach(function(n, i){
+  /* Het schema bouwt zich van boven naar beneden op, zodat de route
+     zichtbaar loopt in plaats van in één keer verschijnt. */
+  var flow = document.getElementById('csFlow');
+  if(flow){
+    var rows = [].slice.call(flow.children);
+    var runFlow = function(){
+      rows.forEach(function(n, i){
         if(reduced){ n.classList.add('is-lit'); return; }
-        setTimeout(function(){ n.classList.add('is-lit'); }, 200 + i * 260);
+        setTimeout(function(){ n.classList.add('is-lit'); }, 120 + i * 130);
       });
     };
     if(reduced || !('IntersectionObserver' in window)){
-      run();
+      runFlow();
     } else {
-      var cObs = new IntersectionObserver(function(e){
+      var fObs = new IntersectionObserver(function(e){
         if(!e[0].isIntersecting) return;
-        run();
-        cObs.disconnect();
-      }, { threshold:.35 });
-      cObs.observe(clock);
+        runFlow();
+        fObs.disconnect();
+      }, { threshold:.16 });
+      fObs.observe(flow);
     }
   }
 })();

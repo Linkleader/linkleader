@@ -8,10 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=12">
 <link rel="stylesheet" href="nav-services.css?v=5">
 <link rel="stylesheet" href="fl-kit.css?v=9">
-<link rel="stylesheet" href="case.css?v=5">
+<link rel="stylesheet" href="case.css?v=7">
 </head>
 <body>
 
@@ -96,7 +96,8 @@
   <div class="cs-hero__scrim" aria-hidden="true"></div>
   <div class="cs-hero__in">
     <p class="cs-crumb"><a href="index.html">LinkLeader</a> / <a href="uitzendbureaus.html">Uitzend &amp; staffing</a> / Case</p>
-    <p class="cs-tag">Klantcase &middot; MediMatch &middot; zorgbemiddeling</p>
+    <p class="cs-label"><b>Case study</b></p>
+    <p class="cs-tag">MediMatch &middot; zorgbemiddeling &middot; uitzend &amp; staffing</p>
     <h1>Van handmatig matchen naar een <em>geautomatiseerde matchingoperatie</em></h1>
     <p class="cs-hero__lead">Hoe we voor MediMatch het grootste deel van het handmatige zoek-, controle- en matchwerk automatiseerden &mdash; terwijl de planners de controle hielden over uitzonderingen.</p>
   </div>
@@ -111,12 +112,65 @@
       <li><b>24/7</b><span>Shifts komen via API binnen en worden direct beoordeeld, ook als er niemand werkt</span></li>
       <li><b>48u</b><span>Onder die grens beslist altijd een mens, niet het systeem</span></li>
     </ul>
-    <p class="cs-facts__note">De eerste twee cijfers komen van MediMatch zelf en gaan over het handmatig aanbieden van een shift. Wat de automatisering aan extra gevulde shifts oplevert, is niet door ons gemeten; zie <a href="#roi" style="color:var(--pink-soft)">de ROI-sectie</a>.</p>
+    <p class="cs-facts__note">De eerste twee cijfers komen van MediMatch zelf en gaan over het handmatig aanbieden van een shift. Wat de automatisering aan extra gevulde shifts oplevert, is niet door ons gemeten; zie <a href="#s10" style="color:var(--pink-soft)">de ROI-sectie</a>.</p>
+  </div>
+
+  <dl class="cs-meta">
+    <div>
+      <dt>Klant</dt>
+      <dd>MediMatch<span>Bemiddelt zorgpersoneel naar zorginstellingen</span></dd>
+    </div>
+    <div>
+      <dt>Sector</dt>
+      <dd>Uitzend &amp; staffing<span>Zorg &mdash; korte reactietijden, harde bevoegdheidseisen</span></dd>
+    </div>
+    <div>
+      <dt>Diensten</dt>
+      <dd>FlowLink &amp; SoftwareLink<span>Binnen de sectoroplossing uitzend &amp; staffing</span></dd>
+    </div>
+    <div>
+      <dt>Wat we bouwden</dt>
+      <dd>Een automatiseringslaag om het matchingproces<span>Van binnenkomende shift tot bevestigde match</span></dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ================= VOORTGANG ================= -->
+<div class="cs-prog" id="csProg">
+  <div class="cs-prog__in">
+    <span class="cs-prog__k">Case study</span>
+    <span class="cs-prog__now" id="csProgNow"><b>01</b>De situatie</span>
+    <span class="cs-prog__count" id="csProgCount">1 / 12</span>
+  </div>
+  <span class="cs-prog__bar" aria-hidden="true"><i id="csProgBar"></i></span>
+</div>
+
+<!-- ================= INHOUD ================= -->
+<section class="cs-band">
+  <div class="wide">
+    <div class="cs-head cs-head--wide cs-rev">
+      <p class="cs-eyebrow">In deze case</p>
+      <h2 class="cs-h2">Twaalf hoofdstukken, <em>van probleem tot opbrengst</em></h2>
+    </div>
+    <nav class="cs-index cs-rev" aria-label="Inhoud van deze case">
+      <a href="#s01"><i>01</i>De situatie</a>
+      <a href="#s02"><i>02</i>Het probleem</a>
+      <a href="#s03"><i>03</i>De business impact</a>
+      <a href="#s04"><i>04</i>De uitdaging</a>
+      <a href="#s05"><i>05</i>De aanpak</a>
+      <a href="#s06"><i>06</i>De oplossing</a>
+      <a href="#s07"><i>07</i>Hoe het werkt</a>
+      <a href="#s08"><i>08</i>Implementatie</a>
+      <a href="#s09"><i>09</i>Het resultaat</a>
+      <a href="#s10"><i>10</i>Wat het oplevert</a>
+      <a href="#s11"><i>11</i>Waarom het werkte</a>
+      <a href="#s12"><i>12</i>Lessen</a>
+    </nav>
   </div>
 </section>
 
 <!-- ================= 01 DE SITUATIE ================= -->
-<section class="cs-band">
+<section class="cs-band" id="s01">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">01</span> De situatie</p>
@@ -130,7 +184,7 @@
 </section>
 
 <!-- ================= 02 HET PROBLEEM ================= -->
-<section class="cs-band cs-band--alt">
+<section class="cs-band cs-band--alt" id="s02">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">02</span> Het probleem</p>
@@ -156,7 +210,7 @@
 </section>
 
 <!-- ================= 03 DE BUSINESS IMPACT ================= -->
-<section class="cs-band">
+<section class="cs-band" id="s03">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">03</span> De business impact</p>
@@ -178,7 +232,7 @@
 </section>
 
 <!-- ================= 04 DE UITDAGING ================= -->
-<section class="cs-band cs-band--alt">
+<section class="cs-band cs-band--alt" id="s04">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">04</span> De uitdaging</p>
@@ -195,7 +249,7 @@
 </section>
 
 <!-- ================= 05 DE AANPAK ================= -->
-<section class="cs-band">
+<section class="cs-band" id="s05">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">05</span> De aanpak</p>
@@ -219,7 +273,7 @@
 </section>
 
 <!-- ================= 06 DE OPLOSSING ================= -->
-<section class="cs-band cs-band--alt">
+<section class="cs-band cs-band--alt" id="s06">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">06</span> De oplossing</p>
@@ -263,7 +317,7 @@
 </section>
 
 <!-- ================= 07 HOE HET WERKT ================= -->
-<section class="cs-band">
+<section class="cs-band" id="s07">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">07</span> Hoe het werkt</p>
@@ -303,7 +357,7 @@
 </section>
 
 <!-- ================= 08 IMPLEMENTATIE ================= -->
-<section class="cs-band cs-band--alt">
+<section class="cs-band cs-band--alt" id="s08">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">08</span> Implementatie</p>
@@ -341,7 +395,7 @@
 </section>
 
 <!-- ================= 09 HET RESULTAAT ================= -->
-<section class="cs-band">
+<section class="cs-band" id="s09">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">09</span> Het resultaat</p>
@@ -385,7 +439,7 @@
 </section>
 
 <!-- ================= 10 ROI ================= -->
-<section class="cs-band cs-band--alt" id="roi">
+<section class="cs-band cs-band--alt" id="s10">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">10</span> Wat het oplevert</p>
@@ -421,7 +475,7 @@
 </section>
 
 <!-- ================= 11 WAAROM HET WERKTE ================= -->
-<section class="cs-band">
+<section class="cs-band" id="s11">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">11</span> Waarom het werkte</p>
@@ -452,7 +506,7 @@
 </section>
 
 <!-- ================= 12 LESSEN ================= -->
-<section class="cs-band cs-band--alt">
+<section class="cs-band cs-band--alt" id="s12">
   <div class="wide">
     <div class="cs-head cs-head--wide cs-rev">
       <p class="cs-num"><span class="cs-num__n">12</span> Lessen</p>
@@ -590,6 +644,48 @@
       });
     }, { rootMargin:'0px 0px -12% 0px', threshold:.12 });
     revs.forEach(function(el){ obs.observe(el); });
+  }
+
+  /* De balk onder de navigatie noemt het hoofdstuk dat in beeld is en
+     laat zien hoe ver de case gevorderd is. */
+  var prog = document.getElementById('csProg');
+  if(prog){
+    var chapters = [].slice.call(document.querySelectorAll('[id^="s0"], [id^="s1"]'))
+      .filter(function(el){ return /^s\d\d$/.test(el.id); });
+    var now  = document.getElementById('csProgNow');
+    var cnt  = document.getElementById('csProgCount');
+    var bar  = document.getElementById('csProgBar');
+    var titels = chapters.map(function(el){
+      var h = el.querySelector('.cs-num');
+      return h ? h.textContent.replace(/^\s*\d+\s*/, '').trim() : '';
+    });
+    var huidig = -1;
+    var teken = function(){
+      var top = prog.getBoundingClientRect().bottom;
+      var i = 0;
+      for(var k = 0; k < chapters.length; k++){
+        if(chapters[k].getBoundingClientRect().top - top <= 8) i = k;
+      }
+      if(i !== huidig){
+        huidig = i;
+        var nr = (' 0' + (i + 1)).slice(-2);
+        now.innerHTML = '<b>' + nr + '</b>' + titels[i];
+        cnt.textContent = (i + 1) + ' / ' + chapters.length;
+      }
+      var eerste = chapters[0].offsetTop;
+      var laatste = chapters[chapters.length - 1];
+      var einde = laatste.offsetTop + laatste.offsetHeight;
+      var p = (window.scrollY + window.innerHeight * .5 - eerste) / (einde - eerste);
+      bar.style.width = Math.max(0, Math.min(1, p)) * 100 + '%';
+    };
+    teken();
+    var wacht = false;
+    window.addEventListener('scroll', function(){
+      if(wacht) return;
+      wacht = true;
+      requestAnimationFrame(function(){ teken(); wacht = false; });
+    }, { passive:true });
+    window.addEventListener('resize', teken);
   }
 
   /* Het schema bouwt zich van boven naar beneden op, zodat de route

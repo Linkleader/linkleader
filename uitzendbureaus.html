@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=12">
 <link rel="stylesheet" href="nav-services.css?v=4">
 <link rel="stylesheet" href="fl-kit.css?v=9">
 <link rel="stylesheet" href="matchlink.css?v=7">
@@ -92,6 +92,18 @@
 </header>
 
 <!-- ================= HERO ================= -->
+<!-- ================= CASEBALK =================
+     Direct onder de hero, want dit is het sterkste argument op de
+     pagina. Het volledige caseblok staat verderop; dit is de aankondiging. -->
+<div class="casebar__band">
+  <a class="casebar" href="case-medimatch.html">
+    <span class="casebar__k">Case study</span>
+    <span class="casebar__txt"><b>MediMatch automatiseerde het matchen van zorgpersoneel.</b>
+      Zoektijd per handmatig aangeboden shift van 24 naar 4 minuten &mdash; <em>83% minder</em>.</span>
+    <span class="casebar__go">Lees de case <span aria-hidden="true">&rarr;</span></span>
+  </a>
+</div>
+
 <section class="mx-hero" id="mxHero">
   <div class="mx-hero__photo" aria-hidden="true"></div>
   <canvas class="mx-hero__canvas" id="mxHeroGrid" aria-hidden="true"></canvas>
@@ -859,6 +871,16 @@
   </div>
 </div>
 
+<!-- ================= CASE-DOCK ================= -->
+<a class="casedock" id="caseDock" href="case-medimatch.html" hidden>
+  <span>
+    <span class="casedock__k">Case study &middot; MediMatch</span>
+    <span class="casedock__t"><em>83%</em> minder zoektijd per shift</span>
+  </span>
+  <span class="casedock__go" aria-hidden="true">&rarr;</span>
+  <button class="casedock__x" type="button" id="caseDockX" aria-label="Verberg deze melding">&times;</button>
+</a>
+
 <script src="site.js?v=3"></script>
 <script src="nav-services.js?v=1"></script>
 <script src="kinetic-grid.js?v=5"></script>
@@ -867,11 +889,74 @@
 <script>
 (function(){
   'use strict';
-  window.initKineticGrid(document.getElementById('mxHeroGrid'), document.getElementById('mxHero'));
-  window.initKineticGrid(document.getElementById('linkupGrid'), document.getElementById('kennismaken'));
+  var heroGrid = document.getElementById('mxHeroGrid');
+  if(heroGrid) window.initKineticGrid(heroGrid, document.getElementById('mxHero'));
+  var linkupGrid = document.getElementById('linkupGrid');
+  if(linkupGrid) window.initKineticGrid(linkupGrid, document.getElementById('kennismaken'));
   var navCta = document.querySelector('.nav__cta');
   if(navCta) window.initCardGrid(navCta);
+
+  /* De case-dock komt op zodra de casebalk uit beeld is en gaat weer weg
+     zodra het volledige caseblok in beeld komt — hij hoeft niet naast
+     zijn eigen inhoud te staan. Wegklikken onthouden we voor de sessie. */
+  var dock = document.getElementById('caseDock');
+  var bar  = document.querySelector('.casebar__band');
+  var blok = document.querySelector('.caseteaser');
+  if(dock && bar && blok){
+    var weg = false;
+    try { weg = sessionStorage.getItem('caseDockWeg') === '1'; } catch(e){}
+    if(!weg){
+      var vorige = null, gestopt = false;
+      var toets = function(){
+        if(gestopt) return;
+        var h = window.innerHeight;
+        /* Aan zodra de balk bovenaan uit beeld is, weer uit zodra het
+           volledige caseblok in beeld komt: de dock hoeft niet naast
+           zijn eigen inhoud te staan. */
+        var barWeg  = bar.getBoundingClientRect().bottom < 0;
+        var blokR   = blok.getBoundingClientRect();
+        var blokIn  = blokR.top < h * 0.8 && blokR.bottom > 0;
+        var aan = barWeg && !blokIn;
+
+        /* Deze pagina heeft onderaan al een eigen vaste balk. De dock gaat
+           daarboven staan in plaats van eroverheen; de hoogte meten we,
+           zodat een wijziging aan die balk hier niet stukloopt. */
+        var mx = document.querySelector('.mx-sticky');
+        var mxH = (mx && mx.classList.contains('is-on')) ? mx.getBoundingClientRect().height : 0;
+        dock.style.bottom = (mxH ? mxH + 14 : 22) + 'px';
+
+        if(aan === vorige) return;
+        vorige = aan;
+        if(aan){
+          dock.hidden = false;
+          /* Een tik later, zodat de overgang ook echt loopt. */
+          setTimeout(function(){ dock.classList.add('is-on'); }, 20);
+        } else {
+          dock.classList.remove('is-on');
+          setTimeout(function(){ if(!vorige) dock.hidden = true; }, 320);
+        }
+      };
+      toets();
+      var bezig = false;
+      window.addEventListener('scroll', function(){
+        if(bezig) return;
+        bezig = true;
+        setTimeout(function(){ toets(); bezig = false; }, 80);
+      }, { passive:true });
+      window.addEventListener('resize', toets);
+
+      var x = document.getElementById('caseDockX');
+      if(x) x.addEventListener('click', function(ev){
+        ev.preventDefault(); ev.stopPropagation();
+        gestopt = true;
+        dock.classList.remove('is-on');
+        dock.hidden = true;
+        try { sessionStorage.setItem('caseDockWeg','1'); } catch(e){}
+      });
+    }
+  }
 })();
 </script>
+
 </body>
 </html>

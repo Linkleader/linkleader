@@ -513,3 +513,94 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .caseteaser__in:hover .caseteaser__body{transform:none}
   .caseteaser__in:hover .caseteaser__cta span{transform:none}
 }
+
+/* ---------------- casebalk en case-dock ----------------
+   De case is het sterkste argument op de sectorpagina, dus hij moet
+   niet pas halverwege opduiken. De balk staat direct onder de hero;
+   de dock loopt daarna mee en verdwijnt zodra het volledige caseblok
+   in beeld komt, zodat hij nooit náást zijn eigen inhoud staat. */
+.casebar{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(16px,2.4vw,34px);
+  max-width:var(--shell);margin:0 auto;padding:13px var(--gut);
+  text-decoration:none;color:inherit;
+}
+.casebar__band{
+  position:relative;z-index:2;
+  border-top:1px solid var(--rule);
+  background:
+    radial-gradient(90% 300% at 82% 50%, rgba(0,115,255,.22), transparent 62%),
+    var(--surface-1);
+}
+.casebar__k{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc-staffing-soft);border:1px solid rgba(0,115,255,.34);border-radius:20px;padding:6px 12px;
+  white-space:nowrap;transition:background-color .25s ease,border-color .25s ease;
+}
+.casebar__k::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);
+  animation:case-pulse 2.4s ease-out infinite;
+}
+@keyframes case-pulse{
+  0%{box-shadow:0 0 0 0 rgba(0,115,255,.6)}
+  70%{box-shadow:0 0 0 8px rgba(0,115,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,115,255,0)}
+}
+.casebar__txt{min-width:0;font-size:15.5px;line-height:1.45;color:var(--t-80)}
+.casebar__txt b{color:#fff;font-weight:600}
+.casebar__txt em{font-style:normal;color:var(--blue);font-weight:700;font-variant-numeric:tabular-nums}
+.casebar__go{
+  display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
+  padding:11px 22px;border-radius:var(--r-pill);background:var(--blue);color:#fff;
+  font-size:13.5px;font-weight:700;
+  transition:background-color .25s ease,box-shadow .25s ease;
+}
+.casebar:hover .casebar__go{background:#2f8bff;box-shadow:0 8px 24px rgba(0,115,255,.3)}
+.casebar:hover .casebar__k{background:rgba(0,115,255,.14);border-color:var(--blue)}
+.casebar__go span{transition:transform .25s ease}
+.casebar:hover .casebar__go span{transform:translateX(4px)}
+@media (max-width:860px){
+  .casebar{grid-template-columns:1fr;gap:14px;text-align:left}
+  .casebar__go{justify-self:start}
+}
+
+/* De meelopende versie. */
+.casedock{
+  position:fixed;right:22px;bottom:22px;z-index:70;
+  display:flex;align-items:center;gap:14px;
+  max-width:min(380px,calc(100vw - 44px));
+  padding:14px 16px 14px 18px;
+  border:1px solid var(--acc-staffing,#0073ff);border-radius:var(--r-md);
+  background:rgba(11,26,61,.96);backdrop-filter:blur(14px);
+  box-shadow:0 18px 50px rgba(0,0,0,.5);
+  text-decoration:none;color:inherit;
+  opacity:0;transform:translateY(14px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s cubic-bezier(.22,.61,.36,1);
+}
+.casedock.is-on{opacity:1;transform:none;pointer-events:auto}
+.casedock__k{
+  display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc-staffing-soft,#7DB6FF);margin-bottom:5px;
+}
+.casedock__t{display:block;font-size:14px;line-height:1.4;color:#fff;font-weight:600}
+.casedock__t em{font-style:normal;color:var(--blue);font-variant-numeric:tabular-nums}
+.casedock__go{
+  flex:none;width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;background:var(--blue);color:#fff;font-size:15px;
+  transition:transform .25s ease;
+}
+.casedock:hover .casedock__go{transform:translateX(3px)}
+.casedock__x{
+  position:absolute;top:-9px;right:-9px;width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--rule-strong);background:var(--surface-2);color:var(--t-70);
+  display:grid;place-items:center;font-size:13px;line-height:1;cursor:pointer;padding:0;
+}
+.casedock__x:hover{color:#fff;border-color:var(--rule-strong);background:var(--surface-1)}
+@media (max-width:560px){
+  .casedock{right:12px;left:12px;bottom:12px;max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .casebar__k::before{animation:none}
+  .casedock{transition:none}
+  .casebar__go span,.casedock__go{transition:none}
+}

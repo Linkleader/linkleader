@@ -154,23 +154,55 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   outline:2px solid var(--blue);outline-offset:3px;border-radius:var(--r-xs);
 }
 
-/* ---------------- navigatie ---------------- */
+/* ---------------- navigatie ----------------
+   Bovenaan de pagina staat de balk transparant over de hero heen: geen
+   vlak, geen raster, alleen het merk en drie woorden. Zodra je scrollt
+   trekt hij samen tot een smalle balk met een achtergrond, zodat hij
+   leesbaar blijft boven willekeurige inhoud.
+
+   --nav-h is de bron van waarheid voor de hoogte; de vaste balk op de
+   casepagina hangt eraan, zodat die vanzelf meebeweegt. */
+:root{--nav-h:78px}
 .nav{
   position:sticky;top:0;z-index:60;
-  background:rgba(10,24,55,.86);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--rule);
+  background:transparent;
+  border-bottom:1px solid transparent;
   overflow:hidden;
+  transition:background-color .3s ease,border-color .3s ease,backdrop-filter .3s ease;
 }
+.nav.is-stuck{
+  background:rgba(6,15,38,.82);backdrop-filter:blur(16px);
+  border-bottom-color:var(--rule);
+}
+/* Het raster hoorde bij de oude, gevulde balk. Het blijft, maar alleen
+   als hij is samengetrokken, en zachter dan eerst. */
 .nav::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(to right, rgba(255,255,255,.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
   background-size:32px 32px;
-  -webkit-mask-image:radial-gradient(ellipse 70% 100% at 0% 0%, #000 40%, transparent 85%);
-  mask-image:radial-gradient(ellipse 70% 100% at 0% 0%, #000 40%, transparent 85%);
+  -webkit-mask-image:radial-gradient(ellipse 60% 100% at 0% 0%, #000 30%, transparent 80%);
+  mask-image:radial-gradient(ellipse 60% 100% at 0% 0%, #000 30%, transparent 80%);
+  opacity:0;transition:opacity .35s ease;
 }
-.nav__inner{position:relative;display:flex;align-items:center;gap:40px;height:78px}
+.nav.is-stuck::before{opacity:1}
+.nav__inner{
+  position:relative;display:flex;align-items:center;gap:40px;
+  height:var(--nav-h);
+  transition:height .3s var(--ease-out,cubic-bezier(.22,.61,.36,1));
+}
+html.nav-stuck{--nav-h:60px}
+
+/* Het merk krimpt mee en schuift een tikje op. Subtiel genoeg om niet
+   op te vallen als beweging, groot genoeg om de overgang te voelen. */
+.brand-link__logo{
+  transition:width .3s var(--ease-out,cubic-bezier(.22,.61,.36,1)),
+             height .3s var(--ease-out,cubic-bezier(.22,.61,.36,1));
+}
+.nav.is-stuck .brand-link__logo{width:34px;height:34px}
+.nav.is-stuck .nav__links{margin-left:2px}
+.nav__links{transition:margin-left .3s var(--ease-out,cubic-bezier(.22,.61,.36,1))}
 .nav__links{display:flex;gap:0;margin-left:8px}
 .nav__links a{
   text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
@@ -188,6 +220,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   transition:background-color .2s ease;
 }
 .nav__cta:hover{background-color:#d4118c}
+.nav__cta{transition:background-color .2s ease,padding .3s var(--ease-out,cubic-bezier(.22,.61,.36,1))}
+.nav.is-stuck .nav__cta{padding:0 26px}
 .nav__cta span{position:relative;z-index:1}
 .card-grid__canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
 
@@ -204,7 +238,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .nav__toggle span::before{top:-6px}
 .nav__toggle span::after{top:6px}
-.nav__panel{display:none;border-top:1px solid var(--rule);padding:20px 0 28px}
+/* Uitgeklapt: effen donkerblauw. Geen verloop en geen doorschijnende
+   laag, want dan zie je de pagina eronder door het menu heen meedoen. */
+.nav:has(.nav__panel.is-open){
+  background:var(--surface-1);
+  backdrop-filter:none;
+  border-bottom-color:var(--rule);
+}
+.nav:has(.nav__panel.is-open)::before{opacity:0}
+.nav__panel{display:none;border-top:1px solid var(--rule);padding:20px 0 28px;background:var(--surface-1)}
 .nav__panel.is-open{display:block}
 .nav__panel a{display:block;text-decoration:none;padding:12px 0;font-size:17px;border-bottom:1px solid var(--rule)}
 .nav__panel .btn{margin-top:20px}
@@ -467,7 +509,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .caseteaser__in:hover .caseteaser__k{border-color:var(--blue);background:rgba(0,115,255,.12)}
 
 .caseteaser h2{
-  font-family:"Univia Pro Black","Plus Jakarta Sans",sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(24px,2.9vw,38px);line-height:1.12;letter-spacing:-.028em;
   color:#fff;margin:0 0 18px;text-wrap:balance;
 }
@@ -486,7 +528,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .caseteaser__in:hover .caseteaser__stats li{border-color:rgba(0,115,255,.28)}
 .caseteaser__stats b{
-  font-family:"Univia Pro Black","Plus Jakarta Sans",sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(26px,3vw,36px);line-height:1;letter-spacing:-.03em;color:#fff;
   font-variant-numeric:tabular-nums;min-width:3.4ch;
 }

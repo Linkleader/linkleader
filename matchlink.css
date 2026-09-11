@@ -57,7 +57,7 @@ body{
 }
 .mx-eyebrow::before{content:"";width:22px;height:1px;background:var(--pink);flex:none}
 .mx-h2{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(26px,3.2vw,42px);line-height:1.1;letter-spacing:-.028em;
   color:#fff;margin:0;text-wrap:balance;
 }
@@ -123,7 +123,7 @@ body{
   color:var(--ice);margin:0 0 20px;
 }
 .mx-hero h1{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-.034em;
   color:#fff;margin:0 0 26px;max-width:16ch;text-wrap:balance;
 }
@@ -483,7 +483,7 @@ body{
 .mx-race__verdict p{margin:0;font-size:15px;color:var(--t-80);line-height:1.5}
 .mx-race__verdict b{color:#fff}
 .mx-race__delta{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em;color:#fff;line-height:1;
 }
 @media (max-width:760px){.mx-race__row{padding:22px 20px}.mx-race__row--new{padding-bottom:56px}.mx-race__verdict{padding:18px 20px}}
@@ -583,7 +583,7 @@ body{
 }
 .mx-calc__lbl{font-size:14.5px;color:var(--t-70);margin:0 0 12px;line-height:1.5}
 .mx-calc__amt{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(34px,4.6vw,54px);line-height:1;letter-spacing:-.036em;color:#fff;
   font-variant-numeric:tabular-nums;margin:0;
 }

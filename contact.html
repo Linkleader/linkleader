@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=12">
-<link rel="stylesheet" href="nav-services.css?v=4">
-<link rel="stylesheet" href="fl-kit.css?v=9">
+<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="nav-services.css?v=6">
+<link rel="stylesheet" href="fl-kit.css?v=10">
 <style>
 
   /* ---------------- hero split: verhaal links, formulier rechts ----------------
@@ -31,11 +31,10 @@
     position:relative;z-index:1;
     display:flex;flex-direction:column;justify-content:center;
     padding:56px clamp(24px,4.4vw,72px);
-    border-right:1px solid var(--fl-line);
   }
   .contact-hero h1{
     margin:0;font-size:clamp(38px,4.6vw,72px);line-height:1.03;letter-spacing:-.035em;
-    font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff;
+    font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;color:#fff;
   }
   .contact-hero__lead{margin:24px 0 0;max-width:46ch;color:var(--t-70);font-size:17px;line-height:1.62}
   .contact-hero .spec-strip{margin-top:30px}
@@ -79,9 +78,9 @@
     position:relative;z-index:1;
     display:flex;flex-direction:column;justify-content:center;
     padding:52px clamp(24px,4.4vw,72px);
-    /* Lifted one surface step above the page, so the form half reads as a
-       panel you can act on rather than more background. */
-    background:linear-gradient(200deg,rgba(193,0,124,.10) 0%,rgba(11,26,61,0) 42%),var(--surface-1);
+    /* Geen eigen vlak meer: de achtergrond van de hero loopt door, en de
+       velden doen het werk dat het paneel eerst deed. */
+    background:transparent;
   }
   .contact-form__head{margin-bottom:26px}
   .contact-form h2{
@@ -97,26 +96,32 @@
     color:rgba(255,255,255,.55);font-weight:400;
   }
   /* A bigger, softer field reads as an invitation rather than a data-entry chore. */
+  /* De velden dragen nu de kleur van de pagina. Fel genoeg om het
+     formulier te zijn waar je oog naartoe gaat, donker genoeg om witte
+     tekst er leesbaar op te houden. */
   .contact-form .field input,
   .contact-form .field textarea,
   .contact-form .field select{
     width:100%;padding:14px 16px;font-size:15.5px;color:#fff;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);
+    background:rgba(193,0,124,.20);
+    border:1px solid rgba(255,107,199,.55);border-radius:var(--r-md);
     transition:border-color .25s ease,background-color .25s ease,box-shadow .25s ease;
   }
   .contact-form .field input::placeholder,
-  .contact-form .field textarea::placeholder{color:rgba(255,255,255,.3)}
+  .contact-form .field textarea::placeholder{color:rgba(255,255,255,.52)}
   .contact-form .field input:hover,
   .contact-form .field textarea:hover,
-  .contact-form .field select:hover{border-color:rgba(255,255,255,.22)}
+  .contact-form .field select:hover{
+    border-color:#ff6bc7;background:rgba(193,0,124,.28);
+  }
   .contact-form .field input:focus,
   .contact-form .field textarea:focus,
   .contact-form .field select:focus{
-    outline:none;border-color:var(--pink);
-    background:rgba(255,255,255,.06);
-    box-shadow:0 0 0 4px rgba(193,0,124,.16);
+    outline:none;border-color:#ff8ad4;
+    background:rgba(193,0,124,.34);
+    box-shadow:0 0 0 4px rgba(255,107,199,.22);
   }
+  .contact-form .field label{color:rgba(255,255,255,.72)}
   .contact-form .field textarea{min-height:96px;resize:vertical}
   .contact-form .field--row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0}
 
@@ -139,13 +144,12 @@
   }
 
   /* ---------------- onder de vouw ---------------- */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:start}
+  .contact-grid{display:block}
 
   @media (max-width:1024px){
     .contact-hero{grid-template-columns:1fr;min-height:0}
-    .contact-hero__inner{border-right:0;border-bottom:1px solid var(--fl-line);padding:80px 24px 56px}
+    .contact-hero__inner{border-bottom:1px solid var(--fl-line);padding:80px 24px 56px}
     .contact-form{padding:48px 24px 56px}
-    .contact-grid{grid-template-columns:1fr}
   }
   @media (max-width:720px){
     .direct{grid-template-columns:1fr}
@@ -179,8 +183,7 @@
     <div class="wide">
       <div class="mega__in">
         <div class="mega__col">
-          <p class="mega__k">Diensten <span>wat we bouwen</span></p>
-          <p class="mega__hint">Los af te nemen, of gecombineerd tot een sectoroplossing.</p>
+          <p class="mega__k">Diensten</p>
           <div class="mega__grid">
             <a class="svci" href="ai-automation.html" style="--a:var(--acc-flow)"><span class="svci__w">FLOW<i>LINK</i></span><span class="svci__d">AI-automatisering</span></a>
             <a class="svci" href="softwarelink.html" style="--a:var(--acc-software)"><span class="svci__w">SOFTWARE<i>LINK</i></span><span class="svci__d">Web &amp; app development</span></a>
@@ -191,8 +194,7 @@
           </div>
         </div>
         <div class="mega__col mega__col--sect">
-          <p class="mega__k">Sectoren <span>voorgemonteerd</span></p>
-          <p class="mega__hint">Dezelfde diensten, samengesteld voor één branche.</p>
+          <p class="mega__k">Sectoren</p>
           <div class="mega__grid">
             <a class="svci" href="uitzendbureaus.html" style="--a:var(--acc-staffing)"><span class="svci__w">Uitzend &amp;<i> staffing</i></span><span class="svci__d">Van aanvraag tot plaatsing</span></a>
             <span class="svci svci--soon" style="--a:var(--acc-mind)"><span class="svci__w">Zorg<span class="svci__soon">Binnenkort</span></span><span class="svci__d">Roosters en bevoegdheden</span></span>
@@ -314,7 +316,7 @@
   <div class="wide contact-grid">
 
     <div class="contact-story reveal">
-      <p class="sec-index"><span class="sec-index__n">01</span> Hoe het gaat</p>
+      <p class="sec-index">Hoe het gaat</p>
       <h2 class="h-section" data-split>Van bericht tot concreet plan</h2>
 
       <div class="build-list reveal reveal--group" data-stagger>
@@ -396,7 +398,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=3"></script>
+<script src="site.js?v=4"></script>
 <script src="nav-services.js?v=1"></script>
 <script src="kinetic-grid.js?v=5"></script>
 <script src="card-grid.js?v=3"></script>

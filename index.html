@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=12">
-<link rel="stylesheet" href="nav-services.css?v=4">
-<link rel="stylesheet" href="fl-kit.css?v=9">
+<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="nav-services.css?v=6">
+<link rel="stylesheet" href="fl-kit.css?v=10">
 <style>
 
 @font-face{
@@ -409,16 +409,18 @@ body.intro-complete .typewriter-scroll{
 .proof__intro{position:sticky;top:120px}
 .proof__title{
   margin:0;font-size:clamp(30px,3.5vw,50px);line-height:1.1;letter-spacing:-.03em;
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;color:#fff;
 }
 .proof__title em{
-  font-family:'Univia Pro Ultra','Plus Jakarta Sans',sans-serif;font-weight:900;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-style:normal;color:var(--pink);
 }
 .proof__lead{margin:24px 0 0;max-width:42ch;color:var(--t-70);font-size:17px;line-height:1.65}
 .proof__rows{max-width:none;border-top:1px solid var(--fl-line)}
 .proof__rows .build-row{grid-template-columns:78px minmax(0,1fr);gap:6px 26px;padding:30px 6px}
 .proof__rows .build-row p:not(.build-row__num){grid-column:2}
+.proof__rows .build-row:not(:has(.build-row__num)){grid-template-columns:minmax(0,1fr)}
+.proof__rows .build-row:not(:has(.build-row__num)) p{grid-column:1}
 
 /* signature strip — the four things that stay true on every project */
 .sigstrip{
@@ -438,7 +440,7 @@ body.intro-complete .typewriter-scroll{
 .sigstrip__cell + .sigstrip__cell{border-left:1px solid var(--fl-line)}
 .sigstrip__cell:hover{background:rgba(0,115,255,.05)}
 .sigstrip__val{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(24px,2.6vw,34px);line-height:1;letter-spacing:-.03em;color:#fff;
 }
 .sigstrip__val--pink{color:var(--pink)}
@@ -782,8 +784,7 @@ body.intro-complete .typewriter-scroll{
     <div class="wide">
       <div class="mega__in">
         <div class="mega__col">
-          <p class="mega__k">Diensten <span>wat we bouwen</span></p>
-          <p class="mega__hint">Los af te nemen, of gecombineerd tot een sectoroplossing.</p>
+          <p class="mega__k">Diensten</p>
           <div class="mega__grid">
             <a class="svci" href="ai-automation.html" style="--a:var(--acc-flow)"><span class="svci__w">FLOW<i>LINK</i></span><span class="svci__d">AI-automatisering</span></a>
             <a class="svci" href="softwarelink.html" style="--a:var(--acc-software)"><span class="svci__w">SOFTWARE<i>LINK</i></span><span class="svci__d">Web &amp; app development</span></a>
@@ -794,8 +795,7 @@ body.intro-complete .typewriter-scroll{
           </div>
         </div>
         <div class="mega__col mega__col--sect">
-          <p class="mega__k">Sectoren <span>voorgemonteerd</span></p>
-          <p class="mega__hint">Dezelfde diensten, samengesteld voor één branche.</p>
+          <p class="mega__k">Sectoren</p>
           <div class="mega__grid">
             <a class="svci" href="uitzendbureaus.html" style="--a:var(--acc-staffing)"><span class="svci__w">Uitzend &amp;<i> staffing</i></span><span class="svci__d">Van aanvraag tot plaatsing</span></a>
             <span class="svci svci--soon" style="--a:var(--acc-mind)"><span class="svci__w">Zorg<span class="svci__soon">Binnenkort</span></span><span class="svci__d">Roosters en bevoegdheden</span></span>
@@ -936,29 +936,25 @@ body.intro-complete .typewriter-scroll{
     <div class="proof__grid">
 
       <div class="proof__intro reveal">
-        <p class="sec-index"><span class="sec-index__n">01</span> Wat het oplevert</p>
+        <p class="sec-index">Wat het oplevert</p>
         <h2 class="proof__title" data-split>Je merkt het aan je <em>agenda</em>, niet aan een dashboard.</h2>
         <p class="proof__lead">Automatisering is geen doel. Het doel is dat je team op vrijdagmiddag niet meer aan het overtypen is — en dat groei geen extra hoofden meer kost.</p>
       </div>
 
       <div class="build-list proof__rows reveal reveal--group" data-stagger>
         <article class="build-row grid-spot">
-          <p class="build-row__num">001</p>
           <h3>Beslissen op cijfers, niet op onderbuik</h3>
           <p>Je data staat versnipperd over systemen. Wij brengen het samen, zodat je bij elke keuze ziet wat het écht kost en oplevert.</p>
         </article>
         <article class="build-row grid-spot">
-          <p class="build-row__num">002</p>
           <h3>Het overtypen stopt</h3>
           <p>Elke handeling die twee keer hetzelfde is, hoort een systeem te doen. Dat scheelt uren per week en fouten die niemand meer terugvindt.</p>
         </article>
         <article class="build-row grid-spot">
-          <p class="build-row__num">003</p>
           <h3>Groeien zonder extra FTE</h3>
           <p>Dubbel zoveel aanvragen hoeft geen dubbel zo groot team te betekenen. Je processen rekken mee in plaats van te breken.</p>
         </article>
         <article class="build-row grid-spot">
-          <p class="build-row__num">004</p>
           <h3>Klaar voor wat er nog aan komt</h3>
           <p>Je stack wordt zo gebouwd dat een nieuw model of nieuwe tool erin past — zonder dat alles opnieuw moet.</p>
         </article>
@@ -999,43 +995,36 @@ body.intro-complete .typewriter-scroll{
 
   <div class="build-list build-list--bleed reveal reveal--group" data-stagger>
     <article class="build-row grid-spot" style="--pink:var(--acc-flow)">
-      <p class="build-row__num">001</p>
       <h3 class="build-row__mark"><span class="fl-flow">FLOW</span><span class="fl-link">LINK</span></h3>
       <p>Werk dat tussen systemen blijft hangen: overtypen, handmatige rapportages, statusupdates die iemand moet onthouden. We halen het weg.</p>
       <a class="build-row__link" href="ai-automation.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
     </article>
     <article class="build-row grid-spot" style="--pink:var(--acc-software)">
-      <p class="build-row__num">002</p>
       <h3 class="build-row__mark"><span class="fl-flow">SOFTWARE</span><span class="fl-link">LINK</span></h3>
       <p>Wanneer een pakket je proces niet volgt maar voorschrijft, bouwen we het zelf. Van interne tool tot het platform waar je operatie op draait.</p>
       <a class="build-row__link" href="softwarelink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
     </article>
     <article class="build-row grid-spot" style="--pink:var(--acc-mind)">
-      <p class="build-row__num">003</p>
       <h3 class="build-row__mark"><span class="fl-flow">MIND</span><span class="fl-link">LINK</span></h3>
       <p>Taken waar oordeel bij komt kijken en te vaak voorkomen om met de hand te doen. Met een mens erbij waar dat moet.</p>
       <a class="build-row__link" href="mindlink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
     </article>
     <article class="build-row grid-spot" style="--pink:var(--acc-data)">
-      <p class="build-row__num">004</p>
       <h3 class="build-row__mark"><span class="fl-flow">DATA</span><span class="fl-link">LINK</span></h3>
       <p>De fundering onder alles wat je met AI wil doen. Data verzamelen, opschonen, koppelen en ontsluiten.</p>
       <a class="build-row__link" href="datalink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
     </article>
     <article class="build-row grid-spot" style="--pink:var(--acc-tech)">
-      <p class="build-row__num">005</p>
       <h3 class="build-row__mark"><span class="fl-flow">TECH</span><span class="fl-link">LINK</span></h3>
       <p>Onafhankelijk advies over welke software je kiest, wat je schrapt en hoe je het invoert. Geen partnercontracten.</p>
       <a class="build-row__link" href="techlink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
     </article>
     <article class="build-row grid-spot" style="--pink:var(--acc-growth)">
-      <p class="build-row__num">006</p>
       <h3 class="build-row__mark"><span class="fl-flow">GROWTH</span><span class="fl-link">LINK</span></h3>
       <p>Meer omzet uit de leads die je al hebt. Opvolging, funnel en klantreis op orde voordat je meer advertentiebudget inzet.</p>
       <a class="build-row__link" href="growthlink.html">Bekijk de dienst <span aria-hidden="true">→</span></a>
     </article>
     <article class="build-row grid-spot build-row--sector" style="--pink:var(--acc-staffing)">
-      <p class="build-row__num">007</p>
       <h3 class="build-row__mark"><span class="fl-flow">UITZEND &amp;</span> <span class="fl-link">STAFFING</span></h3>
       <p>Een complete uitvoeringslaag voor uitzendbureaus: aanvraag binnen, gematcht, toegewezen, opgevolgd — bovenop je bestaande AFAS, ATS en planning.</p>
       <a class="build-row__link" href="uitzendbureaus.html">Bekijk de sectoroplossing <span aria-hidden="true">→</span></a>
@@ -1160,7 +1149,7 @@ body.intro-complete .typewriter-scroll{
 </footer>
 </main>
 
-<script src="site.js?v=3"></script>
+<script src="site.js?v=4"></script>
 <script src="nav-services.js?v=1"></script>
 <script src="kinetic-grid.js?v=5"></script>
 <script src="card-grid.js?v=3"></script>

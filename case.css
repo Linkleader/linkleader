@@ -37,13 +37,13 @@ body{
 }
 .cs-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink)}
 .cs-hero h1{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.034em;
   color:#fff;margin:0 0 20px;max-width:20ch;text-wrap:balance;
 }
 .cs-hero h1 em{font-style:normal;color:var(--pink)}
 .cs-hero__kicker{
-  margin:0 0 26px;font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;
+  margin:0 0 26px;font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;
   font-size:clamp(17px,2vw,22px);color:var(--ice);letter-spacing:-.018em;
 }
 .cs-hero__lead{margin:0;font-size:17.5px;line-height:1.65;color:var(--t-80);max-width:60ch}
@@ -56,7 +56,7 @@ body{
 }
 .cs-stats li{background:var(--surface-0);padding:22px 24px}
 .cs-stats b{
-  display:block;font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  display:block;font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(26px,3vw,38px);line-height:1;letter-spacing:-.03em;color:#fff;
   font-variant-numeric:tabular-nums;
 }
@@ -65,8 +65,8 @@ body{
 @media (max-width:480px){.cs-stats{grid-template-columns:1fr}}
 
 /* ---------------- secties ---------------- */
-.cs-band{padding:clamp(62px,7.5vw,102px) 0;position:relative;scroll-margin-top:132px}
-@media (max-width:760px){.cs-band{scroll-margin-top:112px}}
+.cs-band{padding:clamp(62px,7.5vw,102px) 0;position:relative;scroll-margin-top:calc(var(--nav-h,78px) + 58px)}
+
 .cs-band--alt{background:linear-gradient(180deg,rgba(255,255,255,.014),transparent)}
 .cs-head{max-width:66ch;margin:0 0 clamp(30px,3.6vw,46px)}
 .cs-eyebrow{
@@ -75,7 +75,7 @@ body{
 }
 .cs-eyebrow::before{content:"";width:22px;height:1px;background:var(--pink);flex:none}
 .cs-h2{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(25px,3vw,40px);line-height:1.1;letter-spacing:-.028em;
   color:#fff;margin:0;text-wrap:balance;
 }
@@ -126,7 +126,7 @@ body{
 @media (max-width:600px){.cs-res--4{grid-template-columns:1fr}}
 .cs-res > div{background:var(--surface-1);padding:26px 28px}
 .cs-res b{
-  display:block;font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  display:block;font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(24px,2.8vw,34px);line-height:1;letter-spacing:-.03em;color:#fff;
   font-variant-numeric:tabular-nums;margin-bottom:11px;
 }
@@ -202,7 +202,7 @@ body{
 }
 .cs-track__ar{color:var(--muted);font-size:15px}
 .cs-track__nu{
-  font-family:'Univia Pro Black','Plus Jakarta Sans',sans-serif;font-weight:800;
+  font-family:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;
   font-size:clamp(28px,3.4vw,42px);line-height:1;letter-spacing:-.03em;color:#fff;
   font-variant-numeric:tabular-nums;
 }
@@ -584,7 +584,7 @@ body{
    is de duidelijkste manier om te zeggen: je leest een case study, er
    komen er nog een paar. */
 .cs-prog{
-  position:sticky;top:79px;z-index:50;
+  position:sticky;top:var(--nav-h,78px);z-index:50;
   background:rgba(6,15,38,.92);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--rule);
 }
